@@ -1,0 +1,64 @@
+﻿<style>
+    .message_delete {
+        width: 366px;
+        height: 132px;
+        ont-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        color: #000000;
+        padding-top: 30px;
+        padding-left: 60px
+    }
+</style>
+<div class="modal fade" id="DeleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body add_par">
+                <p class="message_delete message_delete_User">are you sure you want to delete</p>
+            </div>
+            <div class="modal_line"></div>
+            <div class="modal-footer">
+                <button type="submit" class="btn_save btn_Delete_user">yes</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    //delete the health case with it is drugs
+    $(".btn_Delete_user").click(function () {
+        var id = $(".btn_Delete_user").val();
+        var RoleName = $(".btn_Delete_user").attr('name');
+        $.ajax({
+            url: "/Manage/DeleteUser",
+            type: "POST",
+            data: { "id": id, "RoleName": RoleName }
+        }).done(function (data) {
+            if (data.Url != null) {
+                window.location = data.Url;
+            }
+            else {
+                if (data == -1) {
+                    $(".message").append($("<div class='alert alert-success alert1 delet_success' role='alert'>Pharmacist Has Been Deleted Successfully !</div >"));
+                    $('#Users').DataTable().ajax.reload();
+                    $('#DeleteUser').modal("hide");
+                    setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+                }
+                else if (data == -2) {
+                    $(".message").append($("<div class='alert alert-success alert1 delet_success' role='alert'>User Has Been Deleted Successfully !</div >"));
+                    $('#Users').DataTable().ajax.reload();
+                    $('#DeleteUser').modal("hide");
+                    setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+                }
+
+            }
+            
+        });
+    })
+</script>

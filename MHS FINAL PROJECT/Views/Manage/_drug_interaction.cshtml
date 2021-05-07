@@ -1,0 +1,493 @@
+﻿@{
+    var IsUser = User.IsInRole("Normal_User");
+    var IsAdmin = User.IsInRole("Admins");
+    var IsPharmacists = User.IsInRole("pharmacists");
+}
+<style>
+    .sorting, .sorting_asc, .sorting_desc {
+        background: none;
+    }
+
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+
+        table.dataTable thead .sorting:after {
+            opacity: 0 !important;
+            content: "";
+        }
+
+        table.dataTable thead .sorting_asc:after {
+            content: "" !important;
+        }
+
+        table.dataTable thead .sorting_desc:after {
+            content: "" !important;
+        }
+    /**************************************************************************************************************/
+    #Trade_Names > thead > tr {
+        background-color: #808692;
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 115%;
+        letter-spacing: 0.01em;
+        text-transform: capitalize;
+        color: #FFFFFF;
+        border-radius: 10px;
+    }
+
+        #Trade_Names > thead > tr > th {
+            border-bottom: none;
+        }
+
+            #Trade_Names > thead > tr > th:nth-child(1) {
+                border-radius: 10px 0 0 0;
+            }
+
+            #Trade_Names > thead > tr > th:nth-child(4) {
+                border-radius: 0 10px 0 0;
+            }
+
+    .table-bordered {
+        border: none;
+    }
+
+    .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+        z-index: 3;
+        color: black;
+        cursor: default;
+        background-color: #C6F6D5;
+        border-color: #C6F6D5;
+        margin: 0;
+        display: block;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: none !important;
+        border: none;
+        background-color: none;
+        background: none;
+        cursor: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 1.5em;
+        padding: 0.5em 1em;
+        margin-left: 0px;
+        text-align: center;
+        text-decoration: none !important;
+        cursor: pointer;
+        color: #333 !important;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        padding: 0px;
+        cursor: none;
+    }
+
+    .table_trade {
+        width: 75%;
+        margin: 0;
+        margin-top: 40px;
+    }
+
+    tbody {
+        text-align: center
+    }
+
+    thead > tr > th {
+        text-align: center
+    }
+
+    #demoGrid_wrapper {
+        padding: 0px !important;
+    }
+
+    .info_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #C6F6D5;
+        border-radius: 45px;
+    }
+
+    .edit_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #EBE66E;
+        border-radius: 45px;
+    }
+
+    .delete_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #FD4343;
+        border-radius: 45px;
+    }
+
+    .action_btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly
+    }
+
+    table.dataTable.no-footer {
+        -webkit-box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.51);
+        box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.15);
+        border-radius: 10px 10px 0 0;
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+    .EDIT {
+        width: 290px;
+    }
+</style>
+<div class="btn_action">
+    <a class="button EDIT hover_edit" onclick="Open_new_interaction()">
+        Add new Interaction
+        <img src="~/img/Manage/add_health.svg" />
+    </a>
+</div>
+
+@if (IsAdmin)
+{
+    <style>
+        .table_trade {
+            width:88%;
+        }
+    </style>
+}
+<div class="table_trade">
+    <table id="Trade_Names" class="table table-striped table-bordered " width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                @if (IsPharmacists)
+                {
+                    <th>ID</th>
+                    <th class="col_name" style="width:200px;">Drug</th>
+                    <th class="col_name" style="width:270px;">with</th>
+                    <th class="col_name" style="width:170px;">Degree</th>
+                    <th class="col_name" style="width:170px;">Action</th>
+                }
+                else if (IsAdmin)
+                {
+                    <th>ID</th>
+                    <th class="col_name" style="width:200px;">Drug</th>
+                    <th class="col_name" style="width:270px;">with</th>
+                    <th class="col_name" style="width:170px; border-radius: 0 0 0 0;">Degree</th>
+                    <th class="col_name" style="width:170px;">Added By</th>
+                    <th class="col_name" style="width:170px; border-radius: 0 10px 0 0;">Action</th>
+                }
+
+            </tr>
+        </thead>
+    </table>
+</div>
+@Html.Partial("_add_interaction_modal")
+@Html.Partial("_delete_interaction");
+
+@if (IsAdmin)
+{
+<script>
+    $(document).ready(
+        //load table Interaction drug--------------------------------------------
+        function data_table() {
+            $('#Trade_Names').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "orderMulti": false,
+                "rowReorder": true,
+                "pageLength": 3,
+
+                "ajax": {
+                    "url": "/Manage/LoadInteractionAll",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "columnDefs":
+                    [{
+                        "targets": [0],
+                        "visible": true,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [1],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [2],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [3],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [4],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [4],
+                        "searchable": true,
+                        "orderable": false
+                    }],
+                "columns": [
+                    { "data": "id", "Name": "ID", "autoWidth": true },
+                    { "data": "Main_drug", "Name": "Drug", "autoWidth": true },
+                    { "data": "with_drug", "Name": "with", "autoWidth": true },
+                    { "data": "Degree", "Name": "Degree", "autoWidth": true },
+                    { "data": "added_by", "Name": "Added By", "autoWidth": true },
+                    {
+                        "render": function (data, type, row, meta) {
+                            return '<div class="action_btn">' +
+                                '<a class="edit_action Edit" data-toggle="tooltip" title="Edit Drug Interaction" value="' + row.id + '" style="cursor:pointer" onclick="Edit_Interaction(' + row.id + ')"> <img src="/img/Manage/table action/edit_action.svg" /></a>' + ' ' +
+                                '<a class="delete_action"    data-toggle="tooltip" title="Delet Drug Interaction" value="' + row.id + '" style="cursor:pointer" onclick="Delete_interaction(' + row.id + ',' + "'" + row.Main_drug + "'" + ',' + "'" + row.with_drug + "'" + ');"> <img src="/img/Manage/table action/delete_action.svg" /></a></div>';
+                        }
+                    }
+                ]
+            });
+        });
+
+    //load modal with data for edit --------------------------------------------------------------------------
+    function Edit_Interaction(id) {
+        $.ajax({
+            url: "/Manage/GetInteraction",
+            type: "POST",
+            data: { "id": id }
+        }).done(function (data) {
+            document.querySelector('.drug_name_span').innerHTML = null;
+            document.querySelector('.with_name_span').innerHTML = null;
+            document.querySelector('.Degree_span').innerHTML = null;
+
+            //change the titel--------------------------
+            document.querySelector('.change_titel_Interaction').innerHTML = "edit interaction";
+            //load id to hiden textbox--------------
+            document.querySelector('.Interaction_id').value = data.id;
+
+            //load dropdown lists--------------------------------
+            $('.drug').val(data.drug_id);
+            $('.with').val(data.with_id);
+
+            //load check boxes--------------------------------
+            $(".major").prop("checked", false);
+            $(".moderate").prop("checked", false);
+            $(".minor").prop("checked", false);
+            if (data.Degree == "major") {
+                $(".major").prop("checked", true);
+            } else if (data.Degree == "moderate") {
+                $(".moderate").prop("checked", true);
+            } else if (data.Degree == "minor") {
+                $(".minor").prop("checked", true);
+            }
+        })
+        $('#Add_InteractionDrug').modal("show");
+
+    }
+
+
+
+
+    //load delete alert modal
+    function Delete_interaction(id, name, with_name) {
+        document.querySelector('.message_delete_Interaction').innerHTML = "are you sure you want to delete interaction between " + '<span style="color:#348B5E">"' + name + '"</span>'
+            + " and " + '<span style="color:#348B5E">"' + with_name + '"</span>';
+        document.querySelector('.btn_Delete_Interaction').value = id;
+        $('#DeleteInteractionModal').modal("show");
+    }
+
+
+
+    //Open modal for adding new interaction and clean it ------------------------------------------
+    function Open_new_interaction() {
+        //return all validation to null -----------------------------------------
+        document.querySelector('.drug_name_span').innerHTML = null;
+        document.querySelector('.with_name_span').innerHTML = null;
+        document.querySelector('.Degree_span').innerHTML = null;
+
+        //remove any exist id from before------------------------------------------------
+        document.querySelector('.Interaction_id').value = null;
+
+        //remove any selected check box -----------------------------------------
+        $(".major").prop("checked", false);
+        $(".moderate").prop("checked", false);
+        $(".minor").prop("checked", false);
+
+        //remove any selected drug from the drop down list-------------------------------------
+        $(".drug option").prop("selected", false);
+        $(".with option").prop("selected", false);
+
+        $('#Add_InteractionDrug').modal("show");
+    }
+
+</script>
+
+}
+else if(IsPharmacists)
+{
+    <script>
+        $(document).ready(
+            //load table Interaction drug--------------------------------------------
+            function data_table() {
+                $('#Trade_Names').dataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "filter": true,
+                    "orderMulti": false,
+                    "rowReorder": true,
+                    "pageLength": 3,
+
+                    "ajax": {
+                        "url": "/Manage/LoadInteractionAll",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+
+                    "columnDefs":
+                        [{
+                            "targets": [0],
+                            "visible": false,
+                            "searchable": false
+                        },
+                        {
+                            "targets": [1],
+                            "searchable": true,
+                            "orderable": false
+                        },
+                        {
+                            "targets": [2],
+                            "searchable": true,
+                            "orderable": false
+                        },
+                        {
+                            "targets": [3],
+                            "searchable": true,
+                            "orderable": false
+                        },
+                        {
+                            "targets": [4],
+                            "searchable": true,
+                            "orderable": false
+                        }],
+                    "columns": [
+                        { "data": "id", "Name": "ID", "autoWidth": true },
+                        { "data": "Main_drug", "Name": "Drug", "autoWidth": true },
+                        { "data": "with_drug", "Name": "with", "autoWidth": true },
+                        { "data": "Degree", "Name": "Degree", "autoWidth": true },
+                        {
+                            "render": function (data, type, row, meta) {
+                                return '<div class="action_btn">' +
+                                    '<a class="edit_action Edit" data-toggle="tooltip" title="Edit Drug Interaction" data-toggle="tooltip" title="Edit Drug Interaction"  value="' + row.id + '" style="cursor:pointer" onclick="Edit_Interaction(' + row.id + ')"> <img src="/img/Manage/table action/edit_action.svg" /></a>' + ' ' +
+                                    '<a class="delete_action"   data-toggle="tooltip" title="Delet Drug Interaction"data-toggle="tooltip" title="Delet Drug Interaction" value="' + row.id + '" style="cursor:pointer" onclick="Delete_interaction(' + row.id + ',' + "'" + row.Main_drug + "'" + ',' + "'" + row.with_drug + "'" + ');"> <img src="/img/Manage/table action/delete_action.svg" /></a></div>';
+                            }
+                        }
+                    ]
+                });
+            });
+
+        //load modal with data for edit --------------------------------------------------------------------------
+        function Edit_Interaction(id) {
+            $.ajax({
+                url: "/Manage/GetInteraction",
+                type: "POST",
+                data: { "id": id }
+            }).done(function (data) {
+                document.querySelector('.drug_name_span').innerHTML = null;
+                document.querySelector('.with_name_span').innerHTML = null;
+                document.querySelector('.Degree_span').innerHTML = null;
+
+                //change the titel--------------------------
+                document.querySelector('.change_titel_Interaction').innerHTML = "edit interaction";
+                //load id to hiden textbox--------------
+                document.querySelector('.Interaction_id').value = data.id;
+
+                //load dropdown lists--------------------------------
+                $('.drug').val(data.drug_id);
+                $('.with').val(data.with_id);
+
+                //load check boxes--------------------------------
+                $(".major").prop("checked", false);
+                $(".moderate").prop("checked", false);
+                $(".minor").prop("checked", false);
+                if (data.Degree == "major") {
+                    $(".major").prop("checked", true);
+                } else if (data.Degree == "moderate") {
+                    $(".moderate").prop("checked", true);
+                } else if (data.Degree == "minor") {
+                    $(".minor").prop("checked", true);
+                }
+            })
+            $('#Add_InteractionDrug').modal("show");
+
+        }
+
+
+
+
+        //load delete alert modal
+        function Delete_interaction(id, name, with_name) {
+            document.querySelector('.message_delete_Interaction').innerHTML = "are you sure you want to delete interaction between " + '<span style="color:#348B5E">"' + name + '"</span>'
+                + " and " + '<span style="color:#348B5E">"' + with_name + '"</span>';
+            document.querySelector('.btn_Delete_Interaction').value = id;
+            $('#DeleteInteractionModal').modal("show");
+        }
+
+
+        //Open modal for adding new interaction and clean it ------------------------------------------
+        function Open_new_interaction() {
+            //return all validation to null -----------------------------------------
+            document.querySelector('.drug_name_span').innerHTML = null;
+            document.querySelector('.with_name_span').innerHTML = null;
+            document.querySelector('.Degree_span').innerHTML = null;
+
+            //remove any exist id from before------------------------------------------------
+            document.querySelector('.Interaction_id').value = null;
+
+            //remove any selected check box -----------------------------------------
+            $(".major").prop("checked", false);
+            $(".moderate").prop("checked", false);
+            $(".minor").prop("checked", false);
+
+            //remove any selected drug from the drop down list-------------------------------------
+            $(".drug option").prop("selected", false);
+            $(".with option").prop("selected", false);
+
+            $('#Add_InteractionDrug').modal("show");
+        }
+
+    </script>
+}
+
+
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>

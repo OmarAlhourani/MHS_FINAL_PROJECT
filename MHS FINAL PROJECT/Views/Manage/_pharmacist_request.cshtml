@@ -1,0 +1,358 @@
+﻿<style>
+    .sorting, .sorting_asc, .sorting_desc {
+        background: none;
+    }
+
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+
+        table.dataTable thead .sorting:after {
+            opacity: 0 !important;
+            content: "";
+        }
+
+        table.dataTable thead .sorting_asc:after {
+            content: "" !important;
+        }
+
+        table.dataTable thead .sorting_desc:after {
+            content: "" !important;
+        }
+    /**************************************************************************************************************/
+    #pharmacist_request > thead > tr {
+        background-color: #808692;
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 115%;
+        letter-spacing: 0.01em;
+        text-transform: capitalize;
+        color: #FFFFFF;
+        border-radius: 10px;
+    }
+
+        #pharmacist_request > thead > tr > th {
+            border-bottom: none;
+        }
+
+            #pharmacist_request > thead > tr > th:nth-child(1) {
+                border-radius: 10px 0 0 0;
+            }
+
+            #pharmacist_request > thead > tr > th:nth-child(4) {
+                border-radius: 0 10px 0 0;
+            }
+
+    .table-bordered {
+        border: none;
+    }
+
+    .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+        z-index: 3;
+        color: black;
+        cursor: default;
+        background-color: #C6F6D5;
+        border-color: #C6F6D5;
+        margin: 0;
+        display: block;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: none !important;
+        border: none;
+        background-color: none;
+        background: none;
+        cursor: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 1.5em;
+        padding: 0.5em 1em;
+        margin-left: 0px;
+        text-align: center;
+        text-decoration: none !important;
+        cursor: pointer;
+        color: #333 !important;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        padding: 0px;
+        cursor: none;
+    }
+
+    .table_trade {
+        width: 75%;
+        margin: 0;
+        margin-top: 40px;
+    }
+
+    tbody {
+        text-align: center
+    }
+
+    thead > tr > th {
+        text-align: center;    
+    }
+
+    #demoGrid_wrapper {
+        padding: 0px !important;
+    }
+
+    .info_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #C6F6D5;
+        border-radius: 45px;
+    }
+
+    .edit_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #EBE66E;
+        border-radius: 45px;
+    }
+
+    .delete_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #FD4343;
+        border-radius: 45px;
+    }
+
+    .Reset_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #F96D31;
+        border-radius: 45px;
+    }
+
+    .action_btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly
+    }
+
+    table.dataTable.no-footer {
+        -webkit-box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.51);
+        box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.15);
+        border-radius: 10px 10px 0 0;
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+    .EDIT {
+        width: 300px;
+    }
+
+    .table_trade {
+        width: 100%;
+    }
+    #divLargerImageRequests {
+        display: none;
+        width: 550px;
+        height: 720px;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -30%);
+        z-index: 99;
+    }
+
+    #divOverlayRequests {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+        z-index: 98;
+    }
+    .ImgDiv {
+        display:flex;
+        flex-direction:column;
+        align-items:center
+    }
+        .ImgDiv p {
+            margin:0px;
+            color:green;
+        }
+</style>
+
+<div class="table_trade">
+    <table id="pharmacist_request" class="table table-striped table-bordered " width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th class="col_name">UserId</th>
+                <th class="col_name" style="width:240px;">ID</th>
+                <th class="col_name" style="width:255px;">Name</th>
+                <th class="col_name" style="width:230px;">Univarsty name</th>
+                <th class="col_name" style="width:200px; border-radius: 0 0 0 0;">Degree</th>
+                <th class="col_name" style="width:155px;">Certification</th>
+                <th class="col_name" style="width:170px; border-radius: 0 10px 0 0;">Action</th>
+
+            </tr>
+
+        </thead>
+    </table>
+</div>
+<div id="divLargerImageRequests"></div>
+<div id="divOverlayRequests"></div>
+<script>
+    $(document).ready(
+        //load table pharmacist_request******************************************************************
+        function data_table() {
+            $('#pharmacist_request').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "orderMulti": false,
+                "rowReorder": true,
+                "pageLength": 3,
+
+                "ajax": {
+                    "url": "/Manage/LoadAllRequests",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "columnDefs":
+                    [
+                    {
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [3],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [4],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [5],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [6],
+                        "searchable": true,
+                        "orderable": false
+                    }
+                    ],
+                "columns": [
+                    { "data": "Id", "Name": "UserId", "autoWidth": true },
+                    { "data": "pharmacistsID", "Name": "ID", "autoWidth": true },
+                    { "data": "Name", "Name": "Name", "autoWidth": true },
+                    { "data": "University_Name", "Name": "Univarsty name", "autoWidth": true },
+                    { "data": "Degree", "Name": "Degree", "autoWidth": true },
+                    {
+                        "render": function (data, type, row, meta) {
+                            return "<div class='ImgDiv'><p>Click Me To Zoom!</p><img onclick='ShowImg()' ID='ImgUrl' style='width: 90px; cursor:pointer;' src=" + row.ImgUrl + " /></div>";
+
+                        }
+                    },
+                    {
+                        "render": function (data, type, row, meta) {
+                            return '<div class="action_btn"><a class="info_action" data-toggle="tooltip" title="Accept Certification" style="cursor: pointer" onclick="Accept(' + "'" + row.Id + "'" + "," + "'" + row.Name + "'" + ')"><img src="/img/Manage/Accept.svg" /></a>' +
+                                '<a class="delete_action Edit" data-toggle="tooltip" title="Reject Certification" style="cursor:pointer" onclick="Reject(' + "'" + row.Id + "'" + "," + "'" + row.Name + "'" + ')" ><img src="/img/Manage/table action/delete_action.svg" /></a>';
+
+                        }
+                    }
+                ]
+            });
+
+
+            $('#divLargerImageRequests').add($('#divOverlayRequests')).click(function () {
+                $('#divLargerImageRequests').add($('#divOverlayRequests')).fadeOut(function () {
+                    $('#divLargerImageRequests').empty();
+                });
+            });
+        });
+
+
+    //Show Img In Zoom Mode*********************************************************************************
+    function ShowImg() {
+        var $img = $('#ImgUrl');
+        $('#divLargerImageRequests').html($img.clone().width(550)).add($('#divOverlayRequests')).fadeIn();
+    }
+
+
+
+
+
+    function Accept(Userid , name) {
+        document.querySelector('.message_Accept_certification').innerHTML = "are you sure you want to accept pharmacist" + '<span style="color:#348B5E">"' + name + '"</span> Certification';
+        document.querySelector('.Btn_accept_certification').value = Userid;
+        $('#AcceptCertification').modal("show");
+    }
+
+    function Reject(Userid, name) {
+        document.querySelector('.message_Reject_certification').innerHTML = "are you sure you want to reject pharmacist" + '<span style="color:#348B5E">"' + name + '"</span> Certification';
+        document.querySelector('.Btn_Reject_certification').value = Userid;
+        $('#RejectCertification').modal("show");
+    }
+
+
+
+
+    ////load delete alert modal****************************************************************
+    //function DeleteCertification(certificationid, name, userId) {
+    //    document.querySelector('.message_delete_certification').innerHTML = "are you sure you want to delete " + '<span style="color:#348B5E">"' + name + '"</span> Certification' +
+    //        '<p class="message_deletecertification add_messege" style="color: red; ">If you delete a Pharmacist Certification his/her Account Role Will Change To Normal User</p>';
+    //    document.querySelector('.btn_Delete_certification').value = certificationid;
+    //    document.querySelector('#UserId').value = userId;
+    //    $('#DeleteCertification').modal("show");
+    //}
+
+
+
+
+
+
+</script>
+
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>

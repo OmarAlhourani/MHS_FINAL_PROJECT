@@ -1,0 +1,411 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model List<drug_interaction>
+    @{
+        int count = 0;
+     }
+<link href="~/Content/home/Normal_search.css" rel="stylesheet" />
+<style>
+    .text_content {
+        width: 900px;
+    }
+
+        .text_content > p:nth-child(2) {
+            width: 78%;
+        }
+
+    .header {
+        display: flex;
+    }
+
+    .top_grid > p {
+        /* title */
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 39px;
+        /* identical to box height */
+        text-transform: capitalize;
+        color: #000000;
+        margin-bottom: 0px;
+        margin-left: 10px;
+        margin-right: 5%;
+    }
+
+    .Ellipses {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: flex-start;
+        justify-content: flex-end
+    }
+
+    .Ellipse {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+
+        .Ellipse > p {
+            margin-bottom: 0px;
+            margin-left: 7px;
+        }
+
+    .main_Interactions {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 76px 561px;
+        grid-row-gap: 27px;
+    }
+
+    .top_grid {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: #C6F6D5;
+        border-radius: 5px;
+        border: 1px solid;
+        border-color: #60C789;
+    }
+
+    .search-box {
+        width: 354px !important;
+        position: relative;
+        margin: 25px 0px;
+    }
+
+    .name {
+        width: 354px !important;
+        max-width: 354px !important;
+    }
+
+    .buttom_grid {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .result {
+        width: 100%;
+        height: 100%;
+    }
+
+    .result_search {
+        padding: 30px;
+        width: 264px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+        .result_search > p {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 39px;
+            /* identical to box height */
+            display: flex;
+            align-items: center;
+            text-align: center;
+            text-transform: capitalize;
+            color: #000000;
+            margin-bottom: 0;
+        }
+
+    .null {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .null > p {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 39px;
+            text-transform: capitalize;
+            color: #000000;
+        }
+
+    .interact_main {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+        .interact_main > span {
+            color: #2F855A;
+            margin-right: 14px;
+            text-transform: uppercase;
+        }
+
+
+
+
+    .from_trade {
+        width: 100%;
+        height: 100%;
+    }
+
+    .trade_search {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .trade_search p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 45px;
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            color: #000000;
+            padding-left: 10px;
+        }
+
+        .trade_search > button > a {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            /* identical to box height */
+            text-transform: uppercase;
+            color: #2C3EE3;
+        }
+</style>
+<body>
+    <main>
+        <div class="container_main">
+            <div class="navigator">
+                @Html.Partial("_navigator")
+            </div>
+            <section class="header">
+                <div class="text_content">
+                    <p>Drug Interactions</p>
+                    <p>type the drug name to view all the drugs that interact with the drug name that you entered, The degree of Interaction Is indicated by the color of the circle placed next to the name of each drug</p>
+                </div>
+                <div class="Ellipses">
+                    <div class="Ellipse">
+                        <img src="~/img/home/Ellipse_1.svg" />
+                        <p>major</p>
+                    </div>
+                    <div class="Ellipse">
+                        <img src="~/img/home/Ellipse_2.svg" />
+                        <p>moderate</p>
+                    </div>
+                    <div class="Ellipse">
+                        <img src="~/img/home/Ellipse_3.svg" />
+                        <p>minor</p>
+                    </div>
+                </div>
+            </section>
+            <div class="main_Interactions">
+                <div class="top_grid">
+                    <p>Search for interaction </p>
+                    <div class="search-box">
+                        <div class="mic">
+                            <a class="talk" style="cursor:pointer">
+                                <img src="~/img/home/mic.svg" />
+                            </a>
+                        </div>
+                        @Html.TextBox("search for", (string)ViewBag.name, new { @class = "name" })
+                        <button class="search-btn"><img src="~/img/home/search.svg" /></button>
+                    </div>
+                </div>
+                <div class="buttom_grid">
+                    <div class="result" id="updateTargetId">
+                        @if (Model == null)
+                        {
+                            <div class="null">
+                                <p>@ViewBag.serchFor</p>
+                            </div>
+
+                        }
+                        else if (Model.Count() == 0)
+                        {
+                            <div class="null">
+                                <p class="null">drug "@ViewBag.name" not exist </p>
+                            </div>
+                        }
+                        else if (Model != null)
+                        {
+                            foreach (var row in Model)
+                            {
+                                if (row.active_without_interaction != null)
+                                {
+                                    <div class="null">
+                                        <p class="null">Drug "@ViewBag.name" does not interact with any drug on the website</p>
+                                    </div>
+                                }
+                                else if (row.active_name_for_trade != null)
+                                {
+                                    using (Html.BeginForm("Drug_Interactions", "Home", new { name = row.active_name_for_trade }, FormMethod.Post, new { @class = "from_trade" }))
+                                    {
+                                        <div class="trade_search">
+                                            <p>
+                                                @ViewBag.name  Is A trade Name For @row.active_name_for_trade
+                                            </p>
+                                            <button class="return_trade">
+                                                <a>Search instead for @row.active_name_for_trade</a>
+                                            </button>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    if (count == 0)
+                                    {
+                                        <p class="main_titel interact_main"><span>@ViewBag.name</span>interact with the following drugs</p>
+                                        count++;
+                                    }
+
+                                    <div class="result_search">
+                                        @if (row.Degree == "major")
+                                        {
+                                            <img src="~/img/home/Ellipse_1.svg" />
+                                            <p>@row.with_name</p>
+                                        }
+                                        else if (row.Degree == "moderate")
+                                        {
+                                            <img src="~/img/home/Ellipse_2.svg" />
+                                            <p>@row.with_name</p>
+                                        }
+                                        else
+                                        {
+                                            <img src="~/img/home/Ellipse_3.svg" />
+                                            <p>@row.with_name</p>
+                                        }
+                                    </div>
+                                }
+                            }
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <style>
+                .down_section {
+                    grid-row: 4 / 5;
+                    grid-column: 1 / 2;
+                }
+
+                .main-grid {
+                    display: grid;
+                    grid-template-columns: 600px minmax(0px, 420px) 300px;
+                    place-items: flex-start;
+                    grid-template-rows: 362px;
+                }
+
+                .left_text {
+                    grid-row: 1/2;
+                    grid-column: 1/2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+
+                .right_img {
+                    grid-row: 1/2;
+                    grid-column: 3/4;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                    width: 265px;
+                    height: 361.5px;
+                }
+
+                .roles_text {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #000000;
+                    width: 868px;
+                }
+
+                @@media screen and (max-width: 1380px) {
+                    .left_text {
+                        padding-left: 30px;
+                    }
+                }
+
+                @@media screen and (max-width: 1150px) {
+                    .main-grid {
+                        display: grid;
+                        grid-template-columns: minmax(7%, 10%) 80% minmax(7%, 10%);
+                        place-items: flex-start;
+                        grid-template-rows: 362px;
+                    }
+
+                    .left_text {
+                        grid-column: 2/3;
+                        padding-left: 0px;
+                    }
+
+                    .right_img {
+                        display: none;
+                    }
+
+                    .roles_text {
+                        width: 100%;
+                    }
+                }
+            </style>
+            <section class="down_section">
+                <div class="main-grid" style="padding-top: 58px;">
+                    <div class="left_text">
+                        <div>
+                            <p class="roles_text">
+                                The materials published on the (MHS) website <span style="color:#2F855A"> are information only and should not be considered a medical advice or a treatment recommendation.</span> A doctor should be consulted if the symptoms do not disappear.
+                            </p>
+                        </div>
+                        <div class="wrap" style="justify-content: flex-start;">
+                            <a href="/Account/Register"><button class="button" style="width: 177px; box-shadow: 1px 1px 5px rgb(0 , 0 , 0 , 30%);">Read More</button></a>
+                        </div>
+                    </div>
+                    <div class="right_img">
+                        <img src="~/img/home/info.svg" loading="lazy" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    $('.search-btn').click(function () {
+        const name = document.querySelector('.name').value;
+        $.ajax({
+            url: "/Home/Drug_Interactions",
+            data: { "model.name": name },
+            type: "POST",
+            success: function (data) {
+                $("BODY").html(data);
+            }
+        })
+    });
+</script>
+<script src="~/Scripts/SpeechRecognition.js"></script>
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model drug_active_name_serach
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<link href="~/Content/home/home.css" rel="stylesheet" />
+<main>
+    <div class="main-grid">
+        @using (Html.BeginForm("Normal_search", "Home", FormMethod.Post ))
+        {
+            <div class="search-side">
+                <p class="sub-title"> YOUR LIFE IS EASIER </p>
+                <p class="main-title"> Find the drug information that you want </p>
+                <div class="search-box">
+                    <div class="mic">
+                        <a class="talk" onclick="" style="cursor:pointer">
+                            <img alt="search_voice" src="~/img/home/mic.svg" />
+                        </a>
+                    </div>
+                    @Html.TextBoxFor(m => m.name)
+                    <button class="search-btn">Search <img src="~/img/home/search.svg" /></button>
+                </div>
+            </div>
+        }
+        <div class="home_top-right_doctors">
+            <img src="~/img/home/home_right_doctors.svg" loading="lazy" />
+        </div>
+    </div>
+</main>
+<section class="Diagonal-div">
+    <div></div>
+</section>
+<div class="main_container">
+    <section class="main-grid">
+        <div class="search-side" style="padding-top: 58px;" >
+            <div>
+                <p class="roles_text">
+                    The materials published on the (MHS) website <span style="color:#2F855A"> are information only and should not be considered a medical advice or a treatment recommendation.</span> A doctor should be consulted if the symptoms do not disappear.
+                </p>
+            </div>
+            <div class="wrap" style="justify-content: flex-start;">
+                <a href="/Account/Register"><button class="button" style="width: 177px; box-shadow: 1px 1px 5px rgb(0 , 0 , 0 , 30%);">Read More</button></a>
+            </div>
+        </div>
+
+        <div class="home_top-right_doctors">
+            <img src="~/img/home/read_roles.svg" loading="lazy" />
+        </div>
+    </section>
+</div>
+
+<section class="section_3">
+        <div class="main">
+            <div class="col col1">
+                <div>
+                    <img src="~/img/home/advanced_search.svg" />
+                    <h1>advanced search</h1>
+                </div>
+                <div class="main_conten">
+                    <p>
+                        Advanced search allows you to search about the specific points about the drug you search for.
+                        <br><br>
+                        To use the advanced search enter the drug's Active Ingredients name or the Trade name in the search box then select what do you want to know about the drug you search for.
+                    </p>
+                    <div class="wrap2">
+                        <a href="#"><button class="button">try it</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col2">
+                <div>
+
+                    <img src="~/img/home/Drug_Interactions.svg" />
+                    <h1>Drug Interactions</h1>
+                </div>
+                <div class="main_conten">
+                    <p>
+                        Drug Interactions search allows you to find out what the drugs that you cant take with a specific drug.
+                        <br><br>
+                        To use the Drug Interactions search enter the drug's Active Ingredients name or the Trade name in the search box then the result will be shown.
+                    </p>
+                    <div class="wrap2">
+                        <a href="#"><button class="button">try it</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col3">
+                <div>
+
+                    <img src="~/img/home/Drug_A-Z.svg" />
+                    <h1>Drug A-Z</h1>
+                </div>
+                <div class="main_conten">
+                    <p>
+                        Drug Interactions search allows you to find out what the drugs that you cant take with a specific drug.
+                        <br><br>
+                        To use the Drug Interactions search enter the drug's Active Ingredients name or the Trade name in the search box then the result will be shown.
+                    </p>
+                    <div class="wrap2">
+                        <a href="#"><button class="button">try it</button></a>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    <div id="p1"></div>
+    <div id="p2"></div>
+    <div id="p3"></div>
+    <div id="p4"></div>
+    <div id="p5"></div>
+    <div id="p6"></div>
+    <div id="p7"></div>
+</section>
+<div class="main_container" style=" margin-top: 70px;">
+    <section class="main-grid">
+        <div class="search-side" style="padding-top: 58px;">
+            <div>
+                <p class="roles_text">
+                    WE TRY TO MAKE YOUR LIFE EASIER ... USE OUR WEBSITE TO STORE YOUR health <span style="color:#2F855A"> information  </span>
+                </p>
+            </div>
+            <div class="wrap" style="justify-content: flex-start;">
+                <a href="/Account/Register"><button class="button" style="width: 177px; box-shadow: 1px 1px 5px rgb(0 , 0 , 0 , 0.3);">SIGN UP</button></a>
+            </div>
+        </div>
+        <div class="home_top-right_doctors">
+            <img src="~/img/home/home_bottom.svg" loading="lazy" />
+        </div>
+    </section>
+</div>
+<script src="~/Scripts/SpeechRecognition.js"></script>

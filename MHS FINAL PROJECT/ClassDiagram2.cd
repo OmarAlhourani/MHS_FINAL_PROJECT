@@ -1,0 +1,1143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="System.Object">
+    <Position X="53.25" Y="11.75" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ExternalLoginConfirmationViewModel">
+    <Position X="44.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAEAAgAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.CERTIFICATIONViewModel">
+    <Position X="50.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ExternalLoginListViewModel">
+    <Position X="53.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.SendCodeViewModel">
+    <Position X="59.5" Y="8" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="56.5" Y="12.026" />
+        <Point X="56.542" Y="12.026" Type="JumpStart" />
+        <Point X="56.708" Y="12.026" Type="JumpEnd" />
+        <Point X="58.58" Y="12.026" />
+        <Point X="58.58" Y="10.055" />
+        <Point X="60.25" Y="10.055" />
+        <Point X="60.25" Y="9.68" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.VerifyCodeViewModel">
+    <Position X="46.5" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAEAAAAAAAgAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ForgotViewModel">
+    <Position X="52" Y="8" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.453" Y="11.75" />
+        <Point X="54.453" Y="10.466" />
+        <Point X="53.753" Y="10.466" Type="JumpStart" />
+        <Point X="53.479" Y="10.466" Type="JumpEnd" />
+        <Point X="52.75" Y="10.466" />
+        <Point X="52.75" Y="9.103" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.LoginViewModel">
+    <Position X="55.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.RegisterViewModel">
+    <Position X="61.25" Y="8" Width="1.75" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="11.75" />
+        <Point X="54.875" Y="11.227" />
+        <Point X="54.915" Y="11.227" Type="JumpStart" />
+        <Point X="55.081" Y="11.227" Type="JumpEnd" />
+        <Point X="55.636" Y="11.227" Type="JumpStart" />
+        <Point X="55.833" Y="11.227" Type="JumpEnd" />
+        <Point X="58.497" Y="11.227" Type="JumpStart" />
+        <Point X="58.663" Y="11.227" Type="JumpEnd" />
+        <Point X="62.125" Y="11.227" />
+        <Point X="62.125" Y="10.642" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAUAAgAQAAgAAAQACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.AddNewUserViewModel">
+    <Position X="48.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAUAAgAQAAgAAAAACAAAAAAAAAgA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ResetPasswordViewModel">
+    <Position X="57.25" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ForgotPasswordViewModel">
+    <Position X="63.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_active_name">
+    <Position X="41.75" Y="16.5" Width="3.5" />
+    <AssociationLine Name="Add_By" Type="MHS_FINAL_PROJECT.Models.ApplicationUser">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.096" Y="0.978" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="side_effect" Type="MHS_FINAL_PROJECT.Models.side_effect" ManuallyRouted="true">
+      <Path>
+        <Point X="43.062" Y="16.5" />
+        <Point X="43.062" Y="12.567" />
+        <Point X="42.802" Y="12.567" Type="JumpStart" />
+        <Point X="42.635" Y="12.567" Type="JumpEnd" />
+        <Point X="40" Y="12.567" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="drug_dosage" Type="MHS_FINAL_PROJECT.Models.drug_dosage">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="6.124" Y="0.017" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="warnings" Type="MHS_FINAL_PROJECT.Models.warning">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="3.105" Y="3.044" Height="0.182" Width="0.94" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAIIBAABAAAAAEAAAAAAAACAAAAgA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Add_By" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="side_effect" />
+      <Property Name="drug_dosage" />
+      <Property Name="drug_trade_name" />
+      <Property Name="warnings" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_active_name_serach">
+    <Position X="49" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_serach_result">
+    <Position X="56.75" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAkAAAAAICgIAAAgAgAAAAEAAAAQAAAAAAgQgI=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_serach_result_finsh">
+    <Position X="64" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAQAEAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_Advanced_Search_choices">
+    <Position X="45.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIIAAABAAAAAEAAAAAAAACAAAAEA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_interaction">
+    <Position X="50.75" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAgAAAAAAAAAAQAAAEAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_active_advanced">
+    <Position X="59.25" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAIIAAgBAAAAAUAAAAAAAACAAAAEA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_trade_search_name">
+    <Position X="66.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Drug_a_zModelView">
+    <Position X="47.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.get_drug_pharmacist">
+    <Position X="54.25" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAEAAAAAACAIAAAgAAAAAAEAIAAAAAAAAAgQgI=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Add_ActiveViewModel">
+    <Position X="61.75" Y="16.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAgAAIIAAABAAAAAEAAAAAABAAAAAAgA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.get_ActiveViewModel">
+    <Position X="68.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAIIAAABAAAAAEAAAAAABAAAAAAgA=</HashCode>
+      <FileName>Models\drug_active_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ApplicationUser">
+    <Position X="43.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAQACAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.side_effect">
+    <Position X="38" Y="11.5" Width="2" />
+    <AssociationLine Name="drug_active_name" Type="MHS_FINAL_PROJECT.Models.drug_active_name">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.045" Y="3.307" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIAEAAAACAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\side_effect.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="drug_active_name" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Add_side_effedct">
+    <Position X="42.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAACAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\side_effect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.side_effedct_get">
+    <Position X="40.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAACAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\side_effect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_trade_name">
+    <Position X="35.25" Y="16.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\drug_trade_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Get_trade_name">
+    <Position X="38" Y="8" Width="2" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="11.75" />
+        <Point X="54.875" Y="11.218" />
+        <Point X="54.536" Y="11.218" Type="JumpStart" />
+        <Point X="54.37" Y="11.218" Type="JumpEnd" />
+        <Point X="53.645" Y="11.218" Type="JumpStart" />
+        <Point X="53.479" Y="11.218" Type="JumpEnd" />
+        <Point X="48.279" Y="11.218" Type="JumpStart" />
+        <Point X="48.113" Y="11.218" Type="JumpEnd" />
+        <Point X="39" Y="11.218" />
+        <Point X="39" Y="10.065" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>QCACAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\drug_trade_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Add_trade_name">
+    <Position X="38.5" Y="16.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QCACAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\drug_trade_name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.warning">
+    <Position X="45.5" Y="19.25" Width="2.25" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="16.125" />
+        <Point X="53.535" Y="16.125" />
+        <Point X="53.535" Y="18.756" />
+        <Point X="53.356" Y="18.756" Type="JumpStart" />
+        <Point X="53.19" Y="18.756" Type="JumpEnd" />
+        <Point X="46.625" Y="18.756" />
+        <Point X="46.625" Y="19.25" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="drug_active_name" Type="MHS_FINAL_PROJECT.Models.drug_active_name">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.625" Y="3.071" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAgAAAAIIEgAAAAAAgAAAAAAAAAQAAAAAAAAgA=</HashCode>
+      <FileName>Models\warning.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="drug_active_name" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.warning_get">
+    <Position X="48" Y="19.25" Width="2.25" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="16.125" />
+        <Point X="53.553" Y="16.125" />
+        <Point X="53.553" Y="19.022" />
+        <Point X="53.356" Y="19.022" Type="JumpStart" />
+        <Point X="53.19" Y="19.022" Type="JumpEnd" />
+        <Point X="50.583" Y="19.022" Type="JumpStart" />
+        <Point X="50.417" Y="19.022" Type="JumpEnd" />
+        <Point X="49.125" Y="19.022" />
+        <Point X="49.125" Y="19.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAgAAAAIIAgAAAAAAgAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\warning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_dosage">
+    <Position X="34.75" Y="12.25" Width="2.5" />
+    <AssociationLine Name="drug_active_name" Type="MHS_FINAL_PROJECT.Models.drug_active_name">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="5.376" Y="1.516" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAEAAAAAAGAIAAAgAAAAAAAAAAAAAAAAAAgQgI=</HashCode>
+      <FileName>Models\drug_dosage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="drug_active_name" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.drug_dosage_get">
+    <Position X="35" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAEAAAAAACAIAAAgAAAAAAAAAAAAAAAAAAgQgI=</HashCode>
+      <FileName>Models\drug_dosage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Drug_Interaction">
+    <Position X="59" Y="11.5" Width="1.5" />
+    <AssociationLine Name="drug" Type="MHS_FINAL_PROJECT.Models.drug_active_name">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-14.802" Y="4.968" Height="0.182" Width="0.661" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="with" Type="MHS_FINAL_PROJECT.Models.drug_active_name">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-16.143" Y="4.938" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAACAAAAAAAQAAAAAAAAAAAAAAAAQgA=</HashCode>
+      <FileName>Models\Drug_Interaction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="drug" />
+      <Property Name="with" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Get_Drug_Interaction">
+    <Position X="62.5" Y="12" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="11.75" />
+        <Point X="54.875" Y="11.227" />
+        <Point X="54.915" Y="11.227" Type="JumpStart" />
+        <Point X="55.081" Y="11.227" Type="JumpEnd" />
+        <Point X="55.636" Y="11.227" Type="JumpStart" />
+        <Point X="55.833" Y="11.227" Type="JumpEnd" />
+        <Point X="56.625" Y="11.227" />
+        <Point X="56.625" Y="15.069" />
+        <Point X="63.25" Y="15.069" />
+        <Point X="63.25" Y="14.257" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAAEAAAAAAAAAQAgAIAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Drug_Interaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.add_Drug_Interaction">
+    <Position X="60.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgEAAAAAAAAAQAAAJAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Drug_Interaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.health_drugs">
+    <Position X="48.5" Y="14" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="11.75" />
+        <Point X="54.875" Y="11.21" />
+        <Point X="54.536" Y="11.21" Type="JumpStart" />
+        <Point X="54.37" Y="11.21" Type="JumpEnd" />
+        <Point X="53.645" Y="11.21" Type="JumpStart" />
+        <Point X="53.479" Y="11.21" Type="JumpEnd" />
+        <Point X="50.375" Y="11.21" />
+        <Point X="50.375" Y="16.125" />
+        <Point X="49.25" Y="16.125" />
+        <Point X="49.25" Y="15.68" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="user_health" Type="MHS_FINAL_PROJECT.Models.user_health" ManuallyRouted="true">
+      <Path>
+        <Point X="50" Y="14.84" />
+        <Point X="50.292" Y="14.84" Type="JumpStart" />
+        <Point X="50.458" Y="14.84" Type="JumpEnd" />
+        <Point X="50.5" Y="14.84" />
+        <Point X="50.5" Y="16.386" />
+        <Point X="51.792" Y="16.386" Type="JumpStart" />
+        <Point X="51.958" Y="16.386" Type="JumpEnd" />
+        <Point X="53.273" Y="16.386" />
+        <Point X="53.273" Y="19.24" />
+        <Point X="52.25" Y="19.24" />
+        <Point X="52.25" Y="19.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.256" Y="5.065" Height="0.182" Width="0.986" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAgAAgAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\health_drugs.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="user_health" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Add_health_drugs">
+    <Position X="51.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAgAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\health_drugs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.user_health">
+    <Position X="51" Y="19.75" Width="2.5" />
+    <AssociationLine Name="User" Type="MHS_FINAL_PROJECT.Models.ApplicationUser">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.671" Y="0.356" Height="0.182" Width="0.574" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAAJAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\user_health.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.user_health_return">
+    <Position X="59.25" Y="20.25" Width="2.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="16.125" />
+        <Point X="61.7" Y="16.125" />
+        <Point X="61.7" Y="19.95" />
+        <Point X="60.5" Y="19.95" />
+        <Point X="60.5" Y="20.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ACAIAAAAAACAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\user_health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.user_drug_num_return">
+    <Position X="64.25" Y="19.25" Width="2" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="15.069" />
+        <Point X="56.542" Y="15.069" Type="JumpStart" />
+        <Point X="56.708" Y="15.069" Type="JumpEnd" />
+        <Point X="66.373" Y="15.069" />
+        <Point X="66.373" Y="19.898" />
+        <Point X="66.25" Y="19.898" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\user_health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.user_health_drug_return">
+    <Position X="54.25" Y="20.25" Width="2.25" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="16.125" />
+        <Point X="53.86" Y="16.125" />
+        <Point X="53.86" Y="21.475" />
+        <Point X="54.25" Y="21.475" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ACAIAAAAAgAAAAAAIACAgAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\user_health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.user_Add_health">
+    <Position X="62" Y="19.5" Width="2" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="16.125" />
+        <Point X="63.847" Y="16.125" />
+        <Point X="63.847" Y="19.2" />
+        <Point X="63" Y="19.2" />
+        <Point X="63" Y="19.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\user_health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.Added_id">
+    <Position X="66.5" Y="19.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\user_health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.GetUserViewModel">
+    <Position X="64.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAUAAgAQAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ApplicationDbContext">
+    <Position X="66.75" Y="8" Width="3" />
+    <AssociationLine Name="pharmastics" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="66.812" Y="9.877" />
+        <Point X="66.812" Y="11.75" />
+        <Point X="67.105" Y="11.75" Type="JumpStart" />
+        <Point X="67.271" Y="11.75" Type="JumpEnd" />
+        <Point X="71.75" Y="11.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="drug_active_names" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="69.75" Y="8.625" />
+        <Point X="71.75" Y="8.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="drug_trade_names" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="67.188" Y="9.877" />
+        <Point X="67.188" Y="12.367" />
+        <Point X="72.938" Y="12.367" />
+        <Point X="72.938" Y="11.992" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.136" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="side_effects" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="69.75" Y="9.688" />
+        <Point X="71.75" Y="9.688" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.123" Y="0.068" Height="0.182" Width="1.13" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="warnings" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="67.5" Y="9.877" />
+        <Point X="67.5" Y="11.375" />
+        <Point X="71.75" Y="11.375" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="user_healths" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="67.688" Y="9.877" />
+        <Point X="67.688" Y="10.875" />
+        <Point X="71.75" Y="10.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="health_drugs" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="69.75" Y="9.062" />
+        <Point X="71.75" Y="9.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Drug_Interactions" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="68" Y="9.877" />
+        <Point X="68" Y="10.345" />
+        <Point X="71.75" Y="10.345" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="user_Add_health" Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="66.75" Y="8.939" />
+        <Point X="66.562" Y="8.939" />
+        <Point X="66.562" Y="11.081" />
+        <Point X="64.083" Y="11.081" Type="JumpStart" />
+        <Point X="63.917" Y="11.081" Type="JumpEnd" />
+        <Point X="62.208" Y="11.081" Type="JumpStart" />
+        <Point X="62.042" Y="11.081" Type="JumpEnd" />
+        <Point X="58.663" Y="11.081" Type="JumpStart" />
+        <Point X="58.497" Y="11.081" Type="JumpEnd" />
+        <Point X="55.719" Y="11.081" />
+        <Point X="55.719" Y="11.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-11.023" Y="0.461" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="user_health" Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="66.75" Y="9.444" />
+        <Point X="66.562" Y="9.444" />
+        <Point X="66.562" Y="10.742" />
+        <Point X="64.083" Y="10.742" Type="JumpStart" />
+        <Point X="63.917" Y="10.742" Type="JumpEnd" />
+        <Point X="62.208" Y="10.742" Type="JumpStart" />
+        <Point X="62.042" Y="10.742" Type="JumpEnd" />
+        <Point X="58.663" Y="10.742" Type="JumpStart" />
+        <Point X="58.497" Y="10.742" Type="JumpEnd" />
+        <Point X="55.75" Y="10.742" />
+        <Point X="55.75" Y="11.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-10.741" Y="1.04" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAAAIABAAAAAhAAAAIAAABAgEAAAAEAEAAAACAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="user_Add_health" />
+      <Field Name="user_health" />
+      <Property Name="pharmastics" />
+      <Property Name="drug_active_names" />
+      <Property Name="drug_trade_names" />
+      <Property Name="side_effects" />
+      <Property Name="warnings" />
+      <Property Name="drug_dosages" />
+      <Property Name="user_healths" />
+      <Property Name="health_drugs" />
+      <Property Name="Drug_Interactions" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Data.Entity.DbSet&lt;TEntity&gt;">
+    <Position X="71.75" Y="8" Width="2.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Local" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ManageAccountViewModel">
+    <Position X="73" Y="16" Width="2.25" />
+    <AssociationLine Name="pharmacist_info" Type="MHS_FINAL_PROJECT.Models.pharmacist_info" ManuallyRouted="true">
+      <Path>
+        <Point X="75.25" Y="16.5" />
+        <Point X="75.625" Y="16.5" />
+        <Point X="75.625" Y="23.681" />
+        <Point X="74.802" Y="23.681" Type="JumpStart" />
+        <Point X="74.635" Y="23.681" Type="JumpEnd" />
+        <Point X="54.911" Y="23.681" />
+        <Point X="54.911" Y="25.547" />
+        <Point X="44.688" Y="25.547" />
+        <Point X="44.688" Y="24.43" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-28.299" Y="-1.015" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="health_condation" Type="MHS_FINAL_PROJECT.Models.user_Add_health">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.146" Y="-0.243" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="health_drugs" Type="MHS_FINAL_PROJECT.Models.Add_health_drugs" ManuallyRouted="true">
+      <Path>
+        <Point X="74.437" Y="16" />
+        <Point X="74.437" Y="15.426" />
+        <Point X="73.208" Y="15.426" Type="JumpStart" />
+        <Point X="73.042" Y="15.426" Type="JumpEnd" />
+        <Point X="70.083" Y="15.426" Type="JumpStart" />
+        <Point X="69.917" Y="15.426" Type="JumpEnd" />
+        <Point X="67.333" Y="15.426" Type="JumpStart" />
+        <Point X="67.167" Y="15.426" Type="JumpEnd" />
+        <Point X="66.456" Y="15.426" Type="JumpStart" />
+        <Point X="66.29" Y="15.426" Type="JumpEnd" />
+        <Point X="65.083" Y="15.426" Type="JumpStart" />
+        <Point X="64.917" Y="15.426" Type="JumpEnd" />
+        <Point X="56.708" Y="15.426" Type="JumpStart" />
+        <Point X="56.542" Y="15.426" Type="JumpEnd" />
+        <Point X="54.958" Y="15.426" Type="JumpStart" />
+        <Point X="54.792" Y="15.426" Type="JumpEnd" />
+        <Point X="52" Y="15.426" />
+        <Point X="52" Y="15.238" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-20.577" Y="-0.01" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="UserInformation" Type="MHS_FINAL_PROJECT.Models.IndexViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.234" Y="0.265" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ChangePassword" Type="MHS_FINAL_PROJECT.Models.ChangePasswordViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.039" Y="0.042" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="SetPassword" Type="MHS_FINAL_PROJECT.Models.SetPasswordViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.09" Y="0.101" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="addnewUser" Type="MHS_FINAL_PROJECT.Models.AddNewUserViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="73" Y="16.196" />
+        <Point X="72.652" Y="16.196" />
+        <Point X="72.652" Y="18.048" />
+        <Point X="70.208" Y="18.048" Type="JumpStart" />
+        <Point X="70.042" Y="18.048" Type="JumpEnd" />
+        <Point X="70" Y="18.048" />
+        <Point X="70" Y="15.93" />
+        <Point X="66.456" Y="15.93" Type="JumpStart" />
+        <Point X="66.29" Y="15.93" Type="JumpEnd" />
+        <Point X="54.958" Y="15.93" Type="JumpStart" />
+        <Point X="54.792" Y="15.93" Type="JumpEnd" />
+        <Point X="50.583" Y="15.93" Type="JumpStart" />
+        <Point X="50.292" Y="15.93" Type="JumpEnd" />
+        <Point X="49.333" Y="15.93" Type="JumpStart" />
+        <Point X="49.167" Y="15.93" Type="JumpEnd" />
+        <Point X="48.196" Y="15.93" />
+        <Point X="48.196" Y="10.825" />
+        <Point X="49.25" Y="10.825" />
+        <Point X="49.25" Y="10.45" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.178" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Addcertification" Type="MHS_FINAL_PROJECT.Models.AddPharmacistViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="22.667" Y="-0.34" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>DAAAAAAAFAAAgAAAAQAAAAAAAAAAAAAAAAAAgAAAQAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="pharmacist_info" />
+      <Property Name="health_condation" />
+      <Property Name="health_drugs" />
+      <Property Name="UserInformation" />
+      <Property Name="ChangePassword" />
+      <Property Name="SetPassword" />
+      <Property Name="addnewUser" />
+      <Property Name="Addcertification" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.IndexViewModel">
+    <Position X="73.5" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQACAAYAAQAQAAAAAAAAAAAAQAAAEAEA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.informationViewModel">
+    <Position X="70.5" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAUAAgAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.SetPasswordViewModel">
+    <Position X="71.25" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIgA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.ChangePasswordViewModel">
+    <Position X="70" Y="18.75" Width="2.25" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="14.459" />
+        <Point X="54.875" Y="15.55" />
+        <Point X="66.29" Y="15.55" Type="JumpStart" />
+        <Point X="66.456" Y="15.55" Type="JumpEnd" />
+        <Point X="70.125" Y="15.55" />
+        <Point X="70.125" Y="18.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.EditHealthViewModel">
+    <Position X="69" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAIAAAAAAAAAEAAIAAAgAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.GetUserWithRoelViewModel">
+    <Position X="66.25" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAAAAAAAAABAAAAAEAAAAAQAAAAAAAgA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.pharmacist">
+    <Position X="51.25" Y="22.75" Width="2" />
+    <AssociationLine Name="User" Type="MHS_FINAL_PROJECT.Models.ApplicationUser">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.353" Y="1.118" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAABAAAAwAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\pharmacist.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.pharmacist_info">
+    <Position X="43.5" Y="22.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAABAAAAwAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\pharmacist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.UserPharmacistViewModel">
+    <Position X="46" Y="22.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAQQAAgAAAAAAQBAAAAAAAA=</HashCode>
+      <FileName>Models\pharmacist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Models.AddPharmacistViewModel">
+    <Position X="48.25" Y="22.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAABAAAAAAAAAAABAAAgwAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\pharmacist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.BundleConfig">
+    <Position X="54.5" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="55.25" Y="11.75" />
+        <Point X="55.25" Y="11.408" />
+        <Point X="54.998" Y="11.408" />
+        <Point X="54.998" Y="10.715" />
+        <Point X="55.312" Y="10.715" />
+        <Point X="55.312" Y="6.853" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.FilterConfig">
+    <Position X="57.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.EmailService">
+    <Position X="56.5" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="11.75" />
+        <Point X="54.875" Y="10.929" />
+        <Point X="54.915" Y="10.929" Type="JumpStart" />
+        <Point X="55.081" Y="10.929" Type="JumpEnd" />
+        <Point X="55.312" Y="10.929" />
+        <Point X="55.312" Y="7.162" />
+        <Point X="58.123" Y="7.162" />
+        <Point X="58.123" Y="6.302" />
+        <Point X="58" Y="6.302" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.SmsService">
+    <Position X="52.25" Y="5.75" Width="2" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="53.938" Y="11.75" />
+        <Point X="53.938" Y="11.227" />
+        <Point X="53.67" Y="11.227" />
+        <Point X="53.67" Y="8.297" />
+        <Point X="53.562" Y="8.297" />
+        <Point X="53.562" Y="6.853" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.ApplicationUserManager">
+    <Position X="36" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.ApplicationSignInManager">
+    <Position X="36" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.RouteConfig">
+    <Position X="50.5" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="53.562" Y="11.75" />
+        <Point X="53.562" Y="9.615" />
+        <Point X="52.833" Y="9.615" Type="JumpStart" />
+        <Point X="52.667" Y="9.615" Type="JumpEnd" />
+        <Point X="51.845" Y="9.615" />
+        <Point X="51.845" Y="6.947" />
+        <Point X="51.312" Y="6.947" />
+        <Point X="51.312" Y="6.853" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Startup">
+    <Position X="61.75" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="54.875" Y="11.75" />
+        <Point X="54.875" Y="10.929" />
+        <Point X="54.915" Y="10.929" Type="JumpStart" />
+        <Point X="55.081" Y="10.929" Type="JumpEnd" />
+        <Point X="55.312" Y="10.929" />
+        <Point X="55.312" Y="7.594" />
+        <Point X="62.125" Y="7.594" />
+        <Point X="62.125" Y="7.439" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="db" Type="MHS_FINAL_PROJECT.Models.ApplicationDbContext">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.183" Y="0.127" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAAAAQAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Controllers.AccountController">
+    <Position X="31.5" Y="8.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MHS_FINAL_PROJECT.Controllers.AccountController.ChallengeResult">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="_userManager" Type="MHS_FINAL_PROJECT.ApplicationUserManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="33.445" Y="8.25" />
+        <Point X="33.445" Y="4.625" />
+        <Point X="36" Y="4.625" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.117" Y="0.014" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AuthenticationManager" Type="Microsoft.Owin.Security.IAuthenticationManager">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.063" Y="1.94" Height="0.182" Width="1.692" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAABACCAAAAAAAAAAFgAgAAAAABICIAIAARAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_signInManager" />
+      <Field Name="_userManager" />
+      <Property Name="SignInManager" />
+      <Property Name="UserManager" />
+      <Property Name="AuthenticationManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Controllers.ManageController">
+    <Position X="26.25" Y="4.25" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="MHS_FINAL_PROJECT.Controllers.ManageController.ManageMessageId">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\ManageController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <AssociationLine Name="_signInManager" Type="MHS_FINAL_PROJECT.ApplicationSignInManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.19" Y="0.007" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_userManager" Type="MHS_FINAL_PROJECT.ApplicationUserManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27.465" Y="4.25" />
+        <Point X="27.465" Y="3.875" />
+        <Point X="31.856" Y="3.875" Type="JumpStart" />
+        <Point X="32.023" Y="3.875" Type="JumpEnd" />
+        <Point X="36" Y="3.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="UserManager" Type="MHS_FINAL_PROJECT.ApplicationUserManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="29.75" Y="4.545" />
+        <Point X="30.125" Y="4.545" />
+        <Point X="30.125" Y="4.25" />
+        <Point X="31.856" Y="4.25" Type="JumpStart" />
+        <Point X="32.023" Y="4.25" Type="JumpEnd" />
+        <Point X="36" Y="4.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="AuthenticationManager" Type="Microsoft.Owin.Security.IAuthenticationManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.541" Y="0.043" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>NACCJEi0oiEcxIAEgSBkEehEIEAVKEJBAoEEiACkLQg=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="_signInManager" />
+      <Field Name="_userManager" />
+      <Property Name="SignInManager" />
+      <Property Name="UserManager" />
+      <Property Name="AuthenticationManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MHS_FINAL_PROJECT.Controllers.HomeController">
+    <Position X="38.25" Y="5.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAQIAAAAAAAQAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Collections.ObjectModel.ObservableCollection&lt;T&gt;">
+    <Position X="70.25" Y="2.25" Width="3" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.AspNet.Identity.EntityFramework.IdentityUser">
+    <Position X="39" Y="19.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNet.Identity.EntityFramework.IdentityUser&lt;TKey, TLogin, TRole, TClaim&gt;">
+    <Position X="35.75" Y="19.5" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Microsoft.Owin.Security.IAuthenticationManager">
+    <Position X="32" Y="18.25" Width="2.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="MHS_FINAL_PROJECT.Models.Gender">
+    <Position X="65" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

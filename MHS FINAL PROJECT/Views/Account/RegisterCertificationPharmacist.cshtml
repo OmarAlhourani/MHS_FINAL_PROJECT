@@ -1,0 +1,244 @@
+﻿@using MHS_FINAL_PROJECT.Models;
+@model CERTIFICATIONViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+    Html.EnableClientValidation(true);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Pharmacist</title>
+    <link href="~/Content/accaount/StyleSheet1.css" rel="stylesheet" />
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <link href="~/Content/accaount/register.css" rel="stylesheet" />
+
+    <style>
+        select {
+            width: 100% !important;
+        }
+
+        .input-text label {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: #ACACAC;
+        }
+
+        .img_upload {
+            display: flex;
+            flex-direction: column
+        }
+
+            .img_upload img {
+                width: 273px;
+                height: 145px;
+                border: 0.5px solid #2F855A;
+                box-sizing: border-box;
+                border-radius: 3px;
+                margin: 5px 0px;
+            }
+
+            .img_upload label {
+                width: 136px;
+                height: 25px;
+                background: linear-gradient(90deg, #60C789 1.98%, #348B5E 81.58%);
+                border-radius: 45px;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 18px;
+                /* identical to box height */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: capitalize;
+                color: #F0FFF4;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+
+                .img_upload label:hover {
+                    background-color: #2F855A;
+                    box-shadow: 0px 8px 15px rgb(0, 0, 0, 0.10);
+                    font-size: 13px;
+                    transform: translateY(-4px);
+                }
+
+        .file_btn {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .buttom_right {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .btn-login {
+            width: 166px;
+            height: 40px;
+        }
+
+        .btn-cancle {
+            background: #FFFFFF;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 45px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: capitalize;
+            color: #000000;
+            transition: all 0.3s ease 0s;
+        }
+
+            .btn-cancle:hover {
+                background-color: #FFFFFF;
+                box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+                font-size: 18px;
+                transform: translateY(-7px);
+            }
+    </style>
+</head>
+<body>
+    <div class="container_div">
+        <div class="main">
+            <div class="left_side">
+                <div class="top_left">
+                    <div class="content_top">
+                        <a href="/Home">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="86" height="53" viewBox="0 0 86 53" fill="none">
+                                <rect width="86" height="53" fill="url(#pattern0)" />
+                                <defs>
+                                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                        <use xlink:href="#image0" transform="translate(0 -0.311321) scale(0.005 0.00811321)" />
+                                    </pattern>
+                                    <image id="image0" width="200" height="200" xlink:href="data:image/png;base64,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" />
+                                </defs>
+                            </svg>
+                        </a>
+                        <p>
+                            Welcome to the website, pharmacist
+                        </p>
+                    </div>
+                </div>
+
+                <img class="doctors display_none" src="~/img/Register/regster_doctors.svg" />
+            </div>
+            <div class="right_side">
+
+                <div class="top_right">
+                    <p style="font-size: 26px;">CERTIFICATION INFORMATION</p>
+                </div>
+                @using (Html.BeginForm("RegisterCertificationPharmacist", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="mid_right">
+                        <div class="input-box">
+                            <div class="input-text">
+                                <img class="iconify" src="~/img/Register/University_Name.svg" />
+                                @Html.TextBoxFor(m => m.Name, new { placeholder = "University Name", @class = "University_Name", @autocomplete = "new-TextBox" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "" })
+                        </div>
+                        <div class="input-box">
+                            <div class="input-text">
+                                <img class="iconify" src="~/img/Register/Degree.svg" />
+                                @Html.DropDownListFor(m => m.Degree, new SelectList(ViewBag.degree,"Text", "Value"), "--Degree--", new { @class = "Degree", @autocomplete = "new-DropDownList" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Degree, "", new { @class = "" })
+                        </div>
+                        <div class="input-box">
+                            <div class="input-text">
+                                <label>Copy of the Certification</label>
+                            </div>
+                            <div class="img_upload">
+                                <img id="output" />
+                                @Html.TextBoxFor(m => m.Certification_url, new { type = "file", name = "file", id = "file", @class = "file_btn", accept = "image/gif, image/jpeg, image/png", onchange = "loadFile(event)" })
+                                <label for="file">UPLOAD</label>
+                                @Html.ValidationMessageFor(m => m.Certification_url, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line">
+                    </div>
+                    <div class="buttom_right">
+                        <input type="submit" value="SIGN uP" class="btn-login btn_val" />
+                        <input type="submit" value="CANLE" class="btn-login btn-cancle" />
+                    </div>
+                }
+            </div>
+            <div class="top_circle"></div>
+            <div class="Bottom_triangle"></div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>
+
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    //$(".btn_val").click(function (event) {
+    //    event.preventDefault();
+    //    var name = document.querySelector(".University_Name").value;
+    //    var Degree = $(".Degree").children("option:selected").val();
+    //    var formData = new FormData($("form")[0]);
+
+    //    //if (window.FormData == undefined)
+    //    //    alert("Error: FormData is undefined");
+
+    //    //else {
+    //    //    var fileUpload = $("#file").get(0);
+    //    //    var files = fileUpload.files;
+    //    //    var fileData = new FormData();
+    //    //    fileData.append(files[0].name, files[0]);
+    //    //}
+
+
+    //    var privecr = $('.box').val();
+    //    $.ajax({
+    //        url: "/Account/CheckValidationPharm",
+    //        type: "POST",
+    //        processData: false,
+    //        contentType: false,
+    //        data: formData
+    //    })
+    //});
+
+
+
+</script>

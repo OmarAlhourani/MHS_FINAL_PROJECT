@@ -1,0 +1,126 @@
+﻿@model  MHS_FINAL_PROJECT.Models.ManageAccountViewModel
+@{
+    Html.EnableClientValidation(true);
+}
+<style>
+    /*.modal.in .modal-dialog {
+        -webkit-transform: translate(0, 150px);
+        transform: translate(0, 150px);
+    }*/
+
+    .flex {
+        width: 100%;
+    }
+
+    .move {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sides {
+        width: 40%;
+        padding: 0;
+    }
+
+        .sides label {
+            padding: 0;
+        }
+
+    .age {
+        width: 95% !important;
+        max-width: 95% !important;
+        height: 38px;
+        padding-left: 10px;
+        background-color: #F4F8F7;
+        border: 0.3px solid #2F855A;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: capitalize;
+        color: #5DA77F;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 4px;
+    }
+
+    .style_text {
+        width: 80%;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        align-items: flex-start;
+        text-transform: capitalize;
+        color: #5DA77F;
+        margin: 5px 0 0 0 ;
+    }
+    /* .modal.in .modal-dialog {
+        -webkit-transform: translate(0, 150px);
+        transform: translate(0, 30px);
+    }*/
+</style>
+<div class="modal fade" id="User_more_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal Info_titer_user" id="exampleModalLongTitle">More Information</h5>
+                <div class="modal_line"></div>
+            </div>
+        <div class="modal-body">
+            <div class="inpu_modal">
+                @Html.LabelFor(m => m.addnewUser.Name, new { @class = "sub-title alighn " })
+                <h1 class="Name_info style_text"></h1>
+            </div>
+            <div class="inpu_modal">
+                @Html.LabelFor(m => m.addnewUser.Username, new { @class = "sub-title alighn" })
+                <h1 class="UserName_info style_text"></h1>
+            </div>
+            <div class="inpu_modal">
+                @Html.LabelFor(m => m.addnewUser.Email, new { @class = "sub-title alighn" })
+                <h1 class="Email_info style_text"></h1>
+            </div>
+
+            <div class="inpu_modal flex">
+                <div class="move">
+                    <div class="sides">
+                        @Html.LabelFor(m => m.addnewUser.gender, new { @class = "sub-title alighn" })
+                        <h1 class="gender_info style_text"></h1>
+                    </div>
+                    <div class="sides" style="margin-left:10px;">
+                        @Html.LabelFor(m => m.addnewUser.Age, new { @class = "sub-title alighn" })
+                        <h1 class="Age_info style_text"></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="inpu_modal">
+                <div class="move" style="justify-content: flex-start; margin-left: 84px;">
+                    <div class="sides">
+                        @Html.LabelFor(m => m.addnewUser.Roles, new { @class = "sub-title alighn" })
+                        <h1 class="Roles_info style_text"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn_save" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")

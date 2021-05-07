@@ -1,0 +1,326 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model List<Drug_a_zModelView>
+
+
+<link href="~/Content/home/Normal_search.css" rel="stylesheet" />
+<style>
+    .from_trade {
+        width: 100%;
+        height: 100%;
+    }
+
+    .trade_search {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .trade_search p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 45px;
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            color: #000000;
+            padding-left: 10px;
+        }
+
+        .trade_search > button > a {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            /* identical to box height */
+            text-transform: uppercase;
+            color: #2C3EE3;
+        }
+
+    .titel {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 39px;
+        display: flex;
+        align-items: center;
+        text-align: start;
+        text-transform: capitalize;
+        color: #000000;
+        padding-left: 7px;
+        margin-bottom: 0px;
+    }
+
+    .letter {
+        width: 100%;
+        height: 45%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+        .letter li {
+            width: 20%;
+            height: 20%;
+            margin: 5px;
+            list-style: none;
+            background: linear-gradient(90deg, #60C789 1.98%, #348B5E 81.58%);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+        }
+
+            .letter li a {
+                width: 100%;
+                height: 100%;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 28px;
+                line-height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                letter-spacing: 0.13em;
+                text-transform: capitalize;
+                color: #FFFFFF;
+            }
+    .screen_result {
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:start;
+        flex-wrap:wrap;
+    }
+    .letter_result {
+        width:30%;
+        list-style-type: disc;
+        font-size: 26px;
+        color: #348B5E;
+        margin-bottom:20px;
+    }
+    .letter_result a {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 39px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+            
+        color: #348B5E ;
+    }
+    .letter_result a:hover {
+        color: #60C789;
+        text-decoration: underline;
+    }
+
+</style>
+<body>
+    <main>
+        <div class="container_main">
+            <div class="navigator">
+                @Html.Partial("_navigator")
+            </div>
+            <style>
+                @@media screen and (max-width: 1150px) {
+
+
+                    .header {
+                        display: grid;
+                        grid-template-columns: minmax(7%, 10%) 80% minmax(7%, 10%);
+                        place-items: flex-start;
+                        grid-template-rows: 362px;
+                    }
+
+                    .header {
+                        grid-template-rows: 191px;
+                        padding: 0px;
+                    }
+
+                    .text_content > p:nth-child(2) {
+                        width: 100%;
+                    }
+
+                    .text_content {
+                        grid-column: 2/3;
+                        padding-left: 0px;
+                    }
+
+                    .right_img {
+                        display: none;
+                    }
+
+                    .roles_text {
+                        width: 100%;
+                    }
+                }
+            </style>
+            <section class="header">
+                <div class="text_content">
+                    <p>Drug A-Z</p>
+                    <p>select a letter from the list down and all the drug that exists in the database and starts with the letter that you selected will be shown in the box</p>
+                </div>
+            </section>
+
+
+            <div class="main">
+                @*@using (Html.BeginForm("Normal_search", "Home", null, FormMethod.Post, new { @class = "from_trade" }))
+            {*@
+                <div class="Page_contents">
+                    <p class="titel">
+                        Browse
+                        Alphabetically
+                    </p>
+                    <ul class="links_ul letter">
+                        <li>@Html.ActionLink("A", "Drug_A_Z", "Home", new { Letter = "A" }, null)</li>
+                        <li>@Html.ActionLink("B", "Drug_A_Z", "Home", new { Letter = "B" }, null)</li>
+                        <li>@Html.ActionLink("C", "Drug_A_Z", "Home", new { Letter = "C" }, null)</li>
+                        <li>@Html.ActionLink("D", "Drug_A_Z", "Home", new { Letter = "D" }, null)</li>
+                        <li>@Html.ActionLink("E", "Drug_A_Z", "Home", new { Letter = "E" }, null)</li>
+                        <li>@Html.ActionLink("F", "Drug_A_Z", "Home", new { Letter = "F" }, null)</li>
+                        <li>@Html.ActionLink("G", "Drug_A_Z", "Home", new { Letter = "G" }, null)</li>
+                        <li>@Html.ActionLink("H", "Drug_A_Z", "Home", new { Letter = "H" }, null)</li>
+                        <li>@Html.ActionLink("I", "Drug_A_Z", "Home", new { Letter = "I" }, null)</li>
+                        <li>@Html.ActionLink("J", "Drug_A_Z", "Home", new { Letter = "J" }, null)</li>
+                        <li>@Html.ActionLink("K", "Drug_A_Z", "Home", new { Letter = "K" }, null)</li>
+                        <li>@Html.ActionLink("L", "Drug_A_Z", "Home", new { Letter = "L" }, null)</li>
+                        <li>@Html.ActionLink("M", "Drug_A_Z", "Home", new { Letter = "M" }, null)</li>
+                        <li>@Html.ActionLink("N", "Drug_A_Z", "Home", new { Letter = "N" }, null)</li>
+                        <li>@Html.ActionLink("O", "Drug_A_Z", "Home", new { Letter = "O" }, null)</li>
+                        <li>@Html.ActionLink("P", "Drug_A_Z", "Home", new { Letter = "P" }, null)</li>
+                        <li>@Html.ActionLink("Q", "Drug_A_Z", "Home", new { Letter = "Q" }, null)</li>
+                        <li>@Html.ActionLink("R", "Drug_A_Z", "Home", new { Letter = "R" }, null)</li>
+                        <li>@Html.ActionLink("S", "Drug_A_Z", "Home", new { Letter = "S" }, null)</li>
+                        <li>@Html.ActionLink("T", "Drug_A_Z", "Home", new { Letter = "T" }, null)</li>
+                        <li>@Html.ActionLink("U", "Drug_A_Z", "Home", new { Letter = "U" }, null)</li>
+                        <li>@Html.ActionLink("V", "Drug_A_Z", "Home", new { Letter = "V" }, null)</li>
+                        <li>@Html.ActionLink("W", "Drug_A_Z", "Home", new { Letter = "W" }, null)</li>
+                        <li>@Html.ActionLink("X", "Drug_A_Z", "Home", new { Letter = "X" }, null)</li>
+                        <li>@Html.ActionLink("Y", "Drug_A_Z", "Home", new { Letter = "Y" }, null)</li>
+                        <li>@Html.ActionLink("Z", "Drug_A_Z", "Home", new { Letter = "Z" }, null)</li>
+                    </ul>
+
+                </div>
+                @*}*@
+                <div class="result" id="updateTargetId">
+                    @if (Model == null)
+                    {
+                        <h1 class="no_result">No Result yet</h1>
+                    }
+                    else if (Model.Count() == 0)
+                    {
+                        <h1 class="no_result"> THERE is no drugs start with letter "@ViewBag.letter"</h1>
+                    }
+                    else if (Model != null)
+                    {
+                        <ul class="screen_result">
+                            @foreach (var name in Model)
+                            {
+                                <li class="letter_result"><a href="/home/Normal_search?model.name=@name.name">@name.name</a></li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+            <style>
+                .down_section {
+                    grid-row: 4 / 5;
+                    grid-column: 1 / 2;
+                }
+
+                .main-grid {
+                    display: grid;
+                    grid-template-columns: 600px minmax(0px, 420px) 300px;
+                    place-items: flex-start;
+                    grid-template-rows: 362px;
+                }
+
+                .left_text {
+                    grid-row: 1/2;
+                    grid-column: 1/2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+
+                .right_img {
+                    grid-row: 1/2;
+                    grid-column: 3/4;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                    width: 265px;
+                    height: 361.5px;
+                }
+
+                .roles_text {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #000000;
+                    width: 868px;
+                }
+
+                @@media screen and (max-width: 1380px) {
+                    .left_text {
+                        padding-left: 30px;
+                    }
+                }
+
+                @@media screen and (max-width: 1150px) {
+                    .main-grid {
+                        display: grid;
+                        grid-template-columns: minmax(7%, 10%) 80% minmax(7%, 10%);
+                        place-items: flex-start;
+                        grid-template-rows: 362px;
+                    }
+
+                    .left_text {
+                        grid-column: 2/3;
+                        padding-left: 0px;
+                    }
+
+                    .right_img {
+                        display: none;
+                    }
+
+                    .roles_text {
+                        width: 100%;
+                    }
+                }
+            </style>
+            <section class="down_section">
+                <div class="main-grid" style="padding-top: 58px;">
+                    <div class="left_text">
+                        <div>
+                            <p class="roles_text">
+                                The materials published on the (MHS) website <span style="color:#2F855A"> are information only and should not be considered a medical advice or a treatment recommendation.</span> A doctor should be consulted if the symptoms do not disappear.
+                            </p>
+                        </div>
+                        <div class="wrap" style="justify-content: flex-start;">
+                            <a href="/Account/Register"><button class="button" style="width: 177px; box-shadow: 1px 1px 5px rgb(0 , 0 , 0 , 30%);">Read More</button></a>
+                        </div>
+                    </div>
+                    <div class="right_img">
+                        <img src="~/img/home/info.svg" loading="lazy" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+

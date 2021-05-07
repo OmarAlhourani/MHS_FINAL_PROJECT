@@ -1,0 +1,46 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model  Add_ActiveViewModel
+@{
+    Html.EnableClientValidation(true);
+}
+<style>
+    .text-danger {
+        font-weight: 500;
+        font-size: 15px !important;
+        margin-left: 0px !important;
+    }
+</style>
+<div class="modal fade" id="Add_Trade_Name" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal change_titel_trade" id="exampleModalLongTitle">Add New Trade Name</h5>
+                <div class="modal_line"></div>
+            </div>
+            @using (Html.BeginForm("Edit_Add_Trade_Name", "Manage", new { drug_id = ViewBag.id }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.HiddenFor(m => m.Add_trade_names.id, new { @class = "trade_id" })
+                <div class="modal-body">
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.Add_trade_names.trade_name, new { @class = "sub-title alighn " })
+                        @Html.TextBoxFor(m => m.Add_trade_names.trade_name, new { @class = "trade_name", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Add_trade_names.trade_name, "", new { @class = "text-danger span_trade_name" })
+
+
+                    </div>
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.Add_trade_names.Manufacturer_company, new { @class = "sub-title alighn" })
+                        @Html.TextBoxFor(m => m.Add_trade_names.Manufacturer_company, new { @class = "Manufacturer_company", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Add_trade_names.Manufacturer_company, "", new { @class = "text-danger span_Manufacturer_company" })
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn_save">Save</button>
+                    <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

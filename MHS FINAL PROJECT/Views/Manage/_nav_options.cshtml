@@ -1,0 +1,1024 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    var IsUser = User.IsInRole("Normal_User");
+    var IsAdmin = User.IsInRole("Admins");
+    var IsPharmacists = User.IsInRole("pharmacists");
+}
+<style>
+    .spinner_div {
+        z-index: 4;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: rgba(255, 255, 255, 0.70);
+    }
+
+    .cssload-dots {
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        outline: 2px solid red;
+        filter: url(#goo);
+        -o-filter: url(#goo);
+        -ms-filter: url(#goo);
+        -webkit-filter: url(#goo);
+        -moz-filter: url(#goo);
+    }
+
+    .cssload-dot {
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+        .cssload-dot:before {
+            content: "";
+            width: 61px;
+            height: 61px;
+            border-radius: 88px;
+            background: rgb(93,167,128);
+            position: absolute;
+            left: 50%;
+            transform: translateY(0);
+            -o-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            margin-left: -30.5px;
+            margin-top: -30.5px;
+        }
+
+
+
+        .cssload-dot:nth-child(5):before {
+            z-index: 100;
+            width: 79.5px;
+            height: 79.5px;
+            margin-left: -39.75px;
+            margin-top: -39.75px;
+            animation: cssload-dot-colors 4.6s ease infinite;
+            -o-animation: cssload-dot-colors 4.6s ease infinite;
+            -ms-animation: cssload-dot-colors 4.6s ease infinite;
+            -webkit-animation: cssload-dot-colors 4.6s ease infinite;
+            -moz-animation: cssload-dot-colors 4.6s ease infinite;
+        }
+
+
+        .cssload-dot:nth-child(1) {
+            animation: cssload-dot-rotate-1 4.6s 0s linear infinite;
+            -o-animation: cssload-dot-rotate-1 4.6s 0s linear infinite;
+            -ms-animation: cssload-dot-rotate-1 4.6s 0s linear infinite;
+            -webkit-animation: cssload-dot-rotate-1 4.6s 0s linear infinite;
+            -moz-animation: cssload-dot-rotate-1 4.6s 0s linear infinite;
+        }
+
+            .cssload-dot:nth-child(1):before {
+                background-color: rgb(18,89,18);
+                animation: cssload-dot-move 4.6s 0s ease infinite;
+                -o-animation: cssload-dot-move 4.6s 0s ease infinite;
+                -ms-animation: cssload-dot-move 4.6s 0s ease infinite;
+                -webkit-animation: cssload-dot-move 4.6s 0s ease infinite;
+                -moz-animation: cssload-dot-move 4.6s 0s ease infinite;
+            }
+
+        .cssload-dot:nth-child(2) {
+            animation: cssload-dot-rotate-2 4.6s 1.15s linear infinite;
+            -o-animation: cssload-dot-rotate-2 4.6s 1.15s linear infinite;
+            -ms-animation: cssload-dot-rotate-2 4.6s 1.15s linear infinite;
+            -webkit-animation: cssload-dot-rotate-2 4.6s 1.15s linear infinite;
+            -moz-animation: cssload-dot-rotate-2 4.6s 1.15s linear infinite;
+        }
+
+            .cssload-dot:nth-child(2):before {
+                background-color: rgb(93,167,128);
+                animation: cssload-dot-move 4.6s 1.15s ease infinite;
+                -o-animation: cssload-dot-move 4.6s 1.15s ease infinite;
+                -ms-animation: cssload-dot-move 4.6s 1.15s ease infinite;
+                -webkit-animation: cssload-dot-move 4.6s 1.15s ease infinite;
+                -moz-animation: cssload-dot-move 4.6s 1.15s ease infinite;
+            }
+
+        .cssload-dot:nth-child(3) {
+            animation: cssload-dot-rotate-3 4.6s 2.3s linear infinite;
+            -o-animation: cssload-dot-rotate-3 4.6s 2.3s linear infinite;
+            -ms-animation: cssload-dot-rotate-3 4.6s 2.3s linear infinite;
+            -webkit-animation: cssload-dot-rotate-3 4.6s 2.3s linear infinite;
+            -moz-animation: cssload-dot-rotate-3 4.6s 2.3s linear infinite;
+        }
+
+            .cssload-dot:nth-child(3):before {
+                background-color: rgb(93,167,128);
+                animation: cssload-dot-move 4.6s 2.3s ease infinite;
+                -o-animation: cssload-dot-move 4.6s 2.3s ease infinite;
+                -ms-animation: cssload-dot-move 4.6s 2.3s ease infinite;
+                -webkit-animation: cssload-dot-move 4.6s 2.3s ease infinite;
+                -moz-animation: cssload-dot-move 4.6s 2.3s ease infinite;
+            }
+
+        .cssload-dot:nth-child(4) {
+            animation: cssload-dot-rotate-4 4.6s 3.45s linear infinite;
+            -o-animation: cssload-dot-rotate-4 4.6s 3.45s linear infinite;
+            -ms-animation: cssload-dot-rotate-4 4.6s 3.45s linear infinite;
+            -webkit-animation: cssload-dot-rotate-4 4.6s 3.45s linear infinite;
+            -moz-animation: cssload-dot-rotate-4 4.6s 3.45s linear infinite;
+        }
+
+            .cssload-dot:nth-child(4):before {
+                background-color: rgb(18,89,18);
+                animation: cssload-dot-move 4.6s 3.45s ease infinite;
+                -o-animation: cssload-dot-move 4.6s 3.45s ease infinite;
+                -ms-animation: cssload-dot-move 4.6s 3.45s ease infinite;
+                -webkit-animation: cssload-dot-move 4.6s 3.45s ease infinite;
+                -moz-animation: cssload-dot-move 4.6s 3.45s ease infinite;
+            }
+
+    @@keyframes cssload-dot-move {
+        0% {
+            transform: translateY(0);
+        }
+
+        18%, 22% {
+            transform: translateY(-123px);
+        }
+
+        40%, 100% {
+            transform: translateY(0);
+        }
+    }
+
+    @@-o-keyframes cssload-dot-move {
+        0% {
+            -o-transform: translateY(0);
+        }
+
+        18%, 22% {
+            -o-transform: translateY(-123px);
+        }
+
+        40%, 100% {
+            -o-transform: translateY(0);
+        }
+    }
+
+    @@-ms-keyframes cssload-dot-move {
+        0% {
+            -ms-transform: translateY(0);
+        }
+
+        18%, 22% {
+            -ms-transform: translateY(-123px);
+        }
+
+        40%, 100% {
+            -ms-transform: translateY(0);
+        }
+    }
+
+    @@-webkit-keyframes cssload-dot-move {
+        0% {
+            -webkit-transform: translateY(0);
+        }
+
+        18%, 22% {
+            -webkit-transform: translateY(-123px);
+        }
+
+        40%, 100% {
+            -webkit-transform: translateY(0);
+        }
+    }
+
+    @@-moz-keyframes cssload-dot-move {
+        0% {
+            -moz-transform: translateY(0);
+        }
+
+        18%, 22% {
+            -moz-transform: translateY(-123px);
+        }
+
+        40%, 100% {
+            -moz-transform: translateY(0);
+        }
+    }
+
+    @@keyframes cssload-dot-colors {
+        0% {
+            background-color: rgb(18,89,18);
+        }
+
+        25% {
+            background-color: rgb(18,89,18);
+        }
+
+        50% {
+            background-color: rgb(93,167,128);
+        }
+
+        75% {
+            background-color: rgb(93,167,128);
+        }
+
+        100% {
+            background-color: rgb(18,89,18);
+        }
+    }
+
+    @@-o-keyframes cssload-dot-colors {
+        0% {
+            background-color: rgb(18,89,18);
+        }
+
+        25% {
+            background-color: rgb(18,89,18);
+        }
+
+        50% {
+            background-color: rgb(93,167,128);
+        }
+
+        75% {
+            background-color: rgb(93,167,128);
+        }
+
+        100% {
+            background-color: rgb(18,89,18);
+        }
+    }
+
+    @@-ms-keyframes cssload-dot-colors {
+        0% {
+            background-color: rgb(18,89,18);
+        }
+
+        25% {
+            background-color: rgb(18,89,18);
+        }
+
+        50% {
+            background-color: rgb(93,167,128);
+        }
+
+        75% {
+            background-color: rgb(93,167,128);
+        }
+
+        100% {
+            background-color: rgb(18,89,18);
+        }
+    }
+
+    @@-webkit-keyframes cssload-dot-colors {
+        0% {
+            background-color: rgb(18,89,18);
+        }
+
+        25% {
+            background-color: rgb(18,89,18);
+        }
+
+        50% {
+            background-color: rgb(93,167,128);
+        }
+
+        75% {
+            background-color: rgb(93,167,128);
+        }
+
+        100% {
+            background-color: rgb(18,89,18);
+        }
+    }
+
+    @@-moz-keyframes cssload-dot-colors {
+        0% {
+            background-color: rgb(18,89,18);
+        }
+
+        25% {
+            background-color: rgb(18,89,18);
+        }
+
+        50% {
+            background-color: rgb(93,167,128);
+        }
+
+        75% {
+            background-color: rgb(93,167,128);
+        }
+
+        100% {
+            background-color: rgb(18,89,18);
+        }
+    }
+
+    @@keyframes cssload-dot-rotate-1 {
+        0% {
+            transform: rotate(-105deg);
+        }
+
+        100% {
+            transform: rotate(270deg);
+        }
+    }
+
+    @@-o-keyframes cssload-dot-rotate-1 {
+        0% {
+            -o-transform: rotate(-105deg);
+        }
+
+        100% {
+            -o-transform: rotate(270deg);
+        }
+    }
+
+    @@-ms-keyframes cssload-dot-rotate-1 {
+        0% {
+            -ms-transform: rotate(-105deg);
+        }
+
+        100% {
+            -ms-transform: rotate(270deg);
+        }
+    }
+
+    @@-webkit-keyframes cssload-dot-rotate-1 {
+        0% {
+            -webkit-transform: rotate(-105deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(270deg);
+        }
+    }
+
+    @@-moz-keyframes cssload-dot-rotate-1 {
+        0% {
+            -moz-transform: rotate(-105deg);
+        }
+
+        100% {
+            -moz-transform: rotate(270deg);
+        }
+    }
+
+    @@keyframes cssload-dot-rotate-2 {
+        0% {
+            transform: rotate(165deg);
+        }
+
+        100% {
+            transform: rotate(540deg);
+        }
+    }
+
+    @@-o-keyframes cssload-dot-rotate-2 {
+        0% {
+            -o-transform: rotate(165deg);
+        }
+
+        100% {
+            -o-transform: rotate(540deg);
+        }
+    }
+
+    @@-ms-keyframes cssload-dot-rotate-2 {
+        0% {
+            -ms-transform: rotate(165deg);
+        }
+
+        100% {
+            -ms-transform: rotate(540deg);
+        }
+    }
+
+    @@-webkit-keyframes cssload-dot-rotate-2 {
+        0% {
+            -webkit-transform: rotate(165deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(540deg);
+        }
+    }
+
+    @@-moz-keyframes cssload-dot-rotate-2 {
+        0% {
+            -moz-transform: rotate(165deg);
+        }
+
+        100% {
+            -moz-transform: rotate(540deg);
+        }
+    }
+
+    @@keyframes cssload-dot-rotate-3 {
+        0% {
+            transform: rotate(435deg);
+        }
+
+        100% {
+            transform: rotate(810deg);
+        }
+    }
+
+    @@-o-keyframes cssload-dot-rotate-3 {
+        0% {
+            -o-transform: rotate(435deg);
+        }
+
+        100% {
+            -o-transform: rotate(810deg);
+        }
+    }
+
+    @@-ms-keyframes cssload-dot-rotate-3 {
+        0% {
+            -ms-transform: rotate(435deg);
+        }
+
+        100% {
+            -ms-transform: rotate(810deg);
+        }
+    }
+
+    @@-webkit-keyframes cssload-dot-rotate-3 {
+        0% {
+            -webkit-transform: rotate(435deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(810deg);
+        }
+    }
+
+    @@-moz-keyframes cssload-dot-rotate-3 {
+        0% {
+            -moz-transform: rotate(435deg);
+        }
+
+        100% {
+            -moz-transform: rotate(810deg);
+        }
+    }
+
+    @@keyframes cssload-dot-rotate-4 {
+        0% {
+            transform: rotate(705deg);
+        }
+
+        100% {
+            transform: rotate(1080deg);
+        }
+    }
+
+    @@-o-keyframes cssload-dot-rotate-4 {
+        0% {
+            -o-transform: rotate(705deg);
+        }
+
+        100% {
+            -o-transform: rotate(1080deg);
+        }
+    }
+
+    @@-ms-keyframes cssload-dot-rotate-4 {
+        0% {
+            -ms-transform: rotate(705deg);
+        }
+
+        100% {
+            -ms-transform: rotate(1080deg);
+        }
+    }
+
+    @@-webkit-keyframes cssload-dot-rotate-4 {
+        0% {
+            -webkit-transform: rotate(705deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(1080deg);
+        }
+    }
+
+    @@-moz-keyframes cssload-dot-rotate-4 {
+        0% {
+            -moz-transform: rotate(705deg);
+        }
+
+        100% {
+            -moz-transform: rotate(1080deg);
+        }
+    }
+</style>
+@if (IsUser)
+{
+    <div class="message">
+        <p class="main-title">profile information</p>
+        @if (ViewBag.StatusMessage == "Your password has been changed." || ViewBag.StatusMessage == "Your password has been set" || ViewBag.StatusMessage == "Your Information Was Updated Successfully" || ViewBag.StatusMessage == "Your Health Case has been Added Successfully")
+        {
+            <div class="alert alert-success alert1" role="alert">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+        @if (ViewBag.StatusMessage == "Your Health Case has been Edited Successfully" || ViewBag.StatusMessage == "Nothing has Changed")
+        {
+            <div class="alert alert-warning alert1" role="alert">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+    </div>
+    <div class="links">
+        @Ajax.ActionLink("personal information", "personal_information", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link personal_information active" })
+        @Ajax.ActionLink("Health information", "Health_information", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link Health_information" })
+    </div>
+
+
+
+    <div class="line1"></div>
+
+
+    <div class="spinner_div">
+        <div class="cssload-dots">
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+        </div>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"></feGaussianBlur>
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7" result="goo"></feColorMatrix>
+                    <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
+                </filter>
+            </defs>
+        </svg>
+    </div>
+    <script>
+        var $loading = $('.spinner_div').hide();
+        $(document).ajaxStart(function () {
+            $loading.show();
+        })
+        $(document).ajaxStop(function () {
+            $loading.hide();
+        });
+        $(document).ready(function () {
+            $(".Health_information").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+            });
+
+            $(".personal_information").on('click', function () {
+                $(this).addClass('active');
+                $(".Health_information").removeClass('active');
+            });
+
+
+            //keep the page where is it on refrech
+            $(".Health_information").click(function () {
+                sessionStorage.setItem('page', 'Health');
+            });
+
+
+            $(".personal_information").click(function () {
+                sessionStorage.setItem('page', 'information');
+            });
+
+
+            window.onload = function () {
+                setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+                if (sessionStorage.getItem('page') == 'Health') {
+                    $('.Health_information')[0].click();
+                }
+                else {
+                    $('.personal_information')[0].click();
+                }
+            };
+        });
+    </script>
+}
+else if (IsPharmacists)
+{
+    <div class="message">
+        <p class="main-title">profile and drug information</p>
+        @if (ViewBag.StatusMessage == "Your password has been changed." || ViewBag.StatusMessage == "Your password has been set." || ViewBag.StatusMessage == "Your Information Was Updated Successfully" || ViewBag.StatusMessage == "New Active Name Drug Has been Added" || ViewBag.StatusMessage == "Drug Information Was Updated Successfully"
+        || ViewBag.StatusMessage == "Trade Name Has been Added Successfully" || ViewBag.StatusMessage == "Trade Name Has been Edited Successfully" || ViewBag.StatusMessage == "New interaction between two drugs has been added"
+        || ViewBag.StatusMessage == "interaction between two drugs has been Edited Successfully")
+        {
+            <div class="alert alert-success alert1" role="alert">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+        @if (ViewBag.StatusMessage == "Nothing has Changed" || ViewBag.StatusMessage == "An error has occurred.")
+        {
+            <div class="alert alert-warning alert1" role="alert">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+    </div>
+    <div class="links">
+        @Ajax.ActionLink("personal information", "personal_information", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link personal_information active" })
+
+        @Ajax.ActionLink("certification information", "certification_information", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link certification_information" })
+
+        @Ajax.ActionLink("active name drugs", "active_name_drugs", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link active_name_drugs " })
+
+        @Ajax.ActionLink("trade name drugs", "Trade_name_drugs", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link trade_name_drugs " })
+
+        @Ajax.ActionLink("Drug Interactions", "Drug_Interactions", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link Drug_Interactions " })
+
+    </div>
+    <div class="line1"></div>
+
+    <div class="spinner_div">
+        <div class="cssload-dots">
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+        </div>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"></feGaussianBlur>
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7" result="goo"></feColorMatrix>
+                    <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
+                </filter>
+            </defs>
+        </svg>
+    </div>
+    <script>
+        var $loading = $('.spinner_div').hide();
+        $(document).ajaxStart(function () {
+            $loading.show();
+        })
+        $(document).ajaxStop(function () {
+            $loading.hide();
+        });
+
+        $(document).ready(function () {
+            //for the line under each nav item
+            $(".personal_information").on('click', function () {
+                $(this).addClass('active');
+                $(".certification_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+            });
+            $(".certification_information").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+            });
+            $(".active_name_drugs").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".certification_information").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+            });
+            $(".trade_name_drugs").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".certification_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+            });
+            $(".Drug_Interactions").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".certification_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+            });
+
+
+
+            //keep the page where is it on refrech
+            $(".personal_information").click(function () {
+                sessionStorage.setItem('page', 'personal_information');
+            });
+            $(".certification_information").click(function () {
+                sessionStorage.setItem('page', 'certification_information');
+            });
+            $(".active_name_drugs").click(function () {
+                sessionStorage.setItem('page', 'active_name_drugs');
+            });
+            $(".trade_name_drugs").click(function () {
+                sessionStorage.setItem('page', 'trade_name_drugs');
+            });
+            $(".Drug_Interactions").click(function () {
+                sessionStorage.setItem('page', 'Drug_Interactions');
+            });
+            window.onload = function () {
+                setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+                if (sessionStorage.getItem('page') == 'certification_information') {
+                    $('.certification_information')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'active_name_drugs') {
+                    $('.active_name_drugs')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'trade_name_drugs') {
+                    $('.trade_name_drugs')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'Drug_Interactions') {
+                    $('.Drug_Interactions')[0].click();
+                }
+                else {
+                    $('.personal_information')[0].click();
+                }
+            };
+
+
+        });
+    </script>
+}
+else if (IsAdmin)
+{
+
+    <div class="message">
+        <p class="main-title">admin panel</p>
+        @if (ViewBag.StatusMessage == "Your password has been changed." || ViewBag.StatusMessage == "Your password has been set." || ViewBag.StatusMessage == "Your Information Was Updated Successfully" || ViewBag.StatusMessage == "New Active Name Drug Has been Added" || ViewBag.StatusMessage == "Drug Information Was Updated Successfully"
+        || ViewBag.StatusMessage == "Trade Name Has been Added Successfully" || ViewBag.StatusMessage == "Trade Name Has been Edited Successfully" || ViewBag.StatusMessage == "New interaction between two drugs has been added"
+        || ViewBag.StatusMessage == "interaction between two drugs has been Edited Successfully" || ViewBag.StatusMessage == "User has been Added Successfully"
+        || ViewBag.StatusMessage == "User Information Was Updated Successfully" || ViewBag.StatusMessage == "User Role Was Updated Successfully" || ViewBag.StatusMessage == "User Password Was Updated Successfully"
+        || ViewBag.StatusMessage == "Pharmacist Has Deleted Successfully" || ViewBag.StatusMessage == "User Has Deleted Successfully" || ViewBag.StatusMessage == "Certification was Added Successfully"
+        || ViewBag.StatusMessage == "Pharmacist Edited Successfully")
+        {
+            <div class="alert alert-success alert1" role="alert">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+        @if (ViewBag.StatusMessage == "Nothing has Changed" || ViewBag.StatusMessage == "An error has occurred."
+            || ViewBag.StatusMessage == "You Have To Add Certification For This User Before Adding It For Pharmacists Role"
+            || ViewBag.StatusMessage == "Pharmacist Added Successfully But The Account Will Be Locked Until The Certification Get Added")
+        {
+            <div class="alert alert-warning alert1" role="alert">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+    </div>
+    <div class="links">
+        @Ajax.ActionLink("personal information", "personal_information", null, new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               UpdateTargetId = "content",
+               InsertionMode = InsertionMode.Replace,
+           }, new { @class = "link personal_information active" })
+
+        @Ajax.ActionLink("active name drugs", "active_name_drugs", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link active_name_drugs " })
+
+        @Ajax.ActionLink("trade name drugs", "Trade_name_drugs", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link trade_name_drugs " })
+
+        @Ajax.ActionLink("users", "users", null, new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "content",
+            InsertionMode = InsertionMode.Replace,
+        }, new { @class = "link users " })
+
+        @Ajax.ActionLink("pharmacist", "pharmacist", null, new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "content",
+            InsertionMode = InsertionMode.Replace,
+        }, new { @class = "link pharmacist " })
+
+        @Ajax.ActionLink("pharmacist request", "pharmacist_request", null, new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               UpdateTargetId = "content",
+               InsertionMode = InsertionMode.Replace,
+           }, new { @class = "link pharmacist_request " })
+
+        @Ajax.ActionLink("Drug Interactions", "Drug_Interactions", null, new AjaxOptions()
+   {
+       HttpMethod = "GET",
+       UpdateTargetId = "content",
+       InsertionMode = InsertionMode.Replace,
+   }, new { @class = "link Drug_Interactions " })
+
+    </div>
+    <div class="line1"></div>
+
+
+
+
+    <div class="spinner_div">
+        <div class="cssload-dots">
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+        </div>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"></feGaussianBlur>
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7" result="goo"></feColorMatrix>
+                    <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+
+
+    <script>
+        var $loading = $('.spinner_div').hide();
+        $(document).ajaxStart(function () {
+            $loading.show();
+        })
+        $(document).ajaxStop(function () {
+            $loading.hide();
+        });
+
+
+        $(document).ready(function () {
+            //for the line under each nav item
+            $(".personal_information").on('click', function () {
+                $(this).addClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+                $(".users").removeClass('active');
+                $(".pharmacist").removeClass('active');
+                $(".pharmacist_request").removeClass('active');
+            });
+            $(".active_name_drugs").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+                $(".users").removeClass('active');
+                $(".pharmacist").removeClass('active');
+                $(".pharmacist_request").removeClass('active');
+            });
+            $(".trade_name_drugs").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+                $(".users").removeClass('active');
+                $(".pharmacist").removeClass('active');
+                $(".pharmacist_request").removeClass('active');
+            });
+
+            $(".users").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".pharmacist").removeClass('active');
+                $(".pharmacist_request").removeClass('active');
+            });
+
+            $(".Drug_Interactions").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".users").removeClass('active');
+                $(".pharmacist").removeClass('active');
+                $(".pharmacist_request").removeClass('active');
+            });
+
+            $(".pharmacist").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".users").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+                $(".pharmacist_request").removeClass('active');
+            });
+
+            $(".pharmacist_request").on('click', function () {
+                $(this).addClass('active');
+                $(".personal_information").removeClass('active');
+                $(".active_name_drugs").removeClass('active');
+                $(".trade_name_drugs").removeClass('active');
+                $(".users").removeClass('active');
+                $(".Drug_Interactions").removeClass('active');
+                $(".pharmacist").removeClass('active');
+            });
+
+
+
+            //keep the page where is it on refrech
+            $(".personal_information").click(function () {
+                sessionStorage.setItem('page', 'personal_information');
+            });
+            $(".active_name_drugs").click(function () {
+                sessionStorage.setItem('page', 'active_name_drugs');
+            });
+            $(".trade_name_drugs").click(function () {
+                sessionStorage.setItem('page', 'trade_name_drugs');
+            });
+            $(".Drug_Interactions").click(function () {
+                sessionStorage.setItem('page', 'Drug_Interactions');
+            });
+            $(".users").click(function () {
+                sessionStorage.setItem('page', 'users');
+            });
+            $(".pharmacist").click(function () {
+                sessionStorage.setItem('page', 'pharmacist');
+            });
+            $(".pharmacist_request").click(function () {
+                sessionStorage.setItem('page', 'pharmacist_request');
+            });
+            window.onload = function () {
+                setTimeout(function () { $('.alert1').fadeOut() }, 5000);
+                if (sessionStorage.getItem('page') == 'active_name_drugs') {
+                    $('.active_name_drugs')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'trade_name_drugs') {
+                    $('.trade_name_drugs')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'Drug_Interactions') {
+                    $('.Drug_Interactions')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'users') {
+                    $('.users')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'pharmacist') {
+                    $('.pharmacist')[0].click();
+                }
+                else if (sessionStorage.getItem('page') == 'pharmacist_request') {
+                    $('.pharmacist_request')[0].click();
+                }
+                else {
+                    $('.personal_information')[0].click();
+                }
+            };
+
+
+        });
+    </script>
+}

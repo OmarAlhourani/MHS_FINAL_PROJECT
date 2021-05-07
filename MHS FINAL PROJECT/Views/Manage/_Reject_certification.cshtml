@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "_delete_certification";
+}
+<style>
+    .message_deletecertification {
+        width: 366px;
+        height: 78px;
+        ont-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        color: #000000;
+        padding-top: 30px;
+        padding-left: 0px
+    }
+
+    .modal_line_change {
+        margin-top: 63px !important;
+    }
+</style>
+<div class="modal fade" id="RejectCertification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            @Html.Hidden("CertificationId")
+            <div class="modal-body">
+                <p class="message_delete message_Reject_certification">are you sure you want to delete</p>
+            </div>
+            <div class="modal_line modal_line_change"></div>
+            <div class="modal-footer">
+                <button type="submit" class="Btn_Reject_certification btn_save">yes</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    //delete the health case with it is drugs
+    $(".Btn_Reject_certification").click(function () {
+        var Userid = $(".Btn_Reject_certification").val();
+        $.ajax({
+            url: "/Manage/RejectCertification",
+            type: "POST",
+            data: { "userId": Userid}
+        }).done(function (data) {
+            if (data.Url != null) {
+                window.location = data.Url;
+            }
+            else {
+                if (data == -1) {
+                    $(".message").append($("<div class='alert alert-success alert1 delet_success' role='alert'>Certification has been Rejected !</div >"));
+                    $('#pharmacist_request').DataTable().ajax.reload();
+                    $('#RejectCertification').modal("hide");
+                    setTimeout(function () { $('.alert1').fadeOut() }, 5000);
+                }
+            }
+        });
+    })
+</script>
+

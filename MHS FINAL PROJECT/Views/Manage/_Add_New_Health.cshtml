@@ -1,0 +1,342 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model  ManageAccountViewModel
+<style>
+    /*.modal.in .modal-dialog {
+        -webkit-transform: translate(0, 150px);
+        transform: translate(0, 150px);
+    }
+*/
+    .flex {
+        width: 100%;
+    }
+
+    .move2 {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sides2 {
+        width: 38%;
+        padding: 0;
+    }
+
+        .sides2 label {
+            padding: 0;
+        }
+
+    .age {
+        width: 95% !important;
+        max-width: 95% !important;
+        height: 38px;
+        padding-left: 10px;
+        background-color: #F4F8F7;
+        border: 0.3px solid #2F855A;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: capitalize;
+        color: #5DA77F;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 4px;
+    }
+
+    .flex_health {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start
+    }
+
+    .number {
+        width: 20%;
+        max-width: 95%;
+        height: 28px;
+        padding-left: 10px;
+        background-color: #F4F8F7;
+        border: 0.3px solid #2F855A;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: capitalize;
+        color: #5DA77F;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 4px;
+    }
+
+    .move2 {
+        display: flex;
+        justify-content: center;
+        width: 95%;
+    }
+
+    .alighn_number {
+        width: 50%;
+        padding-left: 45px;
+    }
+
+    .sides label {
+        width: 65px;
+        padding: 0;
+        display: inline-block;
+    }
+
+    .health_drug_add_name {
+    }
+</style>
+<div class="modal fade" id="Add_New_Health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal change_titel" id="exampleModalLongTitle">Add new healthe case</h5>
+                <div class="modal_line"></div>
+            </div>
+            <div class="modal-body">
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.health_condation.health_condition_name, new { @class = "sub-title alighn " })
+                    @Html.TextBoxFor(m => m.health_condation.health_condition_name, new { @class = "health_condition_name" })
+                    <span class='field-validation-valid text-danger health_condition_name_span'></span>
+                </div>
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.health_condation.description, new { @class = "sub-title alighn" })
+                    @Html.TextAreaFor(m => m.health_condation.description, new { @class = "description" })
+                    <span class='field-validation-valid text-danger description_span'></span>
+
+                </div>
+
+                <div class="inpu_modal flex_health">
+                    @Html.Label("Number of drugs", new { @class = "sub-title alighn_number" })
+                    @Html.DropDownList("Number of drugs", new SelectList(ViewBag.Provinces, "Value", "Text", "1"), new { @class = "number" })
+                </div>
+                <div class="inpu_modal add">
+                    <div class="move2">
+                        <img src="~/img/Manage/x.svg" />
+                        <div class="sides2">
+                            @Html.LabelFor(m => m.health_drugs.name, new { @class = "sub-title alighn" })
+                            @Html.TextBoxFor(m => m.health_drugs.name, new { @class = "health_drug_add_name age name" })
+                        </div>
+                        <img src="~/img/Manage/Arrow.svg" alt="Arrow" />
+                        <div class="sides2" style="margin-left:10px;">
+                            @Html.LabelFor(m => m.health_drugs.dosage, new { @class = "sub-title alighn" })
+                            @Html.TextBoxFor(m => m.health_drugs.dosage, new { @class = "health_drug_add_dosage age dosage" })
+                        </div>
+                    </div>
+                </div>
+                <div class="inpu_modal">
+                    <span class='field-validation-valid text-danger name_dosege_span'></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn_save btn_save_ajax">Save</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //add textbox when change the number of drugs for the health case
+    $(".number").change(function () {
+        var x = document.querySelectorAll('.name').length;
+        var str = "";
+        var count = 0;
+        $(".number option:selected").each(function () {
+            str += $(this).text() + " " - x;
+            if (str < 0) {
+                while (count > str) {
+                    $('.add').children().last().remove()
+                    count--;
+                }
+            }
+            while (count < str) {
+                $(".add").append($("<div class='move2'><div class='sides2'><label class='sub-title alighn' for='health_drugs_name'>Name</label>" +
+                    "<input class='health_drug_add_name age name' data-val='true' data-val-required='This field must be filled' id='health_drugs_name' name='health_drugs.name' type='text' value=''>" +
+                    "</div><img src='/img/Manage/Arrow.svg' alt='Arrow'>" +
+                    "<div class='sides2' style='margin-left:10px;'><label class='sub-title alighn' for='health_drugs_dosage'>Dosage</label>" +
+                    "<input class='health_drug_add_dosage age dosage' data-val='true' data-val-required='This field must be filled' id='health_drugs_dosage' name='health_drugs.dosage' type='text' value=''>" +
+                    "</div></div>"));
+                count++;
+            }
+        });
+    }).change();
+
+    //check for validathin and save if all true
+    $(".btn_save_ajax").click(function () {
+        //take the id of the health case from the save btn
+        var fired_button = $(".btn_save_ajax").val();
+        //check if it is edit or add by checking the value of fired_button
+        if (fired_button != undefined) {
+            var id = fired_button;
+        }
+        else {
+            var id = 0;
+        }
+        //get tha data into var to send bu ajax
+        var titel = document.querySelector('.health_condition_name').value;
+        var Desc = document.querySelector('.description').value;
+        //get all name the user enter for drug
+        var name = $('.name');
+        //stor all id of each drug in id_value array from textbox name that contain the drug
+        var id_value = [];
+        for (var i = 0; i < name.length; i++) {
+            //if edit then it have id 
+            if ($(name[i]).attr('name') != "health_drugs.name") {
+                id_value.push($(name[i]).attr('name'));
+            }
+            //if it new give it id 0
+            else {
+                id_value.push("0");
+            }
+            
+        }
+
+        //store the name of each drug in name_values array
+        var name_values = [];
+        for (var i = 0; i < name.length; i++) {
+            name_values.push($(name[i]).val());
+        }
+
+        //store the dosage of each drug in dosage_values array
+        var dosage = $('.dosage');
+        var dosage_values = [];
+        for (var i = 0; i < dosage.length; i++) {
+            dosage_values.push($(dosage[i]).val());
+        }
+        $.ajax({
+            url: "Manage/chaeckAddHealthe",
+            type: "POST",
+            data: {
+                "model.health_condation.id": id,
+                "model.health_drugs.drug_id": id_value,
+                "model.health_condation.health_condition_name": titel,
+                "model.health_condation.description": Desc,
+                "model.health_drugs.name": name_values,
+                "model.health_drugs.dosage": dosage_values
+            },
+        }).done(function (data) {
+            //if ajax return url the no validation sava done
+            if (data.Url != null) {
+                window.location = data.Url;
+            }
+            //if there is no url then there is a validation error should display to the user
+            else {
+                if (data[0].Value != null) {
+                    document.querySelector('.health_condition_name_span').innerHTML = data[0].Value;
+                }
+                else {
+                    document.querySelector('.health_condition_name_span').innerHTML = null;
+                }
+                if (data[1].Value != null) {
+                    document.querySelector('.description_span').innerHTML = data[1].Value;
+                }
+                else {
+                    document.querySelector('.description_span').innerHTML = null;
+                }
+                if (data[2].Value != null) {
+                    document.querySelector('.name_dosege_span').innerHTML = data[2].Value;
+                }
+                else {
+                    document.querySelector('.name_dosege_span').innerHTML = null;
+                }
+
+            }
+        });
+    });
+
+    
+
+    //load the data in modal on edit action  
+    function edit(id_get) {
+        var id = id_get;
+        $.ajax({
+            url: "/Manage/loadHealth",
+            type: "POST",
+            data: {
+                "id_edut": id
+            },
+        }).done(function (data) {
+            var num = data.length;
+            //put the id of the health case it self in the save button value
+            document.querySelector(".btn_save_ajax").value = id;
+            var count = 0;
+            $(".number").val(num);
+            $(".add").empty();
+            //able the select numbers before disabled for different health case reload proplem
+            $(".number option").prop('disabled', false);
+            while (count < num) {
+                //check if the edited health have drug or not to add delete to the row 
+                if (data[count].drug_id == null) {
+                    $(".add").append($("<div class='move2'><div class='sides2'><label class='sub - title alighn' for='health_drugs_name' style='margin: 0px;'>Name</label>" +
+                        "<input class='health_drug_add_name age name' data-val='true' data-val-required='This field must be filled' id='health_drugs_name' name='health_drugs.name' type='text' value=''>" +
+                        "</div><img src='/img/Manage/Arrow.svg' alt='Arrow'>" +
+                        "<div class='sides2' style='margin-left:10px;'><label class='sub-title alighn' for='health_drugs_dosage'>Dosage</label>" +
+                        "<input class='health_drug_add_dosage age dosage' data-val='true' data-val-required='This field must be filled' id='health_drugs_dosage' name='health_drugs.dosage' type='text' value=''>" +
+                        "</div></div>"));
+                }
+                else {
+                    $(".add").append($("<div class='move2'><img onclick='remove_drug(" + data[count].drug_id + "," + id + ")' src='/img/Manage/x.svg' style='margin-top: 18px; cursor:pointer;' /><div class='sides2'><label class='sub - title alighn' for='health_drugs_name' style='margin: 0px;'>Name</label>" +
+                        "<input class='health_drug_add_name age name' data-val='true' data-val-required='This field must be filled' id='health_drugs_name' name='health_drugs.name' type='text' value=''>" +
+                        "</div><img src='/img/Manage/Arrow.svg' alt='Arrow'>" +
+                        "<div class='sides2' style='margin-left:10px;'><label class='sub-title alighn' for='health_drugs_dosage'>Dosage</label>" +
+                        "<input class='health_drug_add_dosage age dosage' data-val='true' data-val-required='This field must be filled' id='health_drugs_dosage' name='health_drugs.dosage' type='text' value=''>" +
+                        "</div></div>"));
+                }
+                document.querySelectorAll('.name')[count].value = data[count].name;
+                //put the id of the drug in the name of the textbox because I can't put it in the value
+                document.querySelectorAll('.name')[count].name = data[count].drug_id;
+                document.querySelectorAll('.dosage')[count].value = data[count].dosage;
+                //disabled the number that the user can select less than the number of the drugs for the health case
+                $(".number option[value='" + count + "']").prop('disabled', true);
+                count++;
+            }
+             //insert data to textbox and textarea
+            document.querySelector('.health_condition_name').value = data[0].health_condition_name;
+            document.querySelector('.description').value = data[0].description;
+            count = 0;
+            //clear all validation and data for reload proplem
+            document.querySelector('.health_condition_name_span').innerHTML = null;
+            document.querySelector('.description_span').innerHTML = null;
+            document.querySelector('.name_dosege_span').innerHTML = null;
+            document.querySelector('.change_titel').innerHTML = "Edit health condition " + data[0].health_condition_name;
+            //open the modal
+            $('#Add_New_Health').modal("show");
+        })
+    }
+
+    //remove drug of health
+    function remove_drug(id , health_id) {
+        $.ajax({
+            url: "/Manage/DeleteHealthDrug",
+            type: "POST",
+            data: { "id": id },
+        }).done(function (data) {
+            if (data == -1) {
+                //call edit to reload modal with the new data
+                edit(health_id);
+                //reload the datatable to fix the nuber of drug for the health case
+                $('#demoGrid').DataTable().ajax.reload();
+                //open the modal
+                $('#Add_New_Health').modal("show");
+            }
+        });
+    }
+
+</script>

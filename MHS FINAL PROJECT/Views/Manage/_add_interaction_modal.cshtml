@@ -1,0 +1,132 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model  Add_ActiveViewModel
+<style>
+    .text-danger {
+        font-weight: 500;
+        font-size: 15px !important;
+        margin-left: 0px !important;
+    }
+    .RadioButtonDegree {
+        width: 80%;
+        display: flex;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-content: flex-end;
+        justify-content: center;
+    }
+    .Degree {
+        padding:0px;
+    }
+    input[type="radio"], input[type="checkbox"] {
+        margin: 4px 0 0;
+        margin-top: 1px \9;
+        line-height: normal;
+        margin-left: 33px;
+    }
+    .RadioButtonDegree:nth-child(2n+1) {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 144.19%;
+        text-indent: 2px;
+        text-transform: capitalize;
+        color: #838383;
+    }
+</style>
+<div class="modal fade" id="Add_InteractionDrug" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal change_titel_Interaction" id="exampleModalLongTitle">Add New Trade</h5>
+                <div class="modal_line"></div>
+            </div>
+            @Html.HiddenFor(m => m.Add_interaction.id, new { @class = "Interaction_id" })
+            <div class="modal-body">
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.Add_interaction.drug_name, new { @class = "sub-title alighn " })
+                    @Html.DropDownListFor(m => m.Add_interaction.drug_name, new SelectList(ViewBag.names, "Value", "Text"), "--Select--", new { @class = "drug", @autocomplete = "off" })
+                    <span class="field-validation-valid text-danger drug_name_span"></span>
+
+                </div>
+
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.Add_interaction.with_name, new { @class = "sub-title alighn" })
+                    @Html.DropDownListFor(m => m.Add_interaction.with_name, new SelectList(ViewBag.names, "Value", "Text"), "--Select--", new { @class = "with", @autocomplete = "off" })
+                    <span class="field-validation-valid text-danger with_name_span"></span>
+                </div>
+
+                <div class="inpu_modal">
+                    <div class="RadioButtonDegree">
+                        @Html.LabelFor(m => m.Add_interaction.Degree, new { @class = "sub-title alighn Degree" }):
+                        @Html.RadioButtonFor(m => m.Add_interaction.Degree, 1, new { @class = "major", id = "major_Radio" })
+                        @Html.Label("major_Radio", "major")
+
+                        @Html.RadioButtonFor(m => m.Add_interaction.Degree, 2, new { @class = "moderate", id = "moderate_Radio" })
+                        @Html.Label("moderate_Radio", "moderate")
+
+                        @Html.RadioButtonFor(m => m.Add_interaction.Degree, 3, new { @class = "minor", id = "minor_Radio" })
+                        @Html.Label("minor_Radio", "minor")
+                    </div>
+                    <span class="field-validation-valid text-danger Degree_span"></span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn_save btn_Valid_Interact">Save</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //check for validaton and redirect if all ok ------------------------------------
+        $('.btn_Valid_Interact').click(function () {
+            var id = $('.Interaction_id').val();
+            var drug_name = $('.drug :selected').text();
+            var drug_id = $('.drug :selected').val();
+            var with_name = $('.with :selected').text();
+            var with_id = $('.with :selected').val();
+            var Degree = $("input[name='Add_interaction.Degree']:checked").val();
+            $.ajax({
+                url: "/Manage/ValidInteractionNew",
+                type: "POST",
+                data: {
+                    "model.Add_interaction.drug_name": drug_name, "model.Add_interaction.drug_id": drug_id,
+                    "model.Add_interaction.with_name": with_name, "model.Add_interaction.with_id": with_id,
+                    "model.Add_interaction.Degree": Degree, "model.Add_interaction.id": id
+                }
+            }).done(function (data) {
+                //all ok---------------------------------------------------------------
+                if (data.Url != null) {
+                    window.location = data.Url;
+                }
+                //if there is no url then there is a validation error should display to the user
+                else {
+                    if (data[0].Value != null) {
+                        document.querySelector('.drug_name_span').innerHTML = data[0].Value;
+                    }
+                    else {
+                        document.querySelector('.drug_name_span').innerHTML = null;
+                    }
+                    if (data[1].Value != null) {
+                        document.querySelector('.with_name_span').innerHTML = data[1].Value;
+                    }
+                    else {
+                        document.querySelector('.with_name_span').innerHTML = null;
+                    }
+                    if (data[2].Value != null) {
+                        document.querySelector('.Degree_span').innerHTML = data[2].Value;
+                    }
+                    else {
+                        document.querySelector('.Degree_span').innerHTML = null;
+                    }
+
+                }
+
+            })
+        })
+    });
+</script>

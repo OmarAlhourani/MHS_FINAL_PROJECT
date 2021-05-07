@@ -1,0 +1,133 @@
+﻿@model  MHS_FINAL_PROJECT.Models.ManageAccountViewModel
+<div class="btn_action">
+    <button class="button EDIT hover_edit" onclick="OpenEdit()">
+        EDIT YOUR INFORMATION
+        <img src="~/img/Manage/edit.svg" />
+    </button>
+    @if (Model.UserInformation.HasPassword)
+    {
+        <button class="button change" onclick="openChange()" >
+            change password
+            <img src="~/img/Manage/edit.svg" />
+        </button>
+    }
+    else
+    {
+        <button class="button change" onclick="openSet()">
+            Set Password
+            <img src="~/img/Manage/edit.svg" />
+        </button>
+    }
+</div>
+<div class="information">
+    <div class="info">
+        <p class="sub-title">Name</p>
+        <p class="data name_edit">@Model.UserInformation.Name</p>
+    </div>
+    <div class="line2"></div>
+    <div class="info">
+        <p class="sub-title">User Name</p>
+        <p class="data Username_edit">@Model.UserInformation.Username</p>
+    </div>
+    <div class="line2"></div>
+    <div class="info">
+        <p class="sub-title">Email</p>
+        <p class="data Email_edit">@Model.UserInformation.Email</p>
+    </div>
+    <div class="line2"></div>
+    <div class="info">
+        <p class="sub-title">Gender</p>
+        <p class="data Gender_edit">@Model.UserInformation.Gender</p>
+    </div>
+    <div class="line2"></div>
+    <div class="info">
+        <p class="sub-title">Age</p>
+        <p class="data age_edit">@Model.UserInformation.age</p>
+    </div>
+</div>
+<script>
+     //for open Edit Information--------------------------------------------------------------------------
+    function OpenEdit() {
+        //Get All Data on Opening-----------------------------------------
+        var name = document.querySelector('.name_edit').innerHTML;
+        var Username = document.querySelector('.Username_edit').innerHTML;
+        var Email = document.querySelector('.Email_edit').innerHTML;
+        var Gender = document.querySelector('.Gender_edit').innerHTML;
+        var age = document.querySelector('.age_edit').innerHTML;
+
+        //name validation and value--------------------------------------------------------
+        var NameValidation = document.querySelector('#UserInformation_Name-error');
+        if (NameValidation != undefined) {
+            document.querySelector('#UserInformation_Name-error').innerHTML = null;
+        }
+        $('#UserInformation_Name').val(name);
+
+        //User Name validation and value--------------------------------------------------------
+        var userNameValidation = document.querySelector('#UserInformation_Username-error');
+        if (userNameValidation != undefined) {
+            document.querySelector('#UserInformation_Username-error').innerHTML = null;
+        }
+        $('#UserInformation_Username').val(Username);
+
+        //Email Name validation and value--------------------------------------------------------
+        var EmailValidation = document.querySelector('#UserInformation_Email-error');
+        if (EmailValidation != undefined) {
+            document.querySelector('#UserInformation_Email-error').innerHTML = null;
+        }
+        $('#UserInformation_Email').val(Email);
+
+
+        //Age Name validation and value--------------------------------------------------------
+        var AgeValidation = document.querySelector('#UserInformation_age-error');
+        if (AgeValidation != undefined) {
+            document.querySelector('#UserInformation_age-error').innerHTML = null;
+        }
+        $('#UserInformation_age').val(age);
+        $('#Edit_information').modal("show");
+    }
+
+
+    //for open change password--------------------------------------------------------------------------
+    function openChange() {
+        //OldPassword Name validation and value--------------------------------------------------------
+        var OldPassworddValidation = document.querySelector('#ChangePassword_OldPassword-error');
+        if (OldPassworddValidation != undefined) {
+            document.querySelector('#ChangePassword_OldPassword-error').innerHTML = null;
+        }
+        $('.OldPassword').val(null);
+
+        //NewPassword Name validation and value--------------------------------------------------------
+        var NewPasswordValidation = document.querySelector('#ChangePassword_NewPassword-error');
+        if (NewPasswordValidation != undefined) {
+            document.querySelector('#ChangePassword_NewPassword-error').innerHTML = null;
+        }
+        $('.NewPassword').val(null);
+
+        //ConfirmPassword Name validation and value--------------------------------------------------------
+        var ConfirmPasswordValidation = document.querySelector('#ChangePassword_ConfirmPassword-error');
+        if (ConfirmPasswordValidation != undefined) {
+            document.querySelector('#ChangePassword_ConfirmPassword-error').innerHTML = null;
+        }
+        $('.ConfirmPassword').val(null);
+        $('#ChangePassworModal').modal("show");
+    }
+
+
+    //for open SetSet password--------------------------------------------------------------------------
+    function openSet() {
+        //NewPassword Name validation and value--------------------------------------------------------
+        var NewPasswordValidation = document.querySelector('#SetPassword_NewPassword-error');
+        if (NewPasswordValidation != undefined) {
+            document.querySelector('#SetPassword_NewPassword-error').innerHTML = null;
+        }
+        $('.NewPassword').val(null);
+
+        //ConfirmPassword Name validation and value--------------------------------------------------------
+        var ConfirmPasswordValidation = document.querySelector('#SetPassword_ConfirmPassword-error');
+        if (ConfirmPasswordValidation != undefined) {
+            document.querySelector('#SetPassword_ConfirmPassword-error').innerHTML = null;
+        }
+        $('.ConfirmPassword').val(null);
+        $('#SetPassworModal').modal("show");
+    }
+</script>

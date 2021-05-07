@@ -1,0 +1,288 @@
+﻿<style>
+    .sorting, .sorting_asc, .sorting_desc {
+        background: none;
+    }
+
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+
+        table.dataTable thead .sorting:after {
+            opacity: 0 !important;
+            content: "";
+        }
+
+        table.dataTable thead .sorting_asc:after {
+            content: "" !important;
+        }
+
+        table.dataTable thead .sorting_desc:after {
+            content: "" !important;
+        }
+    /**************************************************************************************************************/
+    #demoGrid > thead > tr {
+        background-color: #808692;
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 115%;
+        letter-spacing: 0.01em;
+        text-transform: capitalize;
+        color: #FFFFFF;
+        border-radius: 10px;
+    }
+
+        #demoGrid > thead > tr > th {
+            border-bottom: none;
+        }
+
+            #demoGrid > thead > tr > th:nth-child(1) {
+                border-radius: 10px 0 0 0;
+            }
+
+            #demoGrid > thead > tr > th:nth-child(3) {
+                border-radius: 0 10px 0 0;
+            }
+
+    .table-bordered {
+        border: none;
+    }
+
+    .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+        z-index: 3;
+        color: black;
+        cursor: default;
+        background-color: #C6F6D5;
+        border-color: #C6F6D5;
+        margin: 0;
+        display: block;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: none !important;
+        border: none;
+        background-color: none;
+        background: none;
+        cursor: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 1.5em;
+        padding: 0.5em 1em;
+        margin-left: 0px;
+        text-align: center;
+        text-decoration: none !important;
+        cursor: pointer;
+        color: #333 !important;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        padding: 0px;
+        cursor: none;
+    }
+
+    .table_health {
+        width: 60%;
+        margin: 0;
+        margin-top: 40px;
+    }
+
+    tbody {
+        text-align: center
+    }
+
+    thead > tr > th {
+        text-align: center
+    }
+
+    #demoGrid_wrapper {
+        padding: 0px !important;
+    }
+
+    .info_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #C6F6D5;
+        border-radius: 45px;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    .edit_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #EBE66E;
+        border-radius: 45px;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    .delete_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 2px;
+        width: 34px;
+        height: 34px;
+        background: #FD4343;
+        border-radius: 45px;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    .action_btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly
+    }
+
+    table.dataTable.no-footer {
+        -webkit-box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.51);
+        box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.15);
+        border-radius: 10px 10px 0 0;
+        border-bottom: 1px solid #dbdbdb;
+    }
+</style>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+
+<div class="btn_action">
+    <button class="button EDIT hover_edit add_new" data-toggle="modal">
+        Add new healthe case
+        <img src="~/img/Manage/add_health.svg" />
+    </button>
+</div>
+<div class="table_health">
+    <table id="demoGrid" class="table table-striped table-bordered " width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th class="col_name" style="width:170px;">Name</th>
+                <th class="col_num" style="width:154px;">number of drugs</th>
+                <th class="col_action" style="width:100px;">Action</th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+<script>
+    $(document).ready(
+        //load table helthe name and number of drugs
+        function data_table() {
+            $('#demoGrid').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "orderMulti": false,
+                "rowReorder": true,
+                "pageLength": 2,
+
+                "ajax": {
+                    "url": "/Manage/LoadHeath",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "columnDefs":
+                    [{
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [1],
+                        "searchable": true,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [2],
+                        "searchable": false,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [3],
+                        "searchable": false,
+                        "orderable": false
+                    }],
+                "columns": [
+                    { "data": "id", "Name": "ID", "autoWidth": true },
+                    { "data": "health_condition_name", "Name": "Name", "autoWidth": true },
+                    { "data": "number_of_drugs", "Name": "number of drugs", "autoWidth": true },
+                    {
+                        "render": function (data, type, row, meta) {
+                            return '<div class="action_btn"><a class="info_action" data-toggle="tooltip" title="More Information" value="' + row.id + '" style="cursor:pointer"><img src="/img/Manage/table action/More_Info.svg" /> </a>' + ' ' +
+                                '<a class="edit_action Edit" data-toggle="tooltip" title="Edit Health Condition" onclick="edit(' + row.id + ');" value="' + row.id + '" style="cursor:pointer"><img src="/img/Manage/table action/edit_action.svg" /></a>' + ' ' +
+                                '<a class="delete_action" data-toggle="tooltip" title="Delete Health Condition" value="' + row.id + '" style="cursor:pointer" onclick="Delete(' + row.id + ',' + "'" + row.health_condition_name + "'" + ');"><img src="/img/Manage/table action/delete_action.svg" /></a></div>';
+                        }
+                    }
+                ]
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+
+    //clear and open modal for add new drug
+    $(".add_new").click(function () {
+        $(".btn_save_ajax").val(0);
+        document.querySelector('.health_condition_name').value = "";
+        document.querySelector('.description').value = "";
+        $(".number").val(1);
+        $(".number option").prop('disabled', false);
+        $(".add").empty();
+        $(".add").append($("<div class='move2'><div class='sides2'><label class='sub-title alighn' for='health_drugs_name'>Name</label>" +
+            "<input class='health_drug_add_name age name' data-val='true' data-val-required='This field must be filled' id='health_drugs_name' name='health_drugs.name' type='text' value=''>" +
+            "</div><img src='/img/Manage/Arrow.svg' alt='Arrow'>" +
+            "<div class='sides2' style='margin-left:10px;'><label class='sub-title alighn' for='health_drugs_dosage'>Dosage</label>" +
+            "<input class='health_drug_add_dosage age dosage' data-val='true' data-val-required='This field must be filled' id='health_drugs_dosage' name='health_drugs.dosage' type='text' value=''>" +
+            "</div></div>"));
+        document.querySelector('.health_condition_name_span').innerHTML = null;
+        document.querySelector('.description_span').innerHTML = null;
+        document.querySelector('.name_dosege_span').innerHTML = null;
+        document.querySelector('.change_titel').innerHTML = "Add new healthe case";
+        $('#Add_New_Health').modal("show");
+    })
+
+    //load delete alert modal
+    function Delete(id, name) {
+        $('#DeleteHealthCase').modal("show");
+        document.querySelector('.message_delete').innerHTML = "are you sure you want to delete <span style='color:#2F855A'>" + '"' + name + '"' + " </span>health condition";
+        document.querySelector('.btn_Delete').value = id;
+    }
+</script>
+
+
+

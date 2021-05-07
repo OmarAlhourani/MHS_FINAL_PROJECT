@@ -1,0 +1,50 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model  Add_ActiveViewModel
+@{
+    Html.EnableClientValidation(true);
+}
+<style>
+    .text-danger {
+        font-weight: 500;
+        font-size: 15px !important;
+        margin-left: 0px !important;
+    }
+</style>
+<div class="modal fade" id="Add_side_effect" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal change_titel" id="exampleModalLongTitle">Add New Side Effect</h5>
+                <div class="modal_line"></div>
+            </div>
+            @using (Html.BeginForm("Edit_Add_Side_Effect", "Manage", new { drug_id = ViewBag.id }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.HiddenFor(m => m.Add_side_effedcts.id , new { @class = "effect_id" })
+                <div class="modal-body">
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.Add_side_effedcts.name, new { @class = "sub-title alighn " })
+                        @Html.TextBoxFor(m => m.Add_side_effedcts.name, new { @class = "side_name", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Add_side_effedcts.name, "", new { @class = "text-danger span_name" })
+                    </div>
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.Add_side_effedcts.prevalence_effect, new { @class = "sub-title alighn" })
+                        @Html.TextBoxFor(m => m.Add_side_effedcts.prevalence_effect, new { @class = "prevalence_effect", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Add_side_effedcts.prevalence_effect, "", new { @class = "text-danger span_prevalence_effect" })
+
+                    </div>
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.Add_side_effedcts.inform_doctor, new { @class = "sub-title alighn" })
+                        @Html.TextBoxFor(m => m.Add_side_effedcts.inform_doctor, new { @class = "inform_doctor", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Add_side_effedcts.inform_doctor, "", new { @class = "text-danger span_inform_doctor" })
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn_save effect_id">Save</button>
+                    <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

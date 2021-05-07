@@ -1,0 +1,156 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <link href="~/Content/accaount/StyleSheet1.css" rel="stylesheet" />
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <style>
+        .text-danger ul {
+            height: 40px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+            .text-danger ul li {
+                list-style: none;
+                color: #721c24;
+                font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+            }
+    </style>
+</head>
+<body>
+    <div class="container_div">
+        <div class="main">
+            <div class="left_side">
+                <div class="top_left">
+                    <a href="/Home">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="86" height="53" viewBox="0 0 86 53" fill="none">
+                            <rect width="86" height="53" fill="url(#pattern0)" />
+                            <defs>
+                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#image0" transform="translate(0 -0.311321) scale(0.005 0.00811321)" />
+                                </pattern>
+                                <image id="image0" width="200" height="200" xlink:href="data:image/png;base64,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" />
+                            </defs>
+                        </svg>
+                    </a>
+                    <p>
+                        Discover the worlds of drug information.
+                    </p>
+                </div>
+                <svg class="display_none" xmlns="http://www.w3.org/2000/svg" width="217" height="186" viewBox="0 0 217 186" fill="none">
+                    <path d="M0.25 181.39V73.3174H180.755V181.39H0.25Z" fill="white" stroke="black" stroke-width="0.5" />
+                    <path d="M45.2512 73.0674C45.0643 84.5944 40.3765 95.5859 32.1987 103.672C24.0209 111.757 13.0083 116.289 1.53566 116.29C1.02178 116.29 0.510891 116.281 0 116.263V73.0674H45.2512Z" fill="#2F855A" />
+                    <path d="M99.2446 181.64H82.2754C82.9139 179.828 84.0698 178.265 85.5871 177.161C87.1043 176.057 88.9099 175.465 90.76 175.465C92.6101 175.465 94.4157 176.057 95.933 177.161C97.4502 178.265 98.6061 179.828 99.2446 181.64Z" fill="#2F855A" />
+                    <path d="M181.004 125.553V162.087C176.429 161.857 172.115 159.833 168.956 156.432C165.797 153.031 164.035 148.516 164.035 143.82C164.035 139.124 165.797 134.608 168.956 131.207C172.115 127.807 176.429 125.782 181.004 125.553Z" fill="#2F855A" />
+                    <path d="M147.899 112.688H33.6185C30.6708 112.688 28.2812 115.107 28.2812 118.091V118.091C28.2812 121.075 30.6708 123.494 33.6185 123.494H147.899C150.847 123.494 153.236 121.075 153.236 118.091C153.236 115.107 150.847 112.688 147.899 112.688Z" fill="#C6C6C6" />
+                    <path d="M147.899 133.786H33.6185C30.6708 133.786 28.2812 136.09 28.2812 138.932V138.932C28.2812 141.774 30.6708 144.077 33.6185 144.077H147.899C150.847 144.077 153.236 141.774 153.236 138.932C153.236 136.09 150.847 133.786 147.899 133.786Z" fill="#C6C6C6" />
+                    <path d="M147.851 154.883H114.403C111.428 154.883 109.016 157.187 109.016 160.028C109.016 162.87 111.428 165.174 114.403 165.174H147.851C150.826 165.174 153.238 162.87 153.238 160.028C153.238 157.187 150.826 154.883 147.851 154.883Z" fill="#C6C6C6" />
+                    <path d="M209.802 33.4535C209.802 33.4535 214.894 35.3764 215.177 41.6947C215.459 48.0129 213.762 65.5941 213.762 65.5941C213.762 65.5941 219.985 74.3846 215.177 76.857C210.368 79.3293 209.802 66.9676 209.802 66.9676L204.145 40.8705C204.145 40.8705 207.539 33.1788 209.802 33.4535Z" fill="#FBBEBE" />
+                    <path d="M158.783 53.659C158.783 53.659 147.142 61.3645 146.6 55.3102C146.059 49.2559 150.12 25.5889 150.12 25.5889C150.12 25.5889 150.661 15.4066 156.347 17.8834C162.032 20.3602 154.722 28.8913 154.722 28.8913L155.534 48.1551L160.949 47.8799L158.783 53.659Z" fill="#FBBEBE" />
+                    <path d="M177.911 61.003C177.911 61.003 141.616 47.4177 143.541 63.221C145.465 79.0242 154.814 98.9862 154.814 98.9862L158.114 104.254H164.988L160.589 75.6972C160.589 75.6972 176.261 84.5692 180.936 83.1829C180.936 83.1829 186.985 123.939 189.185 126.988C191.385 130.038 195.234 166.912 195.234 166.912L198.809 171.348H205.683V108.967C205.683 108.967 217.506 70.1522 208.432 68.2114C199.358 66.2707 177.911 61.003 177.911 61.003Z" fill="#2F2E41" />
+                    <path d="M157.301 100.629C157.301 100.629 155.649 97.6625 152.895 100.629C150.142 103.595 143.533 107.101 143.533 107.101C143.533 107.101 129.214 110.337 140.779 113.034C152.344 115.731 153.721 113.034 153.721 113.034C153.721 113.034 155.649 113.574 157.301 114.113C158.953 114.652 169.692 112.765 169.692 111.146C169.692 109.528 166.046 99.8583 164.565 101.322C163.083 102.786 157.301 100.629 157.301 100.629Z" fill="#2F2E41" />
+                    <path d="M199.432 168.272C199.432 168.272 195.349 164.898 194.388 165.862C193.428 166.826 188.384 173.333 188.384 173.333C188.384 173.333 174.933 183.696 187.183 185.383C199.432 187.07 198.712 182.491 198.712 182.491H202.555C203.035 182.491 209.52 179.599 209.28 178.394C209.04 177.189 206.158 167.363 205.197 168.058C204.236 168.754 199.432 168.272 199.432 168.272Z" fill="#2F2E41" />
+                    <path d="M162.494 22.6413C167.606 22.6413 171.75 18.3793 171.75 13.1219C171.75 7.8645 167.606 3.60254 162.494 3.60254C157.382 3.60254 153.238 7.8645 153.238 13.1219C153.238 18.3793 157.382 22.6413 162.494 22.6413Z" fill="#FBBEBE" />
+                    <path d="M169.285 12.3496C169.285 12.3496 176.421 18.459 181.361 18.459C186.301 18.459 174.225 29.8447 174.225 29.8447L163.521 20.1252L169.285 12.3496Z" fill="#FBBEBE" />
+                    <path d="M172.034 29.6097L171.818 27.4231C171.818 27.4231 177.304 17.6751 178.968 16.8425C180.632 16.0098 181.742 16.0098 181.742 16.0098C181.742 16.0098 187.289 10.1813 193.391 13.2343C199.493 16.2874 213.915 35.7158 213.915 35.7158C213.915 35.7158 203.653 36.5484 205.04 44.5973C205.04 44.5973 215.302 70.9645 212.528 71.242C209.755 71.5196 201.434 69.5767 192.836 73.4624C184.238 77.3481 180.355 74.8501 180.355 74.8501L175.917 60.4176C175.917 60.4176 167.596 55.6993 167.874 51.5361L155.809 56.9482L156.918 46.6789L164.268 38.2137C164.268 38.2137 162.881 37.1035 172.034 29.6097Z" fill="#2F855A" />
+                    <path d="M153.843 14.188C153.468 14.6009 152.999 14.9181 152.474 15.1125C151.938 15.2627 151.261 15.0786 151.047 14.5676L151.446 14.0531L150.251 13.3167L150.772 12.7108L149.81 11.6743L150.569 11.0766L149.123 10.0507C150.997 7.01714 153.024 3.94558 155.983 1.9346C158.942 -0.076373 163.076 -0.790942 166.107 1.11117C167.681 2.09872 168.794 3.66612 169.685 5.28796C171.478 8.54964 173.058 11.729 173.291 15.4368C172.165 14.349 170.521 13.736 169.395 12.6482C168.896 12.1233 168.331 11.6646 167.714 11.2833C166.536 10.6245 165.127 10.5662 163.809 10.269C162.7 10.0191 161.98 9.52333 161.142 8.81462C160.144 7.97154 160.103 8.29753 159.095 9.24674C157.346 10.895 155.595 12.5421 153.843 14.188Z" fill="#2F2E41" />
+                </svg>
+            </div>
+            <div class="right_side">
+                <div class="top_right">
+                    @if (ViewBag.Pharmacist != null)
+                        {
+                   <style>
+                        .alert-danger {
+                            color: #a94442;
+                            background-color: #f2dede;
+                            border-color: #ebccd1;
+                        }
+
+                        .alert {
+                            padding: 15px;
+                            margin-bottom: 20px;
+                            border: 1px solid transparent;
+                            border-radius: 4px;
+                        }
+                    </style>
+                    <div class="alert alert-danger" role="alert" style="width:80%">
+                        @ViewBag.Pharmacist
+                    </div>
+                    }
+                    <p>Sign in to mHS</p>
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </div>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="mid_right">
+                        <p class="head-titel">or use your email account</p>
+                        <div class="input-box">
+                            <div class="input-text">
+                                <span class="iconify" data-inline="false" data-icon="carbon:user-profile" style="font-size: 22px;"></span>
+                                @Html.TextBoxFor(m => m.Username, new { placeholder = "User Name", @class = "" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "" })
+                        </div>
+                        <div class="input-box">
+                            <div class="input-text">
+                                <span class="iconify" data-inline="false" data-icon="teenyicons:password-outline" style="font-size: 22px;"></span>
+                                @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "" })
+                            <p class="Forget-password">Forget your<a class="h_ref" href="/Account/ForgotPassword">password ?</a></p>
+                        </div>
+                    </div>
+                    <div class="buttom_right">
+                        <input type="submit" value="SIGN IN" class="btn-login" />
+                        <div class="line">
+                        </div>
+                        <p class="create-account">YOU DONT HAVE <a class="h_ref" href="~/Account/Register">ACCOUNT ?</a></p>
+                    </div>
+                }
+            </div>
+
+            <div class="top_circle"></div>
+            <div class="Bottom_triangle"></div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () { $('.alert').fadeOut() }, 5000);
+        })
+    </script>
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+}

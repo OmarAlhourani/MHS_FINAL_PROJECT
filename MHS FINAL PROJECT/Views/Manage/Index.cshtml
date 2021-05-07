@@ -1,0 +1,83 @@
+﻿@model  MHS_FINAL_PROJECT.Models.ManageAccountViewModel
+@{
+    var IsUser = User.IsInRole("Normal_User");
+    var IsAdmin = User.IsInRole("Admins");
+    var IsPharmacists = User.IsInRole("pharmacists");
+}
+@{
+    ViewBag.Title = "Manage";
+}
+<link href="~/Content/Manage/Manage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@if (ViewBag.message != null)
+{
+    <p>@ViewBag.message </p>
+}
+<main>
+
+    <div class="navigator">
+        @Html.Partial("_navigator")
+    </div>
+    <din class="nav_type">
+        @Html.Partial("_nav_options")
+    </din>
+    <div id="content">
+
+    </div>
+</main>
+@if (IsUser)
+{
+    @Html.Partial("_change_password")
+    @Html.Partial("_Set_Password")
+    @Html.Partial("_Edit_information")
+    @Html.Partial("_Add_New_Health")
+    @Html.Partial("_delete_alert")
+}
+else if (IsPharmacists)
+{
+    @Html.Partial("_change_password")
+    @Html.Partial("_Edit_information")
+    @Html.Partial("_Edit_certification")
+    @Html.Partial("_delete_active")
+}
+else if (IsAdmin)
+{
+    @Html.Partial("_change_password")
+    @Html.Partial("_Edit_information")
+    @Html.Partial("_Edit_certification")
+    @Html.Partial("_delete_active")
+    @Html.Partial("_add_New_User")
+    @Html.Partial("_Set_Password")
+    @Html.Partial("_delete_user_alert")
+    @Html.Partial("_user_more_info")
+    @Html.Partial("_add_new_certification")
+    @Html.Partial("_delete_certification")
+    @Html.Partial("_accept_certification")
+    @Html.Partial("_Reject_certification")
+    
+
+}
+
+
+
+<script>
+
+
+
+
+    $(document).ready(function () {
+        if("@ViewBag.StatusMessage" == "The Old Password is not correct" || "@ViewBag.StatusMessage" == "The New Password is Same as Old Password") {
+            $('#ChangePassworModal').modal("show");
+        }
+        if ("@ViewBag.StatusMessage" == "Something Went Wrong while setting the password" || "@ViewBag.StatusMessage" == "Passwords must have at least one uppercase (A-Z).") {
+            $('#SetPassworModal').modal("show");
+        }
+        if ("@ViewBag.StatusMessage" == "The Email Is Exist" || "@ViewBag.StatusMessage" == "The User Name Is Exist" || "@ViewBag.StatusMessage" == "Something Went Wrong while editing information") {
+            $('#Edit_information').modal("show");
+        }
+    })
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

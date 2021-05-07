@@ -1,0 +1,231 @@
+﻿@model  MHS_FINAL_PROJECT.Models.ManageAccountViewModel
+@{
+    Html.EnableClientValidation(false);
+}
+<style>
+    /*.modal.in .modal-dialog {
+        -webkit-transform: translate(0, 150px);
+        transform: translate(0, 150px);
+    }*/
+
+    .flex {
+        width: 100%;
+    }
+
+    .move {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sides {
+        width: 40%;
+        padding: 0;
+    }
+
+        .sides label {
+            padding: 0;
+        }
+
+    .age {
+        width: 95% !important;
+        max-width: 95% !important;
+        height: 38px;
+        padding-left: 10px;
+        background-color: #F4F8F7;
+        border: 0.3px solid #2F855A;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: capitalize;
+        color: #5DA77F;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 4px;
+    }
+
+    .img_upload {
+        display: flex;
+        flex-direction: column
+    }
+
+        .img_upload img {
+            width: 32%;
+            border: 0.5px solid #2F855A;
+            box-sizing: border-box;
+            border-radius: 3px;
+            margin: 5px 0px;
+        }
+
+        .img_upload label {
+            width: 136px;
+            height: 25px;
+            background: linear-gradient(90deg, #60C789 1.98%, #348B5E 81.58%);
+            border-radius: 45px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 18px;
+            /* identical to box height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: capitalize;
+            color: #F0FFF4;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+            .img_upload label:hover {
+                background-color: #2F855A;
+                box-shadow: 0px 8px 15px rgb(0, 0, 0, 0.10);
+                font-size: 13px;
+                transform: translateY(-4px);
+            }
+
+    .file_btn {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    select {
+        width: 80%;
+        max-width: 80%;
+    }
+
+    .img_upload {
+        padding-left: 48px;
+    }
+</style>
+
+<div class="modal fade" id="Edit_certification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" enctype='multipart/form-data'>
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal" id="exampleModalLongTitle">Edit your Certification</h5>
+                <div class="modal_line"></div>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.pharmacist_info.University_Name, new { @class = "sub-title alighn " })
+                    @Html.TextBoxFor(m => m.pharmacist_info.University_Name, new { @class = "University_Name" })
+                    <span id="University_Name_error" class="text-danger"></span>
+                </div>
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.pharmacist_info.Degree, new { @class = "sub-title alighn" })
+                    @Html.DropDownList("degree", new SelectList(ViewBag.degree, "Value", "Text"), new { @class = "Degree" })
+                    <span id="Degree_error" class="text-danger"></span>
+                </div>
+                <div class="input-box">
+                    <div class="input-text">
+                        <label style="padding-left:48px; margin-top:20px;">Copy of the Certification</label>
+                    </div>
+                    <div class="img_upload">
+                        <img id="output" class="img" src="" />
+                        @Html.TextBoxFor(m => m.pharmacist_info.certification_img, new { type = "file", name = "file", id = "file", @class = "file_btn", accept = "image/gif, image/jpeg, image/png", onchange = "loadFile(event)" })
+                        <label for="file">UPLOAD</label>
+                        <span id="certification_img_error" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn_save btn_certification">Save</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $(".btn_certification").click(function () {
+            var name = $('.University_Name').val();
+            if ($(".Degree").children("option:selected").val() == null || $(".Degree").children("option:selected").val() == "") {
+                var degree = $(".Degree").val();
+            }
+            else {
+                var degree = $(".Degree").children("option:selected").val();
+            }
+            if ($(".file_btn").val() == null || $(".file_btn").val() == "") {
+                var img = $('.img').attr('src');
+            }
+            else {
+                var img = $(".file_btn").val();
+            }
+
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $(".file_btn").get(0);
+                var files = fileUpload.files;
+
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+
+                fileData.append("model.pharmacist_info.Certification_url", files[0]);
+                fileData.append("model.pharmacist_info.certification_img", img);
+                fileData.append("model.pharmacist_info.University_Name", name);
+                fileData.append("model.pharmacist_info.Degree", degree);
+
+            }
+
+            $.ajax({
+                url: "/Manage/Edit_certification_valudation",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: fileData
+            }).done(function (data) {
+                if (data.Url != null) {
+                    window.location = data.Url;
+                }
+                //if there is no url then there is a validation error should display to the user
+                else {
+                    if (data[0].Value != null) {
+                        document.querySelector('#University_Name_error').innerHTML = data[0].Value;
+                    }
+                    else {
+                        document.querySelector('#University_Name_error').innerHTML = null;
+                    }
+                    if (data[1].Value != null) {
+                        document.querySelector('#Degree_error').innerHTML = data[1].Value;
+                    }
+                    else {
+                        document.querySelector('#Degree_error').innerHTML = null;
+                    }
+                    if (data[2].Value != null) {
+                        document.querySelector('#certification_img_error').innerHTML = data[2].Value;
+                    }
+                    else {
+                        document.querySelector('#certification_img_error').innerHTML = null;
+                    }
+                }
+            })
+        });
+
+    });
+
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

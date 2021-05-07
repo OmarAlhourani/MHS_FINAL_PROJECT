@@ -1,0 +1,78 @@
+﻿@*@model MHS_FINAL_PROJECT.Models.drug_serach_result_finsh*@
+<style>
+    .pre {
+        display: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+        line-height: 0;
+        color: none;
+        word-break: unset;
+        word-wrap: unset;
+        background-color: white;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .pre {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        color: #888888;
+        margin: 0;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .nav_line {
+        width: 100%;
+        height: 1px;
+        background-color: #888888;
+    }
+
+    .nav_sub {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+@*@if (Model == null)
+    {*@
+@*<pre>@Request.RawUrl.Split('/')[1]   >   @Request.RawUrl.Split('/')[2].Split('_')[0] @Request.RawUrl.Split('/')[2].Split('_')[1]</pre>
+    <div class="nav_line"></div>*@
+@*}
+    else if (Model.drug.Count() == 0)
+        {
+        <pre>@Request.RawUrl.Split('/')[1]   >   @Request.RawUrl.Split('/')[2].Split('_')[0] @Request.RawUrl.Split('/')[2].Split('_')[1].Split('?')[0]   >   @ViewBag.serchFor</pre>
+            <div class="nav_line"></div>*@
+@*}
+    else if (Model != null)
+    {
+        foreach (var item in Model.drug)
+        {
+
+    <pre>@Request.RawUrl.Split('/')[1]   >   @Request.RawUrl.Split('/')[2].Split('_')[0] @Request.RawUrl.Split('/')[2].Split('_')[1].Split('?')[0]    >   @Html.DisplayFor(modelItem => item.name)</pre>
+        }
+        <div class="nav_line"></div>
+    }*@
+<div class="nav_sub">
+    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "pre" })
+    @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+    {
+        @:> @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString(), new { @class = "pre" })
+
+
+
+
+    }
+    @if (ViewContext.RouteData.Values["action"].ToString() != "Index")
+    {
+        @:> @Html.ActionLink(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { @class = "pre" })
+    }
+</div>
+<div class="nav_line"></div>

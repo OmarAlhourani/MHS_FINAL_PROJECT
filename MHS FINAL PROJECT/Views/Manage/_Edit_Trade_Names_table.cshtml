@@ -1,0 +1,133 @@
+﻿<div class="titel_2">
+    <label class="titel_text">trade names</label>
+    <a class="button hover_edit add_effect trade" onclick="Edit_trade(0);">
+        Add new Trade Name
+        <img src="~/img/Manage/add_health.svg" />
+    </a>
+</div>
+<din class="nav_type">
+    <div class="message_alert2">
+
+    </div>
+</din>
+<div class="table_health">
+    <table id="Trade_Names" class="table table-striped table-bordered" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th class="col_name" style="width:170px;">Name</th>
+                <th class="col_name" style="width:170px;">Manufacturer company</th>
+                <th class="col_name" style="width:170px;">Action</th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+@Html.Partial("_Add_Trade_Name")
+@Html.Partial("_delete_trade")
+
+<script>
+            $(document).ready(
+                //load table Trade Names
+                function data_table() {
+                    $('#Trade_Names').dataTable({
+                        "processing": true,
+                        "serverSide": true,
+                        "filter": true,
+                        "orderMulti": false,
+                        "rowReorder": true,
+                        "pageLength": 3,
+
+
+                        "ajax": {
+                            "url": "/Manage/LoadTradeNames",
+                            "data": {"id" : "@ViewBag.id"},
+                            "type": "POST",
+                            "datatype": "json"
+                        },
+
+                        "columnDefs":
+                            [{
+                                "targets": [0],
+                                "visible": false,
+                                "searchable": false
+                            },
+                            {
+                                "targets": [1],
+                                "searchable": true,
+                                "orderable": false
+                            },
+                            {
+                                "targets": [2],
+                                "searchable": true,
+                                "orderable": false
+                            },
+                            {
+                                "targets": [3],
+                                "searchable": true,
+                                "orderable": false
+                            }
+                            ],
+                        "columns": [
+                            { "data": "id", "Name": "ID", "autoWidth": true },
+                            { "data": "trade_name", "Name": "Name", "autoWidth": true },
+                            { "data": "Manufacturer_company", "Name": "Manufacturer Company", "autoWidth": true },
+                            {
+                                "render": function (data, type, row, meta) {
+                                    return '<div class="action_btn">'+
+                                        '<a class="edit_action Edit" data-toggle="tooltip" title="Edit Trade Drug" value="' + row.id + '" style="cursor:pointer" onclick="Edit_trade(' + row.id +')"> <img src="/img/Manage/table action/edit_action.svg" /></a>' + ' ' +
+                                        '<a class="delete_action" data-toggle="tooltip" title="Delete Trade Drug" value="' + row.id + '" style="cursor:pointer" onclick="Delete_trade(' + row.id + ',' + "'" + row.trade_name + "'" + ');"> <img src="/img/Manage/table action/delete_action.svg" /></a></div>';
+                                }
+                            }
+                        ]
+                    });
+
+                    $('div.dataTables_filter input').addClass('form-control form-control-sm');
+                    $('div.dataTables_wrapper div.dataTables_length select').addClass('form-control form-control-sm');
+
+                });
+
+
+    function Edit_trade(id) {
+        if (id == 0) {
+            document.querySelector('.change_titel_trade').innerHTML = 'Add New Trade Name';
+            document.querySelector('.span_trade_name').innerHTML = null;
+            document.querySelector('.span_Manufacturer_company').innerHTML = null;
+            $('.trade_name').val(null);
+            $('.Manufacturer_company').val(null);
+            $('#Add_Trade_Name').modal("show");
+        }
+        else {
+
+            $.ajax({
+                url: "/Manage/GetTradeName",
+                type: "POST",
+                data: { "id": id }
+            }).done(function (data) {
+                if (data.Url != null) {
+                    window.location = data.Url;
+                }
+                else {
+                    //clear all
+                    document.querySelector('.span_trade_name').innerHTML = null;
+                    document.querySelector('.span_Manufacturer_company').innerHTML = null;
+                    document.querySelector('.change_titel_trade').innerHTML = "Edit Trade Name " + '<span style="color:#348B5E">"' + data.trade_name + '"</span>';
+                    $('.trade_id').val(data.id);
+                    $('.trade_name').val(data.trade_name);
+                    $('.Manufacturer_company').val(data.Manufacturer_company);
+                    $('#Add_Trade_Name').modal("show");
+                }
+                
+            })
+            
+        }
+    }
+
+    function Delete_trade(id, name) {
+        document.querySelector('.message_delete_trade').innerHTML = "are you sure you want to delete Trade Name " + '<span style="color:#348B5E">"' + name + '"</span>';
+        document.querySelector('.btn_Delete_Trade').value = id;
+        $('#DeleteTradeName').modal("show");
+    }
+
+</script>

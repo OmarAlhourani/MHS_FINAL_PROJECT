@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav_item LOGIN">
+                <a class="hello" href="/Manage">Hello @User.Identity.GetUserName()</a>
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+            </li>
+            <li class="hoverr">
+                <a href="javascript:document.getElementById('logoutForm').submit()"><button class="button">Log off</button></a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+
+    <li class="nav_item LOGIN">
+        <a href="/Account/Login">LOG IN</a>
+    </li>
+    <li class="nav_item">
+        <div class="wrap">
+            <a href="/Account/Register"><button class="button">SIGN UP</button></a>
+        </div>
+    </li>
+}
+<style>
+    .nav > li > a:hover, .nav > li > a:focus {
+        text-decoration: none;
+        background-color: #C6F6D5;
+    }
+
+    @@media (min-width: 768px) {
+        .navbar-nav > li > a {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+    }
+
+    .navbar-right {
+        float: right !important;
+        margin-right: -15px;
+        display: flex;
+        align-items: center;
+    }
+    .navbar-nav > li > a, .LOGIN > a {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+        color: #2F855A;
+    }
+    @@media screen and (max-width: 1172px) {
+        .navbar-nav > li > a, .LOGIN > a {
+            font-size: 18px;
+        }
+    }
+</style>

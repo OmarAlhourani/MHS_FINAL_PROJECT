@@ -1,0 +1,50 @@
+﻿<style>
+    .message_delete {
+        width: 366px;
+        height: 132px;
+        ont-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        color: #000000;
+        padding-top: 30px;
+        padding-left: 60px
+    }
+</style>
+<div class="modal fade" id="DeleteHealthCase" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="message_delete" >are you sure you want to delete</p>
+            </div>
+            <div class="modal_line"></div>
+            <div class="modal-footer">
+                <button type="submit" class="btn_Delete btn_save">yes</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    //delete the health case with it is drugs
+    $(".btn_Delete").click(function () {
+        var id = $(".btn_Delete").val();
+        $.ajax({
+            url: "/Manage/DeleteHealthcondation",
+            type: "POST",
+            data: { "id": id }
+        }).done(function (data) {
+            if (data == -1) {
+                $(".message").append($("<div class='alert alert-success alert1 delet_success' role='alert'>Health Condition has been deleted !</div >"));
+                $('#demoGrid').DataTable().ajax.reload();
+                $('#DeleteHealthCase').modal("hide");
+                setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+            }
+        });
+    })
+</script>

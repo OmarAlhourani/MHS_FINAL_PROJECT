@@ -1,0 +1,57 @@
+﻿<style>
+    .message_delete {
+        width: 366px;
+        height: 132px;
+        ont-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        color: #000000;
+        padding-top: 30px;
+        padding-left: 60px
+    }
+</style>
+<div class="modal fade" id="DeleteTradeName" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="message_delete message_delete_trade">are you sure you want to delete</p>
+            </div>
+            <div class="modal_line"></div>
+            <div class="modal-footer">
+                <button type="submit" class="btn_Delete_Trade btn_save">yes</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    //delete the health case with it is drugs
+    $(".btn_Delete_Trade").click(function () {
+        var id = $(".btn_Delete_Trade").val();
+        $.ajax({
+            url: "/Manage/DeleteTradeName",
+            type: "POST",
+            data: { "id": id }
+        }).done(function (data) {
+            if (data.Url != null) {
+                window.location = data.Url;
+            }
+            else {
+                if (data == -1) {
+                    $(".message_alert2").append($("<div class='alert alert-success alert1 delet_success' role='alert'>Trade Name has been deleted !</div >"));
+                    $(".message").append($("<div class='alert alert-success alert1 delet_success' role='alert'>Trade Name has been deleted !</div >"));
+                    $('#Trade_Names').DataTable().ajax.reload();
+                    $('#DeleteTradeName').modal("hide");
+                    setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+                }
+            }
+            
+        });
+    })
+</script>

@@ -1,0 +1,121 @@
+﻿@model  MHS_FINAL_PROJECT.Models.ManageAccountViewModel
+@{
+    string gender = Model.UserInformation.Gender;
+}
+<style>
+    .flex {
+        width: 100%;
+    }
+
+    .move {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sides {
+        width: 40%;
+        padding: 0;
+    }
+
+        .sides label {
+            padding: 0;
+        }
+
+    .age {
+        width: 95% !important;
+        max-width: 95% !important;
+        height: 38px;
+        padding-left: 10px;
+        background-color: #F4F8F7;
+        border: 0.3px solid #2F855A;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: capitalize;
+        color: #5DA77F;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 4px;
+    }
+    /*# sourceMappingURL=style2.css.map */
+
+</style>
+<div class="modal fade" id="Edit_information" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal" id="exampleModalLongTitle">Edit your information</h5>
+                <div class="modal_line"></div>
+            </div>
+            @if (ViewBag.StatusMessage == "The Email Is Exist" || ViewBag.StatusMessage == "The User Name Is Exist")
+            {
+                <div class="alert alert-warning" role="alert">
+                    @ViewBag.StatusMessage
+                </div>
+            }
+            @if (ViewBag.StatusMessage == "Something Went Wrong while editing information")
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.StatusMessage
+                </div>
+            }
+            @using (Html.BeginForm("EditInformation", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.UserInformation.Name, new { @class = "sub-title alighn " })
+                        @Html.TextBoxFor(m => m.UserInformation.Name, new { @class = "Name" })
+                        @Html.ValidationMessageFor(m => m.UserInformation.Name, "", new { @class = "text-danger" })
+
+
+                    </div>
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.UserInformation.Username, new { @class = "sub-title alighn" })
+                        @Html.TextBoxFor(m => m.UserInformation.Username, new { @class = "Username" })
+                        @Html.ValidationMessageFor(m => m.UserInformation.Username, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="inpu_modal">
+                        @Html.LabelFor(m => m.UserInformation.Email, new { @class = "sub-title alighn" })
+                        @Html.TextBoxFor(m => m.UserInformation.Email, new { @class = "Email" })
+                        @Html.ValidationMessageFor(m => m.UserInformation.Email, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="inpu_modal flex">
+                        <div class="move">
+                            <div class="sides">
+                                @Html.LabelFor(m => m.UserInformation.Gender, new { @class = "sub-title alighn" })
+                                @Html.DropDownListFor(m => m.UserInformation.Gender, new SelectList(ViewBag.gender, "Value", "Text" , gender), new { @class = "Gender" })
+                                @Html.ValidationMessageFor(m => m.UserInformation.Gender, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="sides" style="margin-left:10px;">
+                                @Html.LabelFor(m => m.UserInformation.age, new { @class = "sub-title alighn" })
+                                @Html.TextBoxFor(m => m.UserInformation.age, new { @class = "age" })
+                                @Html.ValidationMessageFor(m => m.UserInformation.age, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn_save">Save</button>
+                    <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

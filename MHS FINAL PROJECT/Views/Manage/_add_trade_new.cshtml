@@ -1,0 +1,96 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model  Add_ActiveViewModel
+<style>
+    .text-danger {
+        font-weight: 500;
+        font-size: 15px !important;
+        margin-left: 0px !important;
+    }
+</style>
+
+<div class="modal fade" id="Add_Trade_new" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal change_titel_trade" id="exampleModalLongTitle">Add New Trade</h5>
+                <div class="modal_line"></div>
+            </div>
+            @Html.HiddenFor(m => m.Add_trade_names.id, new { @class = "trade_id" })
+            <div class="modal-body">
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.Add_trade_names.trade_name, new { @class = "sub-title alighn " })
+                    @Html.TextBoxFor(m => m.Add_trade_names.trade_name, new { @class = "trade_name", @autocomplete = "off" })
+                    <span class="field-validation-valid text-danger trade_name_span"></span>
+
+                </div>
+
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.Add_trade_names.Manufacturer_company, new { @class = "sub-title alighn" })
+                    @Html.TextBoxFor(m => m.Add_trade_names.Manufacturer_company, new { @class = "Manufacturer_company", @autocomplete = "off" })
+                    <span class="field-validation-valid text-danger Manufacturer_company_span"></span>
+                </div>
+
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.Add_trade_names.active_name, new { @class = "sub-title alighn" })
+                    @Html.DropDownListFor(m => m.Add_trade_names.active_name, new SelectList(ViewBag.names, "Value", "Text"), "--Select--", new { @class = "active_name", @autocomplete = "off" })
+                    <span class="field-validation-valid text-danger active_name_span"></span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn_save btn_Valid_trade">Save</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //check validation and save if all ok**********************************************************
+        $('.btn_Valid_trade').click(function () {
+            var name = $('.trade_name').val();
+            var id = $('.trade_id').val();
+            var company = $('.Manufacturer_company').val();
+            var active_name = $('.active_name :selected').text();
+            var active_id = $('.active_name :selected').val();
+            $.ajax({
+                url: "/Manage/ValidTradeNew",
+                type: "POST",
+                data: {
+                    "model.Add_trade_names.trade_name": name, "model.Add_trade_names.Manufacturer_company": company,
+                    "model.Add_trade_names.active_name": active_name, "model.Add_trade_names.active_id": active_id,
+                    "model.Add_trade_names.id": id
+                }
+            }).done(function (data) {
+                if (data.Url != null) {
+                    window.location = data.Url;
+                }
+                //if there is no url then there is a validation error should display to the user
+                else {
+                    if (data[0].Value != null) {
+                        document.querySelector('.Manufacturer_company_span').innerHTML = data[0].Value;
+                    }
+                    else {
+                        document.querySelector('.Manufacturer_company_span').innerHTML = null;
+                    }
+                    if (data[1].Value != null) {
+                        document.querySelector('.trade_name_span').innerHTML = data[1].Value;
+                    }
+                    else {
+                        document.querySelector('.trade_name_span').innerHTML = null;
+                    }
+                    if (data[2].Value != null) {
+                        document.querySelector('.active_name_span').innerHTML = data[2].Value;
+                    }
+                    else {
+                        document.querySelector('.active_name_span').innerHTML = null;
+                    }
+
+                }
+
+            })
+
+
+        })
+    });
+</script>

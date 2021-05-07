@@ -1,0 +1,202 @@
+﻿@model  MHS_FINAL_PROJECT.Models.ManageAccountViewModel
+<style>
+   
+    .flex {
+        width: 100%;
+    }
+
+    .move {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sides {
+        width: 40%;
+        padding: 0;
+    }
+
+        .sides label {
+            padding: 0;
+        }
+
+    .age {
+        width: 95% !important;
+        max-width: 95% !important;
+        height: 38px;
+        padding-left: 10px;
+        background-color: #F4F8F7;
+        border: 0.3px solid #2F855A;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: capitalize;
+        color: #5DA77F;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 4px;
+    }
+</style>
+<div class="modal fade" id="Add_New_User" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title main-title-modal change_titer_user" id="exampleModalLongTitle">Add New User</h5>
+                <div class="modal_line"></div>
+            </div>
+            @if (ViewBag.StatusMessage == "The Email Is Exist" || ViewBag.StatusMessage == "The User Name Is Exist")
+            {
+                <div class="alert alert-warning" role="alert">
+                    @ViewBag.StatusMessage
+                </div>
+            }
+            @if (ViewBag.StatusMessage == "Something Went Wrong while editing information")
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.StatusMessage
+                </div>
+            }
+            @Html.HiddenFor(m => m.addnewUser.id , new { @class = "id" })
+            <div class="modal-body">
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.addnewUser.Name, new { @class = "sub-title alighn " })
+                    @Html.TextBoxFor(m => m.addnewUser.Name, new { @class = "Name_new", @autocomplete = "off" })
+                    <span id="addnewUser_Name-error" class="text-danger Name_span"></span>
+                </div>
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.addnewUser.Username, new { @class = "sub-title alighn" })
+                    @Html.TextBoxFor(m => m.addnewUser.Username, new { @class = "Username_new", @autocomplete = "off" })
+                    <span id="addnewUser_Username-error" class="text-danger username_span"></span>
+
+                </div>
+                <div class="inpu_modal">
+                    @Html.LabelFor(m => m.addnewUser.Email, new { @class = "sub-title alighn" })
+                    @Html.TextBoxFor(m => m.addnewUser.Email, new { @class = "Email_new", @autocomplete = "off" })
+                    <span id="addnewUser_Email-error" class="text-danger Email_span"></span>
+                </div>
+                <div class="inpu_modal pass_div">
+                    @Html.LabelFor(m => m.addnewUser.Password, new { @class = "sub-title alighn" })
+                    @Html.PasswordFor(m => m.addnewUser.Password, new { @class = "Password_new", @autocomplete = "off" })
+                    <span id="addnewUser_Password-error" class="text-danger Password_span"></span>
+                </div>
+
+                <div class="inpu_modal flex">
+                    <div class="move">
+                        <div class="sides">
+                            @Html.LabelFor(m => m.addnewUser.gender, new { @class = "sub-title alighn" })
+                            @Html.DropDownListFor(m => m.addnewUser.gender, new SelectList(ViewBag.gender, "Value", "Text"), "--select--", new { @class = "Gender_new", @autocomplete = "off" })
+                            <span id="addnewUser_gender-error" class="text-danger Gender_span"></span>
+                        </div>
+                        <div class="sides" style="margin-left:10px;">
+                            @Html.LabelFor(m => m.addnewUser.Age, new { @class = "sub-title alighn" })
+                            @Html.TextBoxFor(m => m.addnewUser.Age, new { @class = "age_new", @autocomplete = "off" })
+                            <span id="addnewUser_Age-error" class="text-danger Age_span" style="display:flex"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="inpu_modal">
+                    <div class="move" style="justify-content: flex-start; margin-left: 84px;">
+                        <div class="sides">
+                            @Html.LabelFor(m => m.addnewUser.Roles, new { @class = "sub-title alighn" })
+                            @Html.DropDownListFor(m => m.addnewUser.Roles, new SelectList(ViewBag.Roles, "Value", "Text"), "--select--", new { @class = "Roles_new", @autocomplete = "off" })
+                            <span id="addnewUser_Roles-error" class="text-danger Role_span"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn_save save_user_new">Save</button>
+                <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.save_user_new').click(function () {
+        var Id = $('.id').val();
+        var name = $('.Name_new').val();
+        var UserName = $('.Username_new').val();
+        var Email = $('.Email_new').val();
+        var Password = $('.Password_new').val();
+        var gender = $('.Gender_new').val();
+        var age = $('.age_new').val();
+        if (!($.isNumeric(age)) && age != "") {
+            age = -1239857;
+        }
+        var Roles = $('.Roles_new option:selected').text();
+        $.ajax({
+            url: "/Manage/ValidationUser",
+            type: "POST",
+            data: {
+                "model.addnewUser.Name": name, "model.addnewUser.Username": UserName, "model.addnewUser.Email": Email,
+                "model.addnewUser.Password": Password, "model.addnewUser.gender": gender, "model.addnewUser.Age": age,
+                "model.addnewUser.Roles": Roles, "model.addnewUser.id": Id
+            }
+        }).done(function (data) {
+            if (data.Url != null) {
+                window.location = data.Url;
+            }
+            //if there is no url then there is a validation error should display to the user
+            else {
+                if (data[0].Value != null) {
+                    document.querySelector('.Name_span').innerHTML = data[0].Value;
+                }
+                else {
+                    document.querySelector('.Name_span').innerHTML = null;
+                }
+                if (data[1].Value != null) {
+                    document.querySelector('.username_span').innerHTML = data[1].Value;
+                }
+                else {
+                    document.querySelector('.username_span').innerHTML = null;
+                }
+                if (data[2].Value != null) {
+                    document.querySelector('.Email_span').innerHTML = data[2].Value;
+                }
+                else {
+                    document.querySelector('.Email_span').innerHTML = null;
+                }
+                if (data[3].Value != null) {
+                    document.querySelector('.Password_span').innerHTML = data[3].Value;
+                }
+                else {
+                    document.querySelector('.Password_span').innerHTML = null;
+                }
+                if (data[4].Value != null) {
+                    document.querySelector('.Gender_span').innerHTML = data[4].Value;
+                }
+                else {
+                    document.querySelector('.Gender_span').innerHTML = null;
+                }
+                if (data[5].Value != null) {
+                    document.querySelector('.Age_span').innerHTML = data[5].Value;
+                }
+                else {
+                    document.querySelector('.Age_span').innerHTML = null;
+                }
+                if (data[6].Value != null) {
+                    document.querySelector('.Role_span').innerHTML = data[6].Value;
+                }
+                else {
+                    document.querySelector('.Role_span').innerHTML = null;
+                }
+            }
+        })
+
+    })
+</script>
+@*@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")*@

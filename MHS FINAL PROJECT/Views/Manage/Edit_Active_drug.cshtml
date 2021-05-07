@@ -1,0 +1,607 @@
+﻿@model MHS_FINAL_PROJECT.Models.Add_ActiveViewModel
+@{
+    ViewBag.Title = "Edit_Active_drug";
+}
+<style>
+    .main_certif {
+        width: 100%;
+        display: flex;
+    }
+
+    .information {
+        width: 58%;
+    }
+
+    .info {
+        width: 62%;
+    }
+
+    .certification_img {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+
+    .line2 {
+        width: 70%;
+    }
+
+    .EDIT {
+        width: 420px;
+    }
+
+    .navbar {
+        position: fixed !important;
+        padding: 0rem 0rem !important;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    input[type=text], textarea {
+        background-color: white !important;
+    }
+
+    .navbar-nav {
+        flex-direction: row !important;
+    }
+
+    .text_lable {
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+        color: #606060;
+    }
+
+
+    .name {
+        width: 30% !important;
+        max-width: 30% !important;
+    }
+
+
+    .first_form {
+        margin-bottom: 100px;
+    }
+
+
+    .input-box {
+        margin-top: 40px;
+    }
+
+
+    .titel_2 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: lighter;
+        font-size: 26px;
+        line-height: 39px;
+        display: flex;
+        flex-direction: column;
+        text-transform: capitalize;
+        color: #2F855A;
+        margin-bottom: 20px;
+    }
+
+
+    .text_lable {
+        width: 250px;
+        font-size: 16px;
+    }
+
+
+    .two_form {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 100px;
+    }
+
+
+    .form_one {
+        width: 49%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px 40px;
+    }
+
+
+    .input_line {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .start {
+        margin-top: 0px;
+    }
+
+
+    #content {
+        position: relative !important;
+        padding: 0px !important;
+    }
+
+
+    .nav_label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #348B5E 1.98%, #60C789 81.58%);
+        border-radius: 0px 0px 8px 8px;
+        padding: 3px 35px;
+    }
+
+        .nav_label a {
+            width: 163px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 39px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-evenly;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+            .nav_label a:hover {
+                color: black;
+            }
+
+        .nav_label button {
+            width: 122px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 39px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-evenly;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+            .nav_label button:hover {
+                color: black;
+            }
+
+        .nav_label button {
+            border: none
+        }
+
+    .active {
+        border-bottom: none !important;
+    }
+
+    .text-danger {
+        font-weight: 500;
+        font-size: 20px !important;
+        margin-left: 30px;
+    }
+
+    .EDIT {
+        width: 257px !important;
+    }
+
+    .added_Side_Effect, .added_Trade_Name {
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        overflow-y: scroll;
+        border: 1px solid #000000;
+    }
+
+    .Effect p, .trade p {
+        width: 30%;
+        padding: 0px 20px;
+    }
+
+    .Effect, .trade {
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    button {
+        border: none !important;
+        cursor: pointer !important;
+        outline: inherit !important;
+    }
+
+    .back {
+        margin-left: 27px;
+        width: 129px !important;
+        font-size: 18px !important;
+        text-transform: capitalize !important;
+        color: #2F855A !important;
+    }
+
+    textarea {
+        height: 100px;
+        min-height: 100px !important;
+    }
+
+    .titel_text {
+        width: 100%;
+        height: 5vh;
+        background: linear-gradient(90deg,#348B5E 1.98%, #60C789 81.58%);
+        padding-left: 30px;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 39px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        color: #FFFFFF;
+    }
+
+    .input-text {
+        padding: 40px;
+    }
+
+    .btn_edit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+        .btn_edit a {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 34px;
+            line-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            width: 281px !important;
+            height: 49px !important;
+            margin: 0px 10px;
+        }
+
+    .btn_save:hover {
+        color: white !important;
+    }
+
+    .alert1 {
+        margin-left: 0px;
+        margin-top: 10px;
+        font-size: 16px;
+        width: 35%;
+    }
+</style>
+<link href="~/Content/Manage/Manage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+
+<main>
+    <div class="navigator">
+        @Html.Partial("_navigator")
+    </div>
+    <din class="nav_type">
+        <div class="message">
+            <p class="main-title">Edit "@Model.name"</p>
+            <a class="button EDIT back hover_edit add_Trade" style="width:100px;" href="/Manage/Index">
+                Back
+                <img src="~/img/Manage/back.svg" />
+            </a>
+        </div>
+        @if (ViewBag.StatusMessage == "New Side Effect Has been Added Successfully" || ViewBag.StatusMessage == "New Trade Name Has been Added Successfully" || ViewBag.StatusMessage == "Side Effect Has been Updated Successfully"
+            || ViewBag.StatusMessage == "Trade Name Has been Updated Successfully")
+        {
+            <div class="alert alert-success alert1" role="alert" style="margin-left:0px">
+                @ViewBag.StatusMessage !
+            </div>
+        }
+    </din>
+    <div id="content">
+        <div class="first_form">
+            <div class="input-box start">
+                @Html.LabelFor(m => m.name, new { @class = "text_lable titel_text", @autocomplete = "new-TextBox" })
+                <div class="input-text">
+                    @Html.TextBoxFor(m => m.name, new { @class = "name", @autocomplete = "off" })
+                </div>
+                <span class='field-validation-valid text-danger name_span'></span>
+            </div>
+            <div class="input-box">
+                @Html.LabelFor(m => m.description, new { @class = "text_lable titel_text", @autocomplete = "new-TextBox" })
+                <div class="input-text">
+                    @Html.TextAreaFor(m => m.description, new { @class = "description", @autocomplete = "off" })
+                </div>
+                <span class='field-validation-valid text-danger description_span'></span>
+            </div>
+        </div>
+        <!-- Second -->
+        <div class="input-box">
+            <div class="titel_2">
+                <label class="titel_text">drug dosage</label>
+                <span class='field-validation-valid text-danger drug_dosage_span'></span>
+            </div>
+            <div class="two_form">
+                <div class="form_one">
+                    <div class="input_line start">
+                        @Html.LabelFor(m => m.drug_dosage.how_to_take, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextBoxFor(m => m.drug_dosage.how_to_take, new { @class = "how_to_take", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.drug_dosage.number_of_dosage, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextBoxFor(m => m.drug_dosage.number_of_dosage, new { @class = "number_of_dosage", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.drug_dosage.dosage, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.drug_dosage.dosage, new { @class = "dosage", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.drug_dosage.beginning_of_effectiveness, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.drug_dosage.beginning_of_effectiveness, new { @class = "beginning_of_effectiveness", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line ">
+                        @Html.LabelFor(m => m.drug_dosage.duration_of_effectiveness, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextBoxFor(m => m.drug_dosage.duration_of_effectiveness, new { @class = "duration_of_effectiveness", @autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="form_one">
+
+                    @Html.ValidationMessageFor(m => m.drug_dosage.duration_of_effectiveness, "", new { @class = "" })
+                    <div class="input_line start">
+                        @Html.LabelFor(m => m.drug_dosage.feed, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextBoxFor(m => m.drug_dosage.feed, new { @class = "feed", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.drug_dosage.Storage_and_preservation, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.drug_dosage.Storage_and_preservation, new { @class = "Storage_and_preservation", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.drug_dosage.Forget_a_dose, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.drug_dosage.Forget_a_dose, new { @class = "Forget_a_dose", @autocomplete = "off" })
+                    </div>
+
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.drug_dosage.overdose, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.drug_dosage.overdose, new { @class = "overdose", @autocomplete = "off" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Last -->
+        <div class="input-box">
+            <div class="titel_2">
+                <label class="titel_text">warnings</label>
+                <span class='field-validation-valid text-danger warnings_span'></span>
+            </div>
+            <div class="two_form">
+                <div class="form_one">
+                    <div class="input_line start">
+                        @Html.LabelFor(m => m.warnings.During_pregnancy, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.warnings.During_pregnancy, new { @class = "During_pregnancy", @autocomplete = "off" })
+                    </div>
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.warnings.Breast_feeding, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.warnings.Breast_feeding, new { @class = "Breast_feeding", @autocomplete = "off" })
+                    </div>
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.warnings.Children_and_infants, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.warnings.Children_and_infants, new { @class = "Children_and_infants", @autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="form_one">
+                    <div class="input_line start">
+                        @Html.LabelFor(m => m.warnings.Elderly, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.warnings.Elderly, new { @class = "Elderly", @autocomplete = "off" })
+                    </div>
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.warnings.Driving, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.warnings.Driving, new { @class = "Driving", @autocomplete = "off" })
+                    </div>
+                    <div class="input_line">
+                        @Html.LabelFor(m => m.warnings.Surgery_and_anesthesia, new { @class = "text_lable", @autocomplete = "new-TextBox" })
+                        @Html.TextAreaFor(m => m.warnings.Surgery_and_anesthesia, new { @class = "Surgery_and_anesthesia", @autocomplete = "off" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn_edit">
+            <a name="@ViewBag.id" class="btn_save btn_save_edit">
+                Save
+            </a>
+            <a class="button  hover_edit " style="width:100px;" href="/Manage/Index">
+                Cancle
+            </a>
+        </div>
+    </div>
+    <style>
+        main {
+            display: -ms-grid;
+            display: grid;
+            margin-top: 30px;
+            -ms-grid-columns: minmax(0, 1fr) 1340px minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) 1340px minmax(0, 1fr);
+            -ms-grid-rows: 20px minmax(90px, fit-content(1em)) 420px 420px 420px !important;
+            grid-template-rows: 20px minmax(90px, fit-content(1em)) 420px 420px 420px !important;
+            grid-row-gap: 30px;
+        }
+
+        #content2 {
+            ms-grid-row: 3;
+            -ms-grid-row-span: 1;
+            grid-row: 4 / 5;
+            -ms-grid-column: 2;
+            -ms-grid-column-span: 1;
+            grid-column: 2/3;
+            background: #F2FDF5;
+            -webkit-box-shadow: 0px 0px 5px rgb(0 0 0 / 25%);
+            box-shadow: 0px 0px 5px rgb(0 0 0 / 25%);
+            border-radius: 8px;
+            margin: 50px 10px;
+            padding: 0px;
+        }
+
+        #content3 {
+            ms-grid-row: 3;
+            -ms-grid-row-span: 1;
+            grid-row: 5 / 6;
+            -ms-grid-column: 2;
+            -ms-grid-column-span: 1;
+            grid-column: 2/3;
+            background: #F2FDF5;
+            -webkit-box-shadow: 0px 0px 5px rgb(0 0 0 / 25%);
+            box-shadow: 0px 0px 5px rgb(0 0 0 / 25%);
+            border-radius: 8px;
+            margin: 25px 10px;
+            padding: 0px;
+        }
+
+        .add_effect {
+            width: 320px;
+            margin: 20px 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+    </style>
+    <div id="content2">
+        @Html.Partial("_Edit_Side_Effects_table")
+    </div>
+    <div id="content3">
+        @Html.Partial("_Edit_Trade_Names_table")
+    </div>
+</main>
+<script>
+    $(document).ready(function () {
+        $('.btn_save_edit').click(function () {
+            // Looping over all data and add it to FormData object
+            var fileData_firstPage = new FormData();
+            fileData_firstPage.append("model.name", $('.name').val());
+            fileData_firstPage.append("model.description", $('.description').val());
+            fileData_firstPage.append("model.id", $('.btn_save').attr('name'));
+
+            fileData_firstPage.append("model.drug_dosage.how_to_take", $('.how_to_take').val());
+            fileData_firstPage.append("model.drug_dosage.number_of_dosage", $('.number_of_dosage').val());
+            fileData_firstPage.append("model.drug_dosage.dosage", $('.dosage').val());
+            fileData_firstPage.append("model.drug_dosage.beginning_of_effectiveness", $('.beginning_of_effectiveness').val());
+            fileData_firstPage.append("model.drug_dosage.duration_of_effectiveness", $('.duration_of_effectiveness').val());
+            fileData_firstPage.append("model.drug_dosage.feed", $('.feed').val());
+            fileData_firstPage.append("model.drug_dosage.Storage_and_preservation", $('.Storage_and_preservation').val());
+            fileData_firstPage.append("model.drug_dosage.Forget_a_dose", $('.Forget_a_dose').val());
+            fileData_firstPage.append("model.drug_dosage.overdose", $('.overdose').val());
+
+            fileData_firstPage.append("model.warnings.During_pregnancy", $('.During_pregnancy').val());
+            fileData_firstPage.append("model.warnings.Breast_feeding", $('.Breast_feeding').val());
+            fileData_firstPage.append("model.warnings.Children_and_infants", $('.Children_and_infants').val());
+            fileData_firstPage.append("model.warnings.Elderly", $('.Elderly').val());
+            fileData_firstPage.append("model.warnings.Driving", $('.Driving').val());
+            fileData_firstPage.append("model.warnings.Surgery_and_anesthesia", $('.Surgery_and_anesthesia').val());
+
+            //call ajax to check validation
+            $.ajax({
+                url: "/Manage/ValidationDrugInfo",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: fileData_firstPage
+            }).done(function (data) {
+                //if the data returnd contain url then ther is no validation go to save upade
+                if (data.Url != null) {
+                    document.querySelector('.name_span').innerHTML = null;
+                    document.querySelector('.description_span').innerHTML = null;
+                    document.querySelector('.drug_dosage_span').innerHTML = null;
+                    document.querySelector('.warnings_span').innerHTML = null;
+                    $.ajax({
+                        url: data.Url,
+                        type: "POST",
+                        processData: false,
+                        contentType: false,
+                        data: fileData_firstPage
+                    }).done(function (response) {
+                        window.location = response.Url;
+                    })
+                }
+                //if ther is validation it we show it here
+                else {
+                    if (data[0].Value != null) {
+                        document.querySelector('.name_span').innerHTML = data[0].Value;
+                    }
+                    else {
+                        document.querySelector('.name_span').innerHTML = null;
+                    }
+                    if (data[1].Value != null) {
+                        document.querySelector('.description_span').innerHTML = data[1].Value;
+                    }
+                    else {
+                        document.querySelector('.description_span').innerHTML = null;
+                    }
+                    if (data[2].Value != null) {
+                        document.querySelector('.drug_dosage_span').innerHTML = data[2].Value;
+                    }
+                    else {
+                        document.querySelector('.drug_dosage_span').innerHTML = null;
+                    }
+                    if (data[3].Value != null) {
+                        document.querySelector('.warnings_span').innerHTML = data[3].Value;
+                    }
+                    else {
+                        document.querySelector('.warnings_span').innerHTML = null;
+                    }
+                }
+            })
+        });
+    });
+
+
+    window.onload = function () {
+        setTimeout(function () { $('.alert1').fadeOut() }, 3000);
+    };
+</script>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryval")

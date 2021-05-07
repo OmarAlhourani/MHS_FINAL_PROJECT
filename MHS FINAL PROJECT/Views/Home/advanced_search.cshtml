@@ -1,0 +1,491 @@
+﻿@using MHS_FINAL_PROJECT.Models
+@model drug_active_advanced
+
+<link href="~/Content/home/Normal_search.css" rel="stylesheet" />
+<style>
+    .subtitle {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+
+    .box {
+        margin-right: 20px !important;
+        width: 20.53px;
+        height: 22px;
+    }
+
+    .trade_search {
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+        .trade_search p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 45px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            text-transform: capitalize;
+            color: #000000;
+            padding-left: 10px;
+        }
+
+        .trade_search > button > a {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            /* identical to box height */
+            text-transform: uppercase;
+            color: #2C3EE3;
+        }
+    /*# sourceMappingURL=style3.css.map */
+</style>
+<body>
+    <main>
+        <div class="container_main">
+            <div class="navigator">
+                @Html.Partial("_navigator")
+            </div>
+            <style>
+                @@media screen and (max-width: 1150px) {
+                    
+
+                    .header {
+                        display: grid;
+                        grid-template-columns: minmax(7%, 10%) 80% minmax(7%, 10%);
+                        place-items: flex-start;
+                        grid-template-rows: 362px;
+                    }
+
+                    .header {
+                        grid-template-rows: 191px;
+                        padding: 0px;
+                    }
+
+                    .text_content > p:nth-child(2) {
+                        width: 100%;
+                    }
+
+                    .text_content {
+                        grid-column: 2/3;
+                        padding-left: 0px;
+                    }
+
+                    .right_img {
+                        display: none;
+                    }
+
+                    .roles_text {
+                        width: 100%;
+                    }
+                }
+            </style>
+            <section class="header">
+                <div class="text_content">
+                    <p>advanced search</p>
+                    <p>you can use the advanced search by entering the drug name and selecting what information you want to find by clicking the check box and then click on the search. </p>
+                </div>
+            </section>
+
+            <div class="main">
+                @using (Html.BeginForm("advanced_search", "Home", null, FormMethod.Post, new { @class = "from_trade" }))
+                {
+                    <div class="Page_contents">
+                        <p class="titel" style="padding-left:0px;">Page contents</p>
+                        <div class="search-box">
+                            <div class="mic">
+                                <a class="talk" style="cursor:pointer">
+                                    <img src="~/img/home/mic.svg" />
+                                </a>
+                            </div>
+                            @*@Html.TextBox("search for", (string)ViewBag.serchForName, new { @class = "name" })*@
+                            @Html.TextBoxFor(M => M.search_name, new { @Value = @ViewBag.serchForName, @class = "name" })
+                            <button class="search-btn"><img src="~/img/home/search.svg" /></button>
+                        </div>
+
+                        <ul class="links_ul">
+                            <li class="subtitle description" style="cursor:pointer;">@Html.CheckBoxFor(m => m.description, new { @class = "box description_b" }) description</li>
+                            <li class="subtitle drug_dosage" style="cursor:pointer;"> @Html.CheckBoxFor(m => m.drug_dosage, new { @class = "box drug_dosage_b" }) drug dosage</li>
+                            <li class="subtitle warnings" style="cursor:pointer;"> @Html.CheckBoxFor(m => m.warnings, new { @class = "box warnings_b" }) warnings</li>
+                            <li class="subtitle" style="cursor:pointer;"><div class="line-space"></div></li>
+                            <li class="subtitle side_effects" style="cursor:pointer;">@Html.CheckBoxFor(m => m.side_effects, new { @class = "box sideEffects_b" }) side effects</li>
+                            <li class="subtitle trade_names" style="cursor:pointer;">@Html.CheckBoxFor(m => m.trade_names, new { @class = "box trade_names_b" }) trade names</li>
+                        </ul>
+                    </div>
+                }
+                <div class="result" id="updateTargetId">
+                    @if (ViewBag.select != null)
+                    {
+                        <h1 class="no_result">select choices</h1>
+                    }
+                    else if (@ViewBag.serchFor != null)
+                    {
+                        <h1 class="no_result">No Result yet</h1>
+                    }
+                    else if (ViewBag.serchForName == null)
+                    {
+                        <h1 class="no_result">please enter the drug name</h1>
+                    }
+                    else if (ViewBag.if_exist == null)
+                    {
+                        if (Model.active_name_for_trade == null || Model.active_name_for_trade.Count() == 0)
+                        {
+                            <h1 class="no_result">drug "@ViewBag.serchForName" not exist</h1>
+                        }
+                        else
+                        {
+                            foreach (var active in Model.active_name_for_trade)
+                            {
+                                ViewBag.trade_name = active.active_name_for_trade;
+                                <div class="trade_search">
+                                    <p>
+                                        @ViewBag.serchForName  Is A trade Name For @active.active_name_for_trade
+                                    </p>
+                                    <a class="return_trade" style="color:blue; cursor:pointer">more information about @active.active_name_for_trade</a>
+                                </div>
+
+                            }
+                        }
+
+
+                    }
+                    else if (Model != null)
+                    {
+                        <p class="main_titel">* @ViewBag.serchForName *</p>
+                        if (Model.description == true)
+                        {
+                            foreach (var item in Model.active_name)
+                            {
+                                <br />
+                                <p class="main_titel">@Html.DisplayNameFor(model => item.description)</p>
+                                <p class="body_text">@item.description</p>
+                            }
+                        }
+                        if (Model.drug_dosage == true)
+                        {
+                            foreach (var item in Model.dosage)
+                            {
+                                <p class="main_titel">Drug Dosage</p>
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.how_to_take)</p>
+                                <p class="body_text">@item.how_to_take</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.number_of_dosage)</p>
+                                <p class="body_text">@item.number_of_dosage</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.dosage)</p>
+                                <p class="body_text">@item.dosage</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.beginning_of_effectiveness)</p>
+                                <p class="body_text">@item.beginning_of_effectiveness</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.duration_of_effectiveness)</p>
+                                <p class="body_text">@item.duration_of_effectiveness</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.feed)</p>
+                                <p class="body_text">@item.feed</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Storage_and_preservation)</p>
+                                <p class="body_text">@item.Storage_and_preservation</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Forget_a_dose)</p>
+                                <p class="body_text">@item.Forget_a_dose</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.overdose)</p>
+                                <p class="body_text">@item.overdose</p>
+                            }
+                        }
+                        if (Model.warnings == true)
+                        {
+                            foreach (var item in Model.warning)
+                            {
+                                <p class="main_titel">Warnings</p>
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.During_pregnancy)</p>
+                                <p class="body_text">@item.During_pregnancy</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Breast_feeding)</p>
+                                <p class="body_text">@item.Breast_feeding</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Children_and_infants)</p>
+                                <p class="body_text">@item.Children_and_infants</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Elderly)</p>
+                                <p class="body_text">@item.Elderly</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Driving)</p>
+                                <p class="body_text">@item.Driving</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.Surgery_and_anesthesia)</p>
+                                <p class="body_text">@item.Surgery_and_anesthesia</p>
+                            }
+
+                        }
+                        if (Model.side_effects == true)
+                        {
+                            int X = 1;
+                            foreach (var item in Model.side_effect)
+                            {
+                                if (X == 1)
+                                {
+                                    <p class="main_titel">side effects </p>
+                                    X++;
+                                }
+                                <p class="sub-titel2 effect-name">@item.name</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.prevalence_effect)</p>
+                                <p class="body_text">@item.prevalence_effect</p>
+
+                                <p class="sub-titel2">@Html.DisplayNameFor(model => item.inform_doctor)</p>
+                                <p class="body_text">@item.inform_doctor</p>
+                            }
+
+                        }
+                        if (Model.trade_names == true)
+                        {
+                            <p class="main_titel">Trade Names for @ViewBag.serchForName</p>
+                            <div style="width:90%; margin:0 auto;">
+                                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>CompanyName</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+            <style>
+                .down_section {
+                    grid-row: 4 / 5;
+                    grid-column: 1 / 2;
+                }
+
+                .main-grid {
+                    display: grid;
+                    grid-template-columns: 600px minmax(0px, 420px) 300px;
+                    place-items: flex-start;
+                    grid-template-rows: 362px;
+                }
+
+                .left_text {
+                    grid-row: 1/2;
+                    grid-column: 1/2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+
+                .right_img {
+                    grid-row: 1/2;
+                    grid-column: 3/4;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                    width: 265px;
+                    height: 361.5px;
+                }
+
+                .roles_text {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #000000;
+                    width: 868px;
+                }
+
+                @@media screen and (max-width: 1380px) {
+                    .left_text {
+                        padding-left: 30px;
+                    }
+                }
+
+                @@media screen and (max-width: 1150px) {
+                    .main-grid {
+                        display: grid;
+                        grid-template-columns: minmax(7%, 10%) 80% minmax(7%, 10%);
+                        place-items: flex-start;
+                        grid-template-rows: 362px;
+                    }
+
+                    .left_text {
+                        grid-column: 2/3;
+                        padding-left: 0px;
+                    }
+
+                    .right_img {
+                        display: none;
+                    }
+
+                    .roles_text {
+                        width: 100%;
+                    }
+                }
+            </style>
+            <section class="down_section">
+                <div class="main-grid" style="padding-top: 58px;">
+                    <div class="left_text">
+                        <div>
+                            <p class="roles_text">
+                                The materials published on the (MHS) website <span style="color:#2F855A"> are information only and should not be considered a medical advice or a treatment recommendation.</span> A doctor should be consulted if the symptoms do not disappear.
+                            </p>
+                        </div>
+                        <div class="wrap" style="justify-content: flex-start;">
+                            <a href="/Account/Register"><button class="button" style="width: 177px; box-shadow: 1px 1px 5px rgb(0 , 0 , 0 , 30%);">Read More</button></a>
+                        </div>
+                    </div>
+                    <div class="right_img">
+                        <img src="~/img/home/info.svg" loading="lazy" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+@section Scripts{
+    <script>
+        $(document).ready(
+            function data_table() {
+                const name = document.querySelector('.name').value;
+                var Trade_Table = $('#demoGrid').dataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "filter": true,
+                    "orderMulti": false,
+                    "rowReorder": true,
+                    "pageLength": 2,
+
+                    "ajax": {
+                        "url": "/home/LoadData",
+                        "data": { "model.name": name },
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+
+                    "columnDefs":
+                        [{
+                            "targets": [0],
+                            "searchable": true,
+                            "searchable": true,
+                        },
+                        {
+                            "targets": [1],
+                            "visible": true,
+                            "searchable": true
+                        }],
+                    "columns": [
+                        { "data": "trade_name", "Name": "Name", "autoWidth": true },
+                        { "data": "Manufacturer_company", "Name": "Manufacturer_company", "autoWidth": true }]
+                });
+
+
+                @*$(".return_trade").click(function () {
+                    const name = "@ViewBag.trade_name";
+                    var description = document.querySelector('.description_b').checked;
+                    var drug_dosage = document.querySelector('.drug_dosage_b').checked;
+                    var warnings = document.querySelector('.warnings_b').checked;
+                    var side_effects = document.querySelector('.sideEffects_b').checked;
+                    var trade_names = document.querySelector('.trade_names_b').checked;
+                    $.ajax({
+                        url: "/home/advanced_search",
+                        data: {
+                            "model.search_name": name, "model.description": description, "model.drug_dosage": drug_dosage,
+                            "model.warnings": warnings, "model.side_effects": side_effects, "model.trade_names": trade_names
+                        },
+                        type: "POST",
+                        success: function (data) {
+                            $("BODY").html(data);
+                            Trade_Table.fnDraw();
+                        }
+                    })
+                });*@
+
+
+                $('.return_trade').click(function () {
+                    const name = "@ViewBag.trade_name";
+                    var description = document.querySelector('.description_b').checked;
+                    var drug_dosage = document.querySelector('.drug_dosage_b').checked;
+                    var warnings = document.querySelector('.warnings_b').checked;
+                    var side_effects = document.querySelector('.sideEffects_b').checked;
+                    var trade_names = document.querySelector('.trade_names_b').checked;
+                    window.location = "advanced_search?model.search_name=" + name + "&model.description=" + description + "&model.drug_dosage=" +
+                        drug_dosage + "&model.warnings=" + warnings + "&model.side_effects=" + side_effects + "&model.trade_names=" + trade_names ;
+                })
+
+                $(document).ready(function () {
+                    var trade_names = document.querySelector('.trade_names_b').checked;
+                    if (trade_names == true) {
+                        Trade_Table.ajaxStart();
+                    }
+                });
+
+
+                //$(".search-btn").click(function () {
+                //    const name = document.querySelector('.name').value;
+                //    var description = document.querySelector('.description_b').checked;
+                //    var drug_dosage = document.querySelector('.drug_dosage_b').checked;
+                //    var warnings = document.querySelector('.warnings_b').checked;
+                //    var side_effects = document.querySelector('.sideEffects_b').checked;
+                //    var trade_names = document.querySelector('.trade_names_b').checked;
+                //    $.ajax({
+                //        url: "/home/advanced_search",
+                //        data: {
+                //            "model.search_name": name, "model.description": description, "model.drug_dosage": drug_dosage,
+                //            "model.warnings": warnings, "model.side_effects": side_effects, "model.trade_names": trade_names
+                //        },
+                //        type: "POST",
+                //        success: function (data) {
+                //            $("BODY").html(data);
+                //            Trade_Table.fnDraw();
+                //        }
+                //    })
+                //});
+            })
+
+
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/SpeechRecognition.js"></script>
+}

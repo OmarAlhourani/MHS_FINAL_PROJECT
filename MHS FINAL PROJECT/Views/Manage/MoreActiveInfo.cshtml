@@ -1,0 +1,868 @@
+﻿@model MHS_FINAL_PROJECT.Models.get_ActiveViewModel
+@{
+    int count_effect_nav = 0;
+    int count_effect_body = 0;
+}
+
+<style>
+    .main_certif {
+        width: 100%;
+        display: flex;
+    }
+
+    .information {
+        width: 58%;
+    }
+
+    .info {
+        width: 62%;
+    }
+
+    .certification_img {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+
+    .line2 {
+        width: 70%;
+    }
+
+    .EDIT {
+        width: 420px;
+    }
+
+    .navbar {
+        position: fixed !important;
+        padding: 0rem 0rem !important;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    input[type=text], textarea {
+        background-color: white !important;
+    }
+
+    .navbar-nav {
+        flex-direction: row !important;
+    }
+
+    .text_lable {
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+        color: #606060;
+    }
+
+
+    .name {
+        width: 30% !important;
+        max-width: 30% !important;
+    }
+
+
+    .first_form {
+        margin-bottom: 100px;
+    }
+
+
+    .input-box {
+        margin-top: 40px;
+    }
+
+
+    .titel_2 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: lighter;
+        font-size: 26px;
+        line-height: 39px;
+        display: flex;
+        flex-direction: column;
+        text-transform: capitalize;
+        color: #2F855A;
+        margin-bottom: 20px;
+    }
+
+
+    .text_lable {
+        width: 250px;
+        font-size: 16px;
+    }
+
+
+    .two_form {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left:30px;
+        margin-bottom: 80px;
+    }
+
+
+    .form_one {
+        width: 49%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px 40px;
+    }
+
+
+    .input_line {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .start {
+        margin-top: 0px;
+    }
+
+
+    #content {
+        position: relative !important;
+        padding: 0px !important;
+    }
+
+
+    .nav_label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #348B5E 1.98%, #60C789 81.58%);
+        border-radius: 0px 0px 8px 8px;
+        padding: 3px 35px;
+    }
+
+        .nav_label a {
+            width: 163px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 39px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-evenly;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+            .nav_label a:hover {
+                color: black;
+            }
+
+        .nav_label button {
+            width: 122px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 39px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-evenly;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+            .nav_label button:hover {
+                color: black;
+            }
+
+        .nav_label button {
+            border: none
+        }
+
+    .active {
+        border-bottom: none !important;
+    }
+
+    .text-danger {
+        font-weight: 500;
+        font-size: 20px !important;
+        margin-left: 30px;
+    }
+
+    .EDIT {
+        width: 257px !important;
+    }
+
+    .added_Side_Effect, .added_Trade_Name {
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        overflow-y: scroll;
+        border: 1px solid #000000;
+    }
+
+    .Effect p, .trade p {
+        width: 30%;
+        padding: 0px 20px;
+    }
+
+    .Effect, .trade {
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    button {
+        border: none !important;
+        cursor: pointer !important;
+        outline: inherit !important;
+    }
+
+    .back {
+        margin-left: 27px;
+        width: 129px !important;
+        font-size: 18px !important;
+        text-transform: capitalize !important;
+        color: #2F855A !important;
+    }
+
+    textarea {
+        height: 100px;
+        min-height: 100px !important;
+    }
+
+    .titel_text {
+        width: 100%;
+        height: 5vh;
+        background: linear-gradient(90deg,#348B5E 1.98%, #60C789 81.58%);
+        padding-left: 30px;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 39px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        color: #FFFFFF;
+    }
+
+    .input-text {
+        padding: 40px;
+    }
+
+    .btn_edit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+        .btn_edit a {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 34px;
+            line-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            width: 281px !important;
+            height: 49px !important;
+            margin: 0px 10px;
+        }
+
+    .btn_save:hover {
+        color: white !important;
+    }
+
+    .alert1 {
+        margin-left: 0px;
+        margin-top: 10px;
+        font-size: 16px;
+        width: 35%;
+    }
+</style>
+<link href="~/Content/Manage/Manage.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+<body>
+    <main>
+        <div class="navigator">
+            @Html.Partial("_navigator")
+        </div>
+        <din class="nav_type">
+            <div class="message">
+                <p class="main-title">"@Model.name"</p>
+                <a class="button EDIT back hover_edit add_Trade" style="width:100px;" href="/Manage/Index">
+                    Back
+                    <img src="~/img/Manage/back.svg" />
+                </a>
+            </div>
+            @if (ViewBag.StatusMessage == "New Side Effect Has been Added Successfully" || ViewBag.StatusMessage == "New Trade Name Has been Added Successfully" || ViewBag.StatusMessage == "Side Effect Has been Updated Successfully"
+                || ViewBag.StatusMessage == "Trade Name Has been Updated Successfully")
+            {
+                <div class="alert alert-success alert1" role="alert" style="margin-left:0px">
+                    @ViewBag.StatusMessage !
+                </div>
+            }
+        </din>
+        <div id="content">
+            <div class="first_form">
+                <div class="input-box start">
+                    @Html.LabelFor(m => m.description, new { @class = "text_lable titel_text", @autocomplete = "new-TextBox" })
+                    <div class="input-text">
+                        <p class="description">
+                            @Model.description
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Second -->
+            <div class="input-box">
+                <div class="titel_2">
+                    <label class="titel_text">side effect</label>
+                </div>
+                <style>
+                    .nav-tabs {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        width: 95%;
+                        margin-left: 30px;
+                        border-bottom: 1px solid #2F855A !important;
+                    }
+
+                        .nav-tabs a {
+                            margin-right: 25px;
+                            font-family: Poppins;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            line-height: 21px;
+                            /* identical to box height */
+                            display: flex;
+                            align-items: center;
+                            text-transform: capitalize;
+                            color: #000000;
+                        }
+
+                    .fade.show {
+                        opacity: 1;
+                    }
+
+                    .tab-content > .active {
+                        display: block;
+                    }
+
+                    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+                        height: 21px;
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 21px;
+                        /* identical to box height */
+                        display: flex;
+                        align-items: center;
+                        text-transform: capitalize;
+                        color: #348B5E;
+                        border-bottom: 3px solid #2F855A !important;
+                        margin-bottom: -1px;
+                    }
+
+                    .tab-pane {
+                        margin-left: 30px;
+                        margin-top: 30px;
+                        margin-bottom: 120px;
+                    }
+
+                    .effect_text {
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 19px;
+                        line-height: 25px;
+                        /* identical to box height */
+                        display: flex;
+                        align-items: center;
+                        text-transform: capitalize;
+                        color: #000000;
+                        margin-right: 25px
+                    }
+
+                    .effect_div {
+                        display: flex;
+                        align-items: center;
+                        margin-top: 12px !important;
+                    }
+
+                    .description {
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 17px;
+                        line-height: 144.19%;
+                        /* identical to box height, or 26px */
+                        text-indent: 2px;
+                        text-transform: capitalize;
+                        color: #838383;
+                        margin-bottom: 5px;
+                    }
+                </style>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        @foreach (var effect in Model.Add_side_effedcts)
+                        {
+                            if (count_effect_nav == 0)
+                            {
+                                <a class="nav-item nav-link active" id="nav-@effect.name-tab" data-toggle="tab" href="#nav-@effect.name" role="tab" aria-controls="nav-@effect.name" aria-selected="true">@effect.name</a>
+                                count_effect_nav++;
+                            }
+                            else
+                            {
+                                <a class="nav-item nav-link" id="nav-@effect.name-tab" data-toggle="tab" href="#nav-@effect.name" role="tab" aria-controls="nav-@effect.name" aria-selected="false">@effect.name</a>
+                            }
+                        }
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                    @foreach (var effect in Model.Add_side_effedcts)
+                    {
+                        if (count_effect_body == 0)
+                        {
+                            <div class="tab-pane fade show active" id="nav-@effect.name" role="tabpanel" aria-labelledby="nav-@effect.name-tab">
+                                <div class="input-box start effect_div">
+                                    @Html.LabelFor(m => effect.prevalence_effect, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                                    <p class="description">@effect.prevalence_effect</p>
+                                </div>
+                                <div class="input-box effect_div">
+                                    @Html.LabelFor(m => effect.inform_doctor, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                                    <p class="description">@effect.inform_doctor</p>
+                                </div>
+                            </div>
+                            count_effect_body++;
+                        }
+                        else
+                        {
+                            <div class="tab-pane fade" id="nav-@effect.name" role="tabpanel" aria-labelledby="nav-@effect.name-tab">
+                                <div class="input-box start effect_div">
+                                    @Html.LabelFor(m => effect.prevalence_effect, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                                    <p class="description">@effect.prevalence_effect</p>
+                                </div>
+                                <div class="input-box effect_div">
+                                    @Html.LabelFor(m => effect.inform_doctor, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                                    <p class="description">@effect.inform_doctor</p>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="input-box">
+                <div class="titel_2">
+                    <label class="titel_text">drug dosage</label>
+                </div>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-how-to-take-tab" data-toggle="tab" href="#nav-how-to-take" role="tab" aria-controls="nav-how-to-take" aria-selected="true">How To Take</a>
+                        <a class="nav-item nav-link" id="nav-number-of-dosage-tab" data-toggle="tab" href="#nav-number-of-dosage" role="tab" aria-controls="nav-number-of-dosage" aria-selected="false">number of dosage</a>
+                        <a class="nav-item nav-link" id="nav-dosage-tab" data-toggle="tab" href="#nav-dosage" role="tab" aria-controls="nav-dosage" aria-selected="false">dosage</a>
+                        <a class="nav-item nav-link" id="nav-beginning-of-effectiveness-tab" data-toggle="tab" href="#nav-beginning-of-effectiveness" role="tab" aria-controls="nav-beginning-of-effectiveness" aria-selected="false">beginning of effectiveness</a>
+                        <a class="nav-item nav-link" id="nav-overdose-tab" data-toggle="tab" href="#nav-overdose" role="tab" aria-controls="nav-overdose" aria-selected="false">overdose</a>
+                        <a class="nav-item nav-link" id="nav-duration-of-effectiveness-tab" data-toggle="tab" href="#nav-duration-of-effectiveness" role="tab" aria-controls="nav-duration-of-effectiveness" aria-selected="false">duration of effectiveness</a>
+                        <a class="nav-item nav-link" id="nav-Forget-a-dose-tab" data-toggle="tab" href="#nav-Forget-a-dose" role="tab" aria-controls="nav-Forget-a-dose" aria-selected="false">Forget a dose</a>
+                        <a class="nav-item nav-link" id="nav-Storage-and-preservation-tab" data-toggle="tab" href="#nav-Storage-and-preservation" role="tab" aria-controls="nav-Storage-and-preservation" aria-selected="false">Storage and preservation</a>
+                        <a class="nav-item nav-link" id="nav-feed-tab" data-toggle="tab" href="#nav-feed" role="tab" aria-controls="nav-feed" aria-selected="false">feed</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+
+                    <div class="tab-pane fade show active" id="nav-how-to-take" role="tabpanel" aria-labelledby="nav-how-to-take-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.how_to_take, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.how_to_take</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-number-of-dosage" role="tabpanel" aria-labelledby="nav-number-of-dosage-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.number_of_dosage, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.number_of_dosage</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-dosage" role="tabpanel" aria-labelledby="nav-dosage-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.dosage, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.dosage</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-beginning-of-effectiveness" role="tabpanel" aria-labelledby="nav-beginning-of-effectiveness-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.beginning_of_effectiveness, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.beginning_of_effectiveness</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-duration-of-effectiveness" role="tabpanel" aria-labelledby="nav-duration-of-effectiveness-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.duration_of_effectiveness, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.duration_of_effectiveness</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Storage-and-preservation" role="tabpanel" aria-labelledby="nav-Storage-and-preservation-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.Storage_and_preservation, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.Storage_and_preservation</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Forget-a-dose" role="tabpanel" aria-labelledby="nav-Forget-a-dose-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.Forget_a_dose, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.Forget_a_dose</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-overdose" role="tabpanel" aria-labelledby="nav-overdose-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.overdose, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.overdose</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-feed" role="tabpanel" aria-labelledby="nav-feed-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.drug_dosage.feed, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.drug_dosage.feed</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="input-box">
+                <div class="titel_2">
+                    <label class="titel_text">warnings</label>
+                </div>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-During-pregnancy-tab" data-toggle="tab" href="#nav-During-pregnancy" role="tab" aria-controls="nav-During-pregnancy" aria-selected="true">During pregnancy</a>
+                        <a class="nav-item nav-link" id="nav-Breast-feeding-tab" data-toggle="tab" href="#nav-Breast-feeding" role="tab" aria-controls="nav-Breast-feeding" aria-selected="false">Breast feeding</a>
+                        <a class="nav-item nav-link" id="nav-Children-and-infants-tab" data-toggle="tab" href="#nav-Children-and-infants" role="tab" aria-controls="nav-Children-and-infants" aria-selected="false">Children and infants</a>
+                        <a class="nav-item nav-link" id="nav-Elderly-tab" data-toggle="tab" href="#nav-Elderly" role="tab" aria-controls="nav-Elderly" aria-selected="false">Elderly</a>
+                        <a class="nav-item nav-link" id="nav-Driving-tab" data-toggle="tab" href="#nav-Driving" role="tab" aria-controls="nav-Driving" aria-selected="false">Driving</a>
+                        <a class="nav-item nav-link" id="nav-Surgery-and-anesthesia-tab" data-toggle="tab" href="#nav-Surgery-and-anesthesia" role="tab" aria-controls="nav-Surgery-and-anesthesia" aria-selected="false">Surgery and anesthesia</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+
+                    <div class="tab-pane fade show active" id="nav-During-pregnancy" role="tabpanel" aria-labelledby="nav-During-pregnancy-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.warnings.During_pregnancy, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.warnings.During_pregnancy</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Breast-feeding" role="tabpanel" aria-labelledby="nav-Breast-feeding-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.warnings.Breast_feeding, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.warnings.Breast_feeding</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Children-and-infants" role="tabpanel" aria-labelledby="nav-Children-and-infants-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.warnings.Children_and_infants, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.warnings.Children_and_infants</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Elderly" role="tabpanel" aria-labelledby="nav-Elderly-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.warnings.Elderly, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.warnings.Elderly</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Driving" role="tabpanel" aria-labelledby="nav-Driving-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.warnings.Driving, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.warnings.Driving</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Surgery-and-anesthesia" role="tabpanel" aria-labelledby="nav-Surgery-and-anesthesia-tab">
+                        <div class="input-box start effect_div">
+                            @Html.LabelFor(m => m.warnings.Surgery_and_anesthesia, new { @class = "text_lable effect_text", @autocomplete = "new-TextBox" })
+                            <p class="description">@Model.warnings.Surgery_and_anesthesia</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <style>
+                #Trade_Names > thead > tr {
+                    background-color: #808692;
+                    font-family: Nunito Sans;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 17px;
+                    line-height: 115%;
+                    letter-spacing: 0.01em;
+                    text-transform: capitalize;
+                    color: #FFFFFF;
+                    border-radius: 10px;
+                }
+
+                #Trade_Names > thead > tr > th {
+                    border-bottom: none;
+                }
+
+                #Trade_Names > thead > tr > th:nth-child(1) {
+                    border-radius: 10px 0 0 0;
+                }
+
+                #Trade_Names > thead > tr > th:nth-child(2) {
+                    border-radius: 0 10px 0 0;
+                }
+
+                .table-bordered {
+                    border: none;
+                }
+
+                .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+                    z-index: 3;
+                    color: black;
+                    cursor: default;
+                    background-color: #C6F6D5;
+                    border-color: #C6F6D5;
+                    margin: 0;
+                    display: block;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                    color: none !important;
+                    border: none;
+                    background-color: none;
+                    background: none;
+                    cursor: none;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button {
+                    box-sizing: border-box;
+                    display: inline-block;
+                    min-width: 1.5em;
+                    padding: 0.5em 1em;
+                    margin-left: 0px;
+                    text-align: center;
+                    text-decoration: none !important;
+                    cursor: pointer;
+                    color: #333 !important;
+                    border: 1px solid transparent;
+                    border-radius: 2px;
+                    padding: 0px;
+                    cursor: none;
+                }
+
+                .table_health {
+                    width: 70%;
+                    margin: 0;
+                    margin-top: 40px;
+                }
+
+                tbody {
+                    text-align: center
+                }
+
+                thead > tr > th {
+                    text-align: center
+                }
+
+                #Trade_Names_wrapper {
+                    padding: 0px !important;
+                }
+                table.dataTable.no-footer {
+                    -webkit-box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.51);
+                    box-shadow: 4px 4px 19px 0px rgba(0,0,0,0.15);
+                    border-radius: 10px 10px 0 0;
+                    border-bottom: 1px solid #dbdbdb;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+                    z-index: 3;
+                    color: black;
+                    cursor: default;
+                    background-color: #C6F6D5;
+                    border-color: #C6F6D5;
+                    margin: 0;
+                    display: block;
+                    cursor: pointer;
+                }
+
+                div.dataTables_wrapper div.dataTables_paginate {
+                    display: flex
+                }
+
+                    div.dataTables_wrapper div.dataTables_paginate span {
+                        display: flex;
+                        flex-direction: row;
+                    }
+
+
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                    cursor: pointer;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                    color: white !important;
+                    border: 1px solid #111;
+                    background-color: #585858;
+                    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));
+                    background: -webkit-linear-gradient(top, #585858 0%, #111 100%);
+                    background: -moz-linear-gradient(top, #585858 0%, #111 100%);
+                    background: -ms-linear-gradient(top, #585858 0%, #111 100%);
+                    background: -o-linear-gradient(top, #585858 0%, #111 100%);
+                    background: linear-gradient(to bottom, #585858 0%, #111 100%);
+                }
+
+            </style>
+
+
+
+            <!-- Last -->
+            <div class="input-box">
+                <div class="titel_2">
+                    <label class="titel_text">trade names</label>
+                    <span class='field-validation-valid text-danger warnings_span'></span>
+                </div>
+                <div class="two_form">
+                    <div class="table_health">
+                        <table id="Trade_Names" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th class="col_name" style="width:170px;">Name</th>
+                                    <th class="col_name" style="width:170px;">Manufacturer company</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script>
+     $(document).ready(
+                //load table Trade Names
+                function data_table() {
+                    $('#Trade_Names').dataTable({
+                        "processing": true,
+                        "serverSide": true,
+                        "filter": true,
+                        "orderMulti": false,
+                        "rowReorder": true,
+                        "pageLength": 3,
+
+
+                        "ajax": {
+                            "url": "/Manage/LoadTradeNames",
+                            "data": {"id" : "@ViewBag.id"},
+                            "type": "POST",
+                            "datatype": "json"
+                        },
+
+                        "columnDefs":
+                            [{
+                                "targets": [0],
+                                "visible": false,
+                                "searchable": false
+                            },
+                            {
+                                "targets": [1],
+                                "searchable": true,
+                                "orderable": false
+                            },
+                            {
+                                "targets": [2],
+                                "searchable": true,
+                                "orderable": false
+                            }
+                            ],
+                        "columns": [
+                            { "data": "id", "Name": "ID", "autoWidth": true },
+                            { "data": "trade_name", "Name": "Name", "autoWidth": true },
+                            { "data": "Manufacturer_company", "Name": "Manufacturer Company", "autoWidth": true }
+                        ]
+                    });
+
+                    $('div.dataTables_filter input').addClass('form-control form-control-sm');
+                    $('div.dataTables_wrapper div.dataTables_length select').addClass('form-control form-control-sm');
+
+                });
+</script>
