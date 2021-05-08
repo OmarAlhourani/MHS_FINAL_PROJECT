@@ -55,8 +55,6 @@ else if (IsAdmin)
     @Html.Partial("_delete_certification")
     @Html.Partial("_accept_certification")
     @Html.Partial("_Reject_certification")
-    
-
 }
 
 
@@ -67,10 +65,12 @@ else if (IsAdmin)
 
 
     $(document).ready(function () {
-        if("@ViewBag.StatusMessage" == "The Old Password is not correct" || "@ViewBag.StatusMessage" == "The New Password is Same as Old Password") {
+        if ("@ViewBag.StatusMessage" == "The Old Password is not correct" || "@ViewBag.StatusMessage" == "The New Password is Same as Old Password"
+            || "@ViewBag.StatusMessage" == "Passwords must have at least one Special character." || "@ViewBag.StatusMessage" == "Passwords must have at least one uppercase (A-Z)") {
             $('#ChangePassworModal').modal("show");
         }
-        if ("@ViewBag.StatusMessage" == "Something Went Wrong while setting the password" || "@ViewBag.StatusMessage" == "Passwords must have at least one uppercase (A-Z).") {
+        if ("@ViewBag.StatusMessage" == "Something Went Wrong while setting the password" || "@ViewBag.StatusMessage" == "Passwords must have at least one uppercase (A-Z)."
+            || "@ViewBag.StatusMessage" == "Passwords must have at least one Special character") {
             $('#SetPassworModal').modal("show");
         }
         if ("@ViewBag.StatusMessage" == "The Email Is Exist" || "@ViewBag.StatusMessage" == "The User Name Is Exist" || "@ViewBag.StatusMessage" == "Something Went Wrong while editing information") {

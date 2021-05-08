@@ -83,7 +83,16 @@
             document.querySelector('#UserInformation_age-error').innerHTML = null;
         }
         $('#UserInformation_age').val(age);
+
+        //Gender validation and value--------------------------------------------------------
+        var AgeValidation = document.querySelector('#UserInformation_Gender-error');
+        if (AgeValidation != undefined) {
+            document.querySelector('#UserInformation_Gender-error').innerHTML = null;
+        }
+        $('.Gender').val(Gender);
+
         $('#Edit_information').modal("show");
+
     }
 
 
@@ -109,6 +118,8 @@
             document.querySelector('#ChangePassword_ConfirmPassword-error').innerHTML = null;
         }
         $('.ConfirmPassword').val(null);
+
+        $('.alert-danger-change-password').remove();
         $('#ChangePassworModal').modal("show");
     }
 
@@ -128,6 +139,8 @@
             document.querySelector('#SetPassword_ConfirmPassword-error').innerHTML = null;
         }
         $('.ConfirmPassword').val(null);
-        $('#SetPassworModal').modal("show");
+
+        $('.alert-danger-Set-password').remove();
+        $('#SetPassworModal').modal("show");        
     }
 </script>

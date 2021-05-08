@@ -12,6 +12,7 @@ using MHS_FINAL_PROJECT.Models;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace MHS_FINAL_PROJECT.Controllers
 {
@@ -145,6 +146,7 @@ namespace MHS_FINAL_PROJECT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
             model.Roles = "Normal_User";
             List<SelectListItem> gender = new List<SelectListItem>()
             {
@@ -152,6 +154,7 @@ namespace MHS_FINAL_PROJECT.Controllers
                  new SelectListItem { Text = "Female", Value = "Female"},
             };
             ViewBag.gender = gender.ToList();
+            
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { 
@@ -161,22 +164,42 @@ namespace MHS_FINAL_PROJECT.Controllers
                     Gender = model.gender,
                     Name = model.Name,
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if ((Regex.IsMatch(model.Password, @"^[a-zA-Z0-9]+$", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))))
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    UserManager.SetLockoutEnabled(user.Id, false);
-                    await UserManager.AddToRoleAsync(user.Id, model.Roles);
-                    return RedirectToAction("Index", "Home");
+                    if (ModelState["Password"].Errors.Count <= 0)
+                    {
+                        ModelState["Password"].Errors.Clear();
+                        ModelState["Password"].Errors.Add("Passwords must have at least one Special character");
+                    }
                 }
-               
-                AddErrors(result);
+                else if (!(model.Password.Any(char.IsUpper)))
+                {
+                    if (ModelState["Password"].Errors.Count <= 0)
+                    {
+                        ModelState["Password"].Errors.Clear();
+                        ModelState["Password"].Errors.Add("Passwords must have at least one uppercase('A' - 'Z').");
+                    }
+                }
+                else
+                {
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        UserManager.SetLockoutEnabled(user.Id, false);
+                        var result2 = await UserManager.AddToRoleAsync(user.Id, model.Roles);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
+
+                }
+                
             }
             if (ModelState["Age"].Errors.Count > 0 && ModelState["Age"].Errors[0].ErrorMessage.Contains("is not valid for Age"))
             {

@@ -70,10 +70,13 @@ namespace MHS_FINAL_PROJECT.Controllers
                 ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed"
                 : message == ManageMessageId.ChangePasswordError ? "The Old Password is not correct"
+                : message == ManageMessageId.ChangePasswordErrorSpecial ? "Passwords must have at least one Special character."
+                : message == ManageMessageId.ChangePasswordErrorUpperCase ? "Passwords must have at least one uppercase (A-Z)"
                 : message == ManageMessageId.OldNewError ? "The New Password is Same as Old Password"
 
                 : message == ManageMessageId.SetPasswordError ? "Something Went Wrong while setting the password"
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set"
+                : message == ManageMessageId.SetPasswordErrorSpecial ? "Passwords must have at least one Special character"
 
                 : message == ManageMessageId.EditInformationSuccess ? "Your Information Was Updated Successfully"
                 : message == ManageMessageId.EmailExist ? "The Email Is Exist"
@@ -266,6 +269,16 @@ namespace MHS_FINAL_PROJECT.Controllers
                 Session["change_done"] = "true";
                 return RedirectToAction("Index", new { Message = ManageMessageId.OldNewError });
             }
+            else if (!(model.ChangePassword.NewPassword.Any(char.IsUpper)))
+            {
+                Session["change_done"] = "true";
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordErrorUpperCase });
+            }
+            else if ((Regex.IsMatch(model.ChangePassword.NewPassword, @"^[a-zA-Z0-9]+$", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))))
+            {
+                Session["change_done"] = "true";
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordErrorSpecial });
+            }
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.ChangePassword.OldPassword, model.ChangePassword.NewPassword);
             if (result.Succeeded)
             {
@@ -297,6 +310,11 @@ namespace MHS_FINAL_PROJECT.Controllers
                 {
                     Session["change_done"] = "true";
                     return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordErrorUpperCase });
+                }
+                else if((Regex.IsMatch(model.SetPassword.NewPassword, @"^[a-zA-Z0-9]+$", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))))
+                {
+                    Session["change_done"] = "true";
+                    return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordErrorSpecial });
                 }
                 if (model.SetPassword.id == null || model.SetPassword.id == "")
                 {
@@ -3300,10 +3318,13 @@ namespace MHS_FINAL_PROJECT.Controllers
         {
             ChangePasswordSuccess,
             ChangePasswordError,
+            ChangePasswordErrorUpperCase,
+            ChangePasswordErrorSpecial,
             OldNewError,
 
             SetPasswordSuccess,
             SetPasswordError,
+            SetPasswordErrorSpecial,
 
             EditInformationSuccess,
             EditInformationError,
