@@ -81,7 +81,7 @@
 <div id="divOverlay"></div>
 <script>
     $(document).ready(function () {
-        $('.Edit_certification').click( function () {
+        $('.Edit_certification').click(function () {
             $.ajax({
                 url: "/Manage/Edit_certification_data",
                 type: "Post"
@@ -90,6 +90,8 @@
                 $('.Degree').val(data.pharmacist_info.Degree);
                 $('.img').attr('src', data.pharmacist_info.certification_img);
             }).done(function () {
+                document.querySelector('#University_Name_error').innerHTML = null;
+                document.querySelector('#Degree_error').innerHTML = null;
                 $('#Edit_certification').modal("show");
             })
         })
@@ -108,4 +110,6 @@
             $('#divLargerImage').html($img.clone().width(550)).add($('#divOverlay')).fadeIn();
         });
     })
+
+
 </script>

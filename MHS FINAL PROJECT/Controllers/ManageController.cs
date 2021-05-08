@@ -157,20 +157,21 @@ namespace MHS_FINAL_PROJECT.Controllers
             }
             ViewBag.Gender = Gender;
 
-
-
-            int num = 1;
-            List<SelectListItem> number = new List<SelectListItem>();
-            while (num < 7)
+            if (User.IsInRole("Normal_User"))
             {
-                number.Add(new SelectListItem() { Text = num.ToString(), Value = num.ToString() });
-                num++;
+
+                int num = 1;
+                List<SelectListItem> number = new List<SelectListItem>();
+                while (num < 7)
+                {
+                    number.Add(new SelectListItem() { Text = num.ToString(), Value = num.ToString() });
+                    num++;
+                }
+                ViewBag.Provinces = new SelectList(number, "Value", "Text");
             }
-            ViewBag.Provinces = new SelectList(number, "Value", "Text");
-
-
-
-            List<SelectListItem> degree = new List<SelectListItem>()
+            else if (User.IsInRole("pharmacists"))
+            {
+                List<SelectListItem> degree = new List<SelectListItem>()
                 {
                         new SelectListItem {  Text = "Associate degree", Value = "Associate degree"},
                         new SelectListItem { Text = "Bachelor's degree", Value = "Bachelor's degree"},
@@ -178,45 +179,56 @@ namespace MHS_FINAL_PROJECT.Controllers
                         new SelectListItem { Text = "Doctoral degree", Value = "Doctoral degree"},
                         new SelectListItem { Text = "Professional degree", Value = "Professional degree"},
                 };
-            ViewBag.degree = degree.ToList();
+                ViewBag.degree = degree.ToList();
 
-
-
-            var Role = db.Roles.ToList();
-            List<SelectListItem> Roles = new List<SelectListItem>();
-            foreach (var name in Role)
-            {
-                Roles.Add(new SelectListItem() { Text = name.Name.ToString(), Value = name.Id.ToString() });
             }
-            ViewBag.Roles = new SelectList(Roles, "Value", "Text");
-
-
-
-            var users = db.Users.ToList();
-            
-            List<SelectListItem> UserName = new List<SelectListItem>();
-            foreach (var name in users)
+            else if (User.IsInRole("Admins"))
             {
-                var IfRole = UserManager.GetRoles(name.Id);
-                if (IfRole[0] == "pharmacists")
+                List<SelectListItem> degree = new List<SelectListItem>()
                 {
-                    var IfCert = db.pharmastics.Where(x => x.User.Id == name.Id).FirstOrDefault();
-                    if (IfCert == null)
+                        new SelectListItem {  Text = "Associate degree", Value = "Associate degree"},
+                        new SelectListItem { Text = "Bachelor's degree", Value = "Bachelor's degree"},
+                        new SelectListItem { Text = "Master's degree", Value = "Master's degree"},
+                        new SelectListItem { Text = "Doctoral degree", Value = "Doctoral degree"},
+                        new SelectListItem { Text = "Professional degree", Value = "Professional degree"},
+                };
+                ViewBag.degree = degree.ToList();
+
+                var Role = db.Roles.ToList();
+                List<SelectListItem> Roles = new List<SelectListItem>();
+                foreach (var name in Role)
+                {
+                    Roles.Add(new SelectListItem() { Text = name.Name.ToString(), Value = name.Id.ToString() });
+                }
+                ViewBag.Roles = new SelectList(Roles, "Value", "Text");
+
+                var users = db.Users.ToList();
+                List<SelectListItem> UserName = new List<SelectListItem>();
+                foreach (var name in users)
+                {
+                    var IfRole = UserManager.GetRoles(name.Id);
+                    if (IfRole[0] == "pharmacists")
+                    {
+                        var IfCert = db.pharmastics.Where(x => x.User.Id == name.Id).FirstOrDefault();
+                        if (IfCert == null)
+                        {
+                            UserName.Add(new SelectListItem() { Text = name.UserName.ToString(), Value = name.Id.ToString() });
+                        }
+
+                    }
+                    else if (IfRole[0] == "Normal_User")
                     {
                         UserName.Add(new SelectListItem() { Text = name.UserName.ToString(), Value = name.Id.ToString() });
                     }
 
                 }
-                else if (IfRole[0] == "Normal_User")
-                {
-                    UserName.Add(new SelectListItem() { Text = name.UserName.ToString(), Value = name.Id.ToString() });
-                }
-                    
+                ViewBag.UserName = new SelectList(UserName, "Value", "Text");
+
             }
-            ViewBag.UserName = new SelectList(UserName, "Value", "Text");
 
             return View(model);
         }
+
 
 
 
