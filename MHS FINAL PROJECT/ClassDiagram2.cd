@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
-  <Class Name="System.Object">
-    <Position X="53.25" Y="11.75" Width="3.25" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.ExternalLoginConfirmationViewModel">
     <Position X="44.75" Y="8" Width="1.5" />
     <TypeIdentifier>
@@ -27,17 +23,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.SendCodeViewModel">
     <Position X="59.5" Y="8" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="56.5" Y="12.026" />
-        <Point X="56.542" Y="12.026" Type="JumpStart" />
-        <Point X="56.708" Y="12.026" Type="JumpEnd" />
-        <Point X="58.58" Y="12.026" />
-        <Point X="58.58" Y="10.055" />
-        <Point X="60.25" Y="10.055" />
-        <Point X="60.25" Y="9.68" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
@@ -52,16 +37,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.ForgotViewModel">
     <Position X="52" Y="8" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.453" Y="11.75" />
-        <Point X="54.453" Y="10.466" />
-        <Point X="53.753" Y="10.466" Type="JumpStart" />
-        <Point X="53.479" Y="10.466" Type="JumpEnd" />
-        <Point X="52.75" Y="10.466" />
-        <Point X="52.75" Y="9.103" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
@@ -76,20 +51,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.RegisterViewModel">
     <Position X="61.25" Y="8" Width="1.75" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="11.75" />
-        <Point X="54.875" Y="11.227" />
-        <Point X="54.915" Y="11.227" Type="JumpStart" />
-        <Point X="55.081" Y="11.227" Type="JumpEnd" />
-        <Point X="55.636" Y="11.227" Type="JumpStart" />
-        <Point X="55.833" Y="11.227" Type="JumpEnd" />
-        <Point X="58.497" Y="11.227" Type="JumpStart" />
-        <Point X="58.663" Y="11.227" Type="JumpEnd" />
-        <Point X="62.125" Y="11.227" />
-        <Point X="62.125" Y="10.642" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAUAAgAQAAgAAAQACAAAAAAAAIAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
@@ -127,8 +88,6 @@
       <Path>
         <Point X="43.062" Y="16.5" />
         <Point X="43.062" Y="12.567" />
-        <Point X="42.802" Y="12.567" Type="JumpStart" />
-        <Point X="42.635" Y="12.567" Type="JumpEnd" />
         <Point X="40" Y="12.567" />
       </Path>
     </AssociationLine>
@@ -278,20 +237,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.Get_trade_name">
     <Position X="38" Y="8" Width="2" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="11.75" />
-        <Point X="54.875" Y="11.218" />
-        <Point X="54.536" Y="11.218" Type="JumpStart" />
-        <Point X="54.37" Y="11.218" Type="JumpEnd" />
-        <Point X="53.645" Y="11.218" Type="JumpStart" />
-        <Point X="53.479" Y="11.218" Type="JumpEnd" />
-        <Point X="48.279" Y="11.218" Type="JumpStart" />
-        <Point X="48.113" Y="11.218" Type="JumpEnd" />
-        <Point X="39" Y="11.218" />
-        <Point X="39" Y="10.065" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>QCACAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Models\drug_trade_name.cs</FileName>
@@ -306,18 +251,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.warning">
     <Position X="45.5" Y="19.25" Width="2.25" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="16.125" />
-        <Point X="53.535" Y="16.125" />
-        <Point X="53.535" Y="18.756" />
-        <Point X="53.356" Y="18.756" Type="JumpStart" />
-        <Point X="53.19" Y="18.756" Type="JumpEnd" />
-        <Point X="46.625" Y="18.756" />
-        <Point X="46.625" Y="19.25" />
-      </Path>
-    </InheritanceLine>
     <AssociationLine Name="drug_active_name" Type="MHS_FINAL_PROJECT.Models.drug_active_name">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-2.625" Y="3.071" />
@@ -333,20 +266,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.warning_get">
     <Position X="48" Y="19.25" Width="2.25" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="16.125" />
-        <Point X="53.553" Y="16.125" />
-        <Point X="53.553" Y="19.022" />
-        <Point X="53.356" Y="19.022" Type="JumpStart" />
-        <Point X="53.19" Y="19.022" Type="JumpEnd" />
-        <Point X="50.583" Y="19.022" Type="JumpStart" />
-        <Point X="50.417" Y="19.022" Type="JumpEnd" />
-        <Point X="49.125" Y="19.022" />
-        <Point X="49.125" Y="19.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>ACAAAAAgAAAAIIAgAAAAAAgAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Models\warning.cs</FileName>
@@ -397,20 +316,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.Get_Drug_Interaction">
     <Position X="62.5" Y="12" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="11.75" />
-        <Point X="54.875" Y="11.227" />
-        <Point X="54.915" Y="11.227" Type="JumpStart" />
-        <Point X="55.081" Y="11.227" Type="JumpEnd" />
-        <Point X="55.636" Y="11.227" Type="JumpStart" />
-        <Point X="55.833" Y="11.227" Type="JumpEnd" />
-        <Point X="56.625" Y="11.227" />
-        <Point X="56.625" Y="15.069" />
-        <Point X="63.25" Y="15.069" />
-        <Point X="63.25" Y="14.257" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAEAAAABAAEAAAAAAAAAQAgAIAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Models\Drug_Interaction.cs</FileName>
@@ -425,29 +330,11 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.health_drugs">
     <Position X="48.5" Y="14" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="11.75" />
-        <Point X="54.875" Y="11.21" />
-        <Point X="54.536" Y="11.21" Type="JumpStart" />
-        <Point X="54.37" Y="11.21" Type="JumpEnd" />
-        <Point X="53.645" Y="11.21" Type="JumpStart" />
-        <Point X="53.479" Y="11.21" Type="JumpEnd" />
-        <Point X="50.375" Y="11.21" />
-        <Point X="50.375" Y="16.125" />
-        <Point X="49.25" Y="16.125" />
-        <Point X="49.25" Y="15.68" />
-      </Path>
-    </InheritanceLine>
     <AssociationLine Name="user_health" Type="MHS_FINAL_PROJECT.Models.user_health" ManuallyRouted="true">
       <Path>
         <Point X="50" Y="14.84" />
-        <Point X="50.292" Y="14.84" Type="JumpStart" />
-        <Point X="50.458" Y="14.84" Type="JumpEnd" />
         <Point X="50.5" Y="14.84" />
         <Point X="50.5" Y="16.386" />
-        <Point X="51.792" Y="16.386" Type="JumpStart" />
-        <Point X="51.958" Y="16.386" Type="JumpEnd" />
         <Point X="53.273" Y="16.386" />
         <Point X="53.273" Y="19.24" />
         <Point X="52.25" Y="19.24" />
@@ -489,16 +376,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.user_health_return">
     <Position X="59.25" Y="20.25" Width="2.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="16.125" />
-        <Point X="61.7" Y="16.125" />
-        <Point X="61.7" Y="19.95" />
-        <Point X="60.5" Y="19.95" />
-        <Point X="60.5" Y="20.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>ACAIAAAAAACAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Models\user_health.cs</FileName>
@@ -506,17 +383,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.user_drug_num_return">
     <Position X="64.25" Y="19.25" Width="2" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="15.069" />
-        <Point X="56.542" Y="15.069" Type="JumpStart" />
-        <Point X="56.708" Y="15.069" Type="JumpEnd" />
-        <Point X="66.373" Y="15.069" />
-        <Point X="66.373" Y="19.898" />
-        <Point X="66.25" Y="19.898" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\user_health.cs</FileName>
@@ -524,15 +390,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.user_health_drug_return">
     <Position X="54.25" Y="20.25" Width="2.25" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="16.125" />
-        <Point X="53.86" Y="16.125" />
-        <Point X="53.86" Y="21.475" />
-        <Point X="54.25" Y="21.475" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>ACAIAAAAAgAAAAAAIACAgAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Models\user_health.cs</FileName>
@@ -540,16 +397,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.user_Add_health">
     <Position X="62" Y="19.5" Width="2" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="16.125" />
-        <Point X="63.847" Y="16.125" />
-        <Point X="63.847" Y="19.2" />
-        <Point X="63" Y="19.2" />
-        <Point X="63" Y="19.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Models\user_health.cs</FileName>
@@ -573,7 +420,7 @@
     <Position X="66.75" Y="8" Width="3" />
     <AssociationLine Name="pharmastics" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="66.812" Y="9.877" />
+        <Point X="66.812" Y="10.521" />
         <Point X="66.812" Y="11.75" />
         <Point X="67.105" Y="11.75" Type="JumpStart" />
         <Point X="67.271" Y="11.75" Type="JumpEnd" />
@@ -582,13 +429,13 @@
     </AssociationLine>
     <AssociationLine Name="drug_active_names" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true">
       <Path>
-        <Point X="69.75" Y="8.625" />
-        <Point X="71.75" Y="8.625" />
+        <Point X="69.75" Y="8.839" />
+        <Point X="71.75" Y="8.839" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="drug_trade_names" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="67.188" Y="9.877" />
+        <Point X="67.188" Y="10.521" />
         <Point X="67.188" Y="12.367" />
         <Point X="72.938" Y="12.367" />
         <Point X="72.938" Y="11.992" />
@@ -599,8 +446,8 @@
     </AssociationLine>
     <AssociationLine Name="side_effects" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true">
       <Path>
-        <Point X="69.75" Y="9.688" />
-        <Point X="71.75" Y="9.688" />
+        <Point X="69.75" Y="10.267" />
+        <Point X="71.75" Y="10.267" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
         <Position X="0.123" Y="0.068" Height="0.182" Width="1.13" />
@@ -608,74 +455,38 @@
     </AssociationLine>
     <AssociationLine Name="warnings" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="67.5" Y="9.877" />
+        <Point X="67.5" Y="10.521" />
         <Point X="67.5" Y="11.375" />
         <Point X="71.75" Y="11.375" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="user_healths" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="67.688" Y="9.877" />
+        <Point X="67.688" Y="10.521" />
         <Point X="67.688" Y="10.875" />
         <Point X="71.75" Y="10.875" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="health_drugs" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true">
       <Path>
-        <Point X="69.75" Y="9.062" />
-        <Point X="71.75" Y="9.062" />
+        <Point X="69.75" Y="9.426" />
+        <Point X="71.75" Y="9.426" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Drug_Interactions" Type="System.Data.Entity.DbSet&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="68" Y="9.877" />
-        <Point X="68" Y="10.345" />
+        <Point X="68" Y="10.521" />
+        <Point X="68" Y="10.875" />
+        <Point X="70" Y="10.875" />
+        <Point X="70" Y="10.345" />
         <Point X="71.75" Y="10.345" />
       </Path>
-    </AssociationLine>
-    <AssociationLine Name="user_Add_health" Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="66.75" Y="8.939" />
-        <Point X="66.562" Y="8.939" />
-        <Point X="66.562" Y="11.081" />
-        <Point X="64.083" Y="11.081" Type="JumpStart" />
-        <Point X="63.917" Y="11.081" Type="JumpEnd" />
-        <Point X="62.208" Y="11.081" Type="JumpStart" />
-        <Point X="62.042" Y="11.081" Type="JumpEnd" />
-        <Point X="58.663" Y="11.081" Type="JumpStart" />
-        <Point X="58.497" Y="11.081" Type="JumpEnd" />
-        <Point X="55.719" Y="11.081" />
-        <Point X="55.719" Y="11.75" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-11.023" Y="0.461" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="user_health" Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="66.75" Y="9.444" />
-        <Point X="66.562" Y="9.444" />
-        <Point X="66.562" Y="10.742" />
-        <Point X="64.083" Y="10.742" Type="JumpStart" />
-        <Point X="63.917" Y="10.742" Type="JumpEnd" />
-        <Point X="62.208" Y="10.742" Type="JumpStart" />
-        <Point X="62.042" Y="10.742" Type="JumpEnd" />
-        <Point X="58.663" Y="10.742" Type="JumpStart" />
-        <Point X="58.497" Y="10.742" Type="JumpEnd" />
-        <Point X="55.75" Y="10.742" />
-        <Point X="55.75" Y="11.75" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-10.741" Y="1.04" />
-      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>BAAAIABAAAAAhAAAAIAAABAgEAAAAEAEAAAACAAAAAA=</HashCode>
       <FileName>Models\IdentityModels.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="user_Add_health" />
-      <Field Name="user_health" />
       <Property Name="pharmastics" />
       <Property Name="drug_active_names" />
       <Property Name="drug_trade_names" />
@@ -724,18 +535,6 @@
         <Point X="74.437" Y="15.426" />
         <Point X="73.208" Y="15.426" Type="JumpStart" />
         <Point X="73.042" Y="15.426" Type="JumpEnd" />
-        <Point X="70.083" Y="15.426" Type="JumpStart" />
-        <Point X="69.917" Y="15.426" Type="JumpEnd" />
-        <Point X="67.333" Y="15.426" Type="JumpStart" />
-        <Point X="67.167" Y="15.426" Type="JumpEnd" />
-        <Point X="66.456" Y="15.426" Type="JumpStart" />
-        <Point X="66.29" Y="15.426" Type="JumpEnd" />
-        <Point X="65.083" Y="15.426" Type="JumpStart" />
-        <Point X="64.917" Y="15.426" Type="JumpEnd" />
-        <Point X="56.708" Y="15.426" Type="JumpStart" />
-        <Point X="56.542" Y="15.426" Type="JumpEnd" />
-        <Point X="54.958" Y="15.426" Type="JumpStart" />
-        <Point X="54.792" Y="15.426" Type="JumpEnd" />
         <Point X="52" Y="15.426" />
         <Point X="52" Y="15.238" />
       </Path>
@@ -763,18 +562,10 @@
         <Point X="73" Y="16.196" />
         <Point X="72.652" Y="16.196" />
         <Point X="72.652" Y="18.048" />
-        <Point X="70.208" Y="18.048" Type="JumpStart" />
-        <Point X="70.042" Y="18.048" Type="JumpEnd" />
         <Point X="70" Y="18.048" />
         <Point X="70" Y="15.93" />
-        <Point X="66.456" Y="15.93" Type="JumpStart" />
-        <Point X="66.29" Y="15.93" Type="JumpEnd" />
-        <Point X="54.958" Y="15.93" Type="JumpStart" />
-        <Point X="54.792" Y="15.93" Type="JumpEnd" />
         <Point X="50.583" Y="15.93" Type="JumpStart" />
-        <Point X="50.292" Y="15.93" Type="JumpEnd" />
-        <Point X="49.333" Y="15.93" Type="JumpStart" />
-        <Point X="49.167" Y="15.93" Type="JumpEnd" />
+        <Point X="50.417" Y="15.93" Type="JumpEnd" />
         <Point X="48.196" Y="15.93" />
         <Point X="48.196" Y="10.825" />
         <Point X="49.25" Y="10.825" />
@@ -827,16 +618,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Models.ChangePasswordViewModel">
     <Position X="70" Y="18.75" Width="2.25" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="14.459" />
-        <Point X="54.875" Y="15.55" />
-        <Point X="66.29" Y="15.55" Type="JumpStart" />
-        <Point X="66.456" Y="15.55" Type="JumpEnd" />
-        <Point X="70.125" Y="15.55" />
-        <Point X="70.125" Y="18.75" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Models\ManageViewModels.cs</FileName>
@@ -894,23 +675,13 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.BundleConfig">
     <Position X="54.5" Y="5.75" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="55.25" Y="11.75" />
-        <Point X="55.25" Y="11.408" />
-        <Point X="54.998" Y="11.408" />
-        <Point X="54.998" Y="10.715" />
-        <Point X="55.312" Y="10.715" />
-        <Point X="55.312" Y="6.853" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\BundleConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MHS_FINAL_PROJECT.FilterConfig">
-    <Position X="57.25" Y="13.5" Width="1.5" />
+    <Position X="46" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>App_Start\FilterConfig.cs</FileName>
@@ -918,19 +689,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.EmailService">
     <Position X="56.5" Y="5.75" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="11.75" />
-        <Point X="54.875" Y="10.929" />
-        <Point X="54.915" Y="10.929" Type="JumpStart" />
-        <Point X="55.081" Y="10.929" Type="JumpEnd" />
-        <Point X="55.312" Y="10.929" />
-        <Point X="55.312" Y="7.162" />
-        <Point X="58.123" Y="7.162" />
-        <Point X="58.123" Y="6.302" />
-        <Point X="58" Y="6.302" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\IdentityConfig.cs</FileName>
@@ -939,16 +697,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.SmsService">
     <Position X="52.25" Y="5.75" Width="2" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="53.938" Y="11.75" />
-        <Point X="53.938" Y="11.227" />
-        <Point X="53.67" Y="11.227" />
-        <Point X="53.67" Y="8.297" />
-        <Point X="53.562" Y="8.297" />
-        <Point X="53.562" Y="6.853" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\IdentityConfig.cs</FileName>
@@ -971,18 +719,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.RouteConfig">
     <Position X="50.5" Y="5.75" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="53.562" Y="11.75" />
-        <Point X="53.562" Y="9.615" />
-        <Point X="52.833" Y="9.615" Type="JumpStart" />
-        <Point X="52.667" Y="9.615" Type="JumpEnd" />
-        <Point X="51.845" Y="9.615" />
-        <Point X="51.845" Y="6.947" />
-        <Point X="51.312" Y="6.947" />
-        <Point X="51.312" Y="6.853" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\RouteConfig.cs</FileName>
@@ -990,18 +726,6 @@
   </Class>
   <Class Name="MHS_FINAL_PROJECT.Startup">
     <Position X="61.75" Y="5.5" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="54.875" Y="11.75" />
-        <Point X="54.875" Y="10.929" />
-        <Point X="54.915" Y="10.929" Type="JumpStart" />
-        <Point X="55.081" Y="10.929" Type="JumpEnd" />
-        <Point X="55.312" Y="10.929" />
-        <Point X="55.312" Y="7.594" />
-        <Point X="62.125" Y="7.594" />
-        <Point X="62.125" Y="7.439" />
-      </Path>
-    </InheritanceLine>
     <AssociationLine Name="db" Type="MHS_FINAL_PROJECT.Models.ApplicationDbContext">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.183" Y="0.127" />
