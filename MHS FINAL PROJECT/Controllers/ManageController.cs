@@ -370,6 +370,14 @@ namespace MHS_FINAL_PROJECT.Controllers
 
 
 
+        private IAuthenticationManager AuthManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         //Edit user information*************************************************************************************
         [HttpPost]
         [Authorize]
@@ -403,8 +411,17 @@ namespace MHS_FINAL_PROJECT.Controllers
                     var result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
+                        //make ApplicationUser
+                        ApplicationUser user_login = new ApplicationUser()
+                        {
+                            Id = User.Identity.GetUserId(),
+                            UserName = model.UserInformation.Username,
+                            Email = model.UserInformation.Email
+                        };
                         db.SaveChanges();
                         Session["change_done"] = "true";
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                        await SignInManager.SignInAsync(user_login,true, true);
                         return RedirectToAction("Index", new { Message = ManageMessageId.EditInformationSuccess });
                     }
                     else
