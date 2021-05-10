@@ -6,6 +6,7 @@
 
 
 <link href="~/Content/home/home.css" rel="stylesheet" />
+
 <main>
     <div class="main-grid">
         @using (Html.BeginForm("Normal_search", "Home", FormMethod.Post ))
@@ -16,11 +17,11 @@
                 <div class="search-box">
                     <div class="mic">
                         <a class="talk" onclick="" style="cursor:pointer">
-                            <img alt="search_voice" src="~/img/home/mic.svg" />
+                            <img alt="search_voice" class="mic_add" src="~/img/home/mic.svg" />
                         </a>
                     </div>
                     @Html.TextBoxFor(m => m.name)
-                    <button class="search-btn">Search <img src="~/img/home/search.svg" /></button>
+                    <button class="search-btn" >Search <img src="~/img/home/search.svg" /></button>
                 </div>
             </div>
         }

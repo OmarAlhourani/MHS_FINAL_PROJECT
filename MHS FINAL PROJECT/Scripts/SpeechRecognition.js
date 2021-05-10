@@ -1,10 +1,13 @@
 ﻿    const btn_talk = document.querySelector('.talk');
     const Spech = window.SpeechRecognition || window.webkitSpeechRecognition;
-
     const recongnation = new Spech();
     recongnation.lang = 'en-US';
 
-    recongnation.onresult = function (event) {
+
+
+
+
+recongnation.onresult = function (event) {
         const text = event.resultIndex;
         const script = event.results[text][0].transcript;
         if ((window.location.href).includes("Normal_search")) {
@@ -28,10 +31,25 @@
         {
             window.location = "home/Normal_search?model.name=" + script;
         }
-    
-    console.log(event.results);
+        
+        console.log(event.results);
 };
 
+
+recongnation.onend = function (event) {
+    var get_mic = document.querySelector('.mic_add');
+    get_mic.classList.remove("AnimateMic");
+    console.log('Speech not nomatch');
+}
+
+
+//recongnation.nomatch = function () {
+//    var get_mic = document.querySelector('.mic_add');
+//    get_mic.classList.remove("AnimateMic");
+//}
+
 btn_talk.addEventListener('click', () => {
+    var get_mic = document.querySelector('.mic_add');
+    get_mic.classList.add("AnimateMic");
     recongnation.start();
 });

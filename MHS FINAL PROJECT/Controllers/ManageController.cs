@@ -411,7 +411,7 @@ namespace MHS_FINAL_PROJECT.Controllers
                     var result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
-                        //make ApplicationUser
+                        //make ApplicationUser for logoff and login again to refresh the name in the navbar
                         ApplicationUser user_login = new ApplicationUser()
                         {
                             Id = User.Identity.GetUserId(),
