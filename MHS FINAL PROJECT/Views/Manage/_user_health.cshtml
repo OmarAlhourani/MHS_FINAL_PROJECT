@@ -244,7 +244,7 @@
                     { "data": "number_of_drugs", "Name": "number of drugs", "autoWidth": true },
                     {
                         "render": function (data, type, row, meta) {
-                            return '<div class="action_btn"><a class="info_action" data-toggle="tooltip" title="More Information" value="' + row.id + '" style="cursor:pointer"><img src="/img/Manage/table action/More_Info.svg" /> </a>' + ' ' +
+                            return '<div class="action_btn"><a class="info_action" data-toggle="tooltip" title="More Information" style="cursor:pointer"><img src="/img/Manage/table action/More_Info.svg" /> </a>' + ' ' +
                                 '<a class="edit_action Edit" data-toggle="tooltip" title="Edit Health Condition" onclick="edit(' + row.id + ');" value="' + row.id + '" style="cursor:pointer"><img src="/img/Manage/table action/edit_action.svg" /></a>' + ' ' +
                                 '<a class="delete_action" data-toggle="tooltip" title="Delete Health Condition" value="' + row.id + '" style="cursor:pointer" onclick="Delete(' + row.id + ',' + "'" + row.health_condition_name + "'" + ');"><img src="/img/Manage/table action/delete_action.svg" /></a></div>';
                         }
@@ -254,6 +254,8 @@
 
             $('[data-toggle="tooltip"]').tooltip();   
         });
+
+
 
     //clear and open modal for add new drug
     $(".add_new").click(function () {
@@ -275,6 +277,8 @@
         document.querySelector('.change_titel').innerHTML = "Add new healthe case";
         $('#Add_New_Health').modal("show");
     })
+
+
 
     //load delete alert modal
     function Delete(id, name) {

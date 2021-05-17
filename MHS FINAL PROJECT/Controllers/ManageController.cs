@@ -713,6 +713,15 @@ namespace MHS_FINAL_PROJECT.Controllers
                 return Json(delete_drug, JsonRequestBehavior.AllowGet);
             }
         }
+
+
+
+        //Show more health condation for user*********************************************************************
+        [Authorize(Roles = "Normal_User")]
+        public ActionResult MoreHealthCondation(int Id)
+        {
+            return View();
+        }
         #endregion
 
 

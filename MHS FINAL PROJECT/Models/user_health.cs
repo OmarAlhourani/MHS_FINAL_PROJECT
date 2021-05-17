@@ -59,7 +59,7 @@ namespace MHS_FINAL_PROJECT.Models
         [Display(Name = "Health Condition Name")]
         public string health_condition_name { get; set; }
         [Required(ErrorMessage = "Please Enter the Description of Health Condition")]
-        [Display(Name = "Health Condition Name")]
+        [Display(Name = "Health Condition Description")]
         public string description { get; set; }
 
     }

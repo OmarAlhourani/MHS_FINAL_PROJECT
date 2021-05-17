@@ -364,9 +364,12 @@ namespace MHS_FINAL_PROJECT.Controllers
                 model.img_path = file.ToString(); //getting complete url  
                 var fileName = Path.GetFileName(file.FileName); //getting only file name(ex-ganesh.jpg) 
                 var ext = Path.GetExtension(file.FileName); //getting the extension(ex-.jpg)
-                string name = Path.GetFileNameWithoutExtension(fileName); //getting file name without extension
+                string name = Path.GetFileNameWithoutExtension(fileName);//getting file name without extension
                 string myfile = name + "_" + user.Id + ext; //appending the name with id  
                                                             // store the file inside ~/project folder(CERTIFICATION_IMG)  
+                myfile = myfile.Replace(" ", "");//remove any space 
+                myfile = myfile.Replace(",","");//remove any , 
+                myfile = myfile.Replace(";","");//remove any ;  
                 var path = Path.Combine(Server.MapPath("~/CERTIFICATION_IMG"), myfile);
                 file.SaveAs(path);
                 path = "/CERTIFICATION_IMG/" + myfile;

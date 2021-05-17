@@ -163,8 +163,6 @@ namespace MHS_FINAL_PROJECT.Models
         public add_Drug_Interaction Add_interaction { get; set; }
 
     }
-
-
     public class get_ActiveViewModel
     {
         public int id { get; set; }

@@ -46,8 +46,10 @@ namespace MHS_FINAL_PROJECT.Models
     public class add_Drug_Interaction {
         public int id { get; set; }
         public string Degree { get; set; }
+        [Display(Name = "Drug")]
         public string drug_name { get; set; }
         public int drug_id { get; set; }
+        [Display(Name = "Interact With")]
         public string with_name { get; set; }
         public int with_id { get; set; }
     }

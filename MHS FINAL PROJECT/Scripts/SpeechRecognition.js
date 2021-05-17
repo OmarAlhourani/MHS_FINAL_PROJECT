@@ -4,9 +4,6 @@
     recongnation.lang = 'en-US';
 
 
-
-
-
 recongnation.onresult = function (event) {
         const text = event.resultIndex;
         const script = event.results[text][0].transcript;
@@ -42,11 +39,6 @@ recongnation.onend = function (event) {
     console.log('Speech not nomatch');
 }
 
-
-//recongnation.nomatch = function () {
-//    var get_mic = document.querySelector('.mic_add');
-//    get_mic.classList.remove("AnimateMic");
-//}
 
 btn_talk.addEventListener('click', () => {
     var get_mic = document.querySelector('.mic_add');

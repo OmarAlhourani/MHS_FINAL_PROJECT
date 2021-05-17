@@ -126,7 +126,6 @@
                                     <img class="mic_add" src="~/img/home/mic.svg" />
                                 </a>
                             </div>
-                            @*@Html.TextBox("search for", (string)ViewBag.serchForName, new { @class = "name" })*@
                             @Html.TextBoxFor(M => M.search_name, new { @Value = @ViewBag.serchForName, @class = "name" })
                             <button class="search-btn"><img src="~/img/home/search.svg" /></button>
                         </div>

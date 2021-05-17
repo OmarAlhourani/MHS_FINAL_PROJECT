@@ -772,6 +772,7 @@
     <Content Include="Views\Manage\_pharmacist_request.cshtml" />
     <Content Include="Views\Manage\_accept_certification.cshtml" />
     <Content Include="Views\Manage\_Reject_certification.cshtml" />
+    <Content Include="Views\Manage\MoreHealthCondation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
