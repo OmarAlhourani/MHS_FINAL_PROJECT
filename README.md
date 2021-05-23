@@ -5,10 +5,7 @@
 2)Remove the compression of the "script.rar" file, then extract its contents in a query statement on the project's database.
 
 3)Run The Application.
-*
-*
-*
-*
+
 ##Required versions
   
   bootstrap : V3.4.1
