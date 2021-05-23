@@ -8,6 +8,7 @@
 
 
 ##Required versions
+  
   bootstrap : V3.4.1
   
   EntityFramework : V6.2.0
