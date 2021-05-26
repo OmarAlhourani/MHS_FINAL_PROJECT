@@ -1,10 +1,12 @@
 # MHS_FINAL_PROJECT
 
-1)Update the database Using Package Manager Console By Entering "Update-database".
+1)change the Data Source for connectionString in the Web.config 
 
-2)Remove the compression of the "script.rar" file, then extract its contents in a query statement on the project's database.
+2)Update the database Using Package Manager Console By Entering "Update-database".
 
-3)Run The Application.
+3)Remove the compression of the "script.rar" file, then extract its contents in a query statement on the project's database.
+
+4)Run The Application.
 
 ##Required versions
   
